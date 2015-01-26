@@ -41,3 +41,5 @@ group :development, :test do
 end
 
 gem 'slim-rails'
+gem 'meurio_ui'
+gem 'compass-rails'
