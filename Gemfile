@@ -39,3 +39,5 @@ gem 'spring',        group: :development
 group :development, :test do
   gem 'rspec-rails'
 end
+
+gem 'slim-rails'
