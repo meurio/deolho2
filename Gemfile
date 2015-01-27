@@ -42,7 +42,6 @@ group :development, :test do
 end
 
 gem 'codeclimate-test-reporter', group: :test, require: nil
-
 gem 'slim-rails'
 gem 'meurio_ui', git: 'https://github.com/meurio/meurio_ui.git', branch: 'deolho2'
 gem 'compass-rails'
@@ -51,3 +50,4 @@ gem 'machinist'
 gem 'rails_12factor'
 gem 'puma'
 gem 'rack-cas'
+gem 'acts_as_our_cities'
