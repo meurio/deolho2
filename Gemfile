@@ -41,5 +41,7 @@ group :development, :test do
 end
 
 gem 'slim-rails'
-gem 'meurio_ui'
+gem 'meurio_ui', git: 'git@github.com:meurio/meurio_ui.git', branch: 'deolho2'
 gem 'compass-rails'
+gem 'foundation-rails', '~> 5.3.1.0'
+gem 'machinist'

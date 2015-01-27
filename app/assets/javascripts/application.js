@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require foundation
 //= require meurio_ui
 //= require_tree .
+
+$(function(){ $(document).foundation(); });
