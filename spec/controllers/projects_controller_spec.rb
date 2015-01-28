@@ -11,6 +11,17 @@ RSpec.describe ProjectsController, :type => :controller do
   end
 
   describe "PUT close_for_contribution" do
+    context "when I'm not an admin" do
+      let(:user) { User.make! }
+      before { session['cas'] = { 'user' => user.email } }
+
+      it "raise an exception" do
+        expect {
+          put :close_for_contribution, id: @project.id
+        }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
     context "when I'm an admin" do
       let(:user) { User.make! admin: true }
       before { session['cas'] = { 'user' => user.email } }
