@@ -19,10 +19,10 @@ development:
   <<: *defaults
   active: false
 
-staging:
+production:
   <<: *defaults
   active: true
 
-production:
+staging:
   <<: *defaults
   active: true
