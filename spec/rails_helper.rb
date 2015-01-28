@@ -22,6 +22,7 @@ require 'capybara/rspec'
 #
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 require Rails.root.join('spec/support/blueprints')
+require Rails.root.join('spec/support/login')
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

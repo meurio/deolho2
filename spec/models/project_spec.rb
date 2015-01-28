@@ -26,4 +26,14 @@ RSpec.describe Project, :type => :model do
       }.to change{ subject.closed_for_contribution_at }
     end
   end
+
+  describe "#reopen_for_contribution" do
+    subject { Project.make! closed_for_contribution_at: Time.now }
+
+    it "should set closed_for_contribution_at to nil" do
+      expect {
+        subject.reopen_for_contribution
+      }.to change{ subject.closed_for_contribution_at }.to nil
+    end
+  end
 end

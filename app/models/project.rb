@@ -6,4 +6,8 @@ class Project < ActiveRecord::Base
   def close_for_contribution
     self.update_attribute :closed_for_contribution_at, Time.now
   end
+
+  def reopen_for_contribution
+    self.update_attribute :closed_for_contribution_at, nil
+  end
 end

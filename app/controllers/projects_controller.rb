@@ -13,4 +13,10 @@ class ProjectsController < ApplicationController
     @project.close_for_contribution
     redirect_to @project
   end
+
+  def reopen_for_contribution
+    @project = Project.find(params[:id])
+    @project.reopen_for_contribution
+    redirect_to @project
+  end
 end

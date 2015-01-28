@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :projects, only: [:index, :show] do
     member do
       put 'close_for_contribution'
+      put 'reopen_for_contribution'
     end
   end
 
