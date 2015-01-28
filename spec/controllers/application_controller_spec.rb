@@ -2,6 +2,8 @@ require "rails_helper"
 
 RSpec.describe ApplicationController do
   controller do
+    skip_authorization_check :index
+    
     def index
       render nothing: true
     end
@@ -19,7 +21,7 @@ RSpec.describe ApplicationController do
       let(:user) { User.make! }
 
       it "should be the logged in user" do
-        session[:cas] = { user: user.email }
+        session[:cas] = { 'user' => user.email }
         get :index
         expect(subject.current_user).to be_eql(user)
       end

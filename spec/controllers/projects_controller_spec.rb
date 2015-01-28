@@ -11,14 +11,19 @@ RSpec.describe ProjectsController, :type => :controller do
   end
 
   describe "PUT close_for_contribution" do
-    it "should close the project for contribution" do
-      put :close_for_contribution, id: @project.id
-      expect(@project.reload.closed_for_contribution?).to be_truthy
-    end
+    context "when I'm an admin" do
+      let(:user) { User.make! admin: true }
+      before { session['cas'] = { 'user' => user.email } }
 
-    it "should redirects to the project" do
-      put :close_for_contribution, id: @project.id
-      expect(response).to redirect_to(project_path(@project))
+      it "should close the project for contribution" do
+        put :close_for_contribution, id: @project.id
+        expect(@project.reload.closed_for_contribution?).to be_truthy
+      end
+
+      it "should redirects to the project" do
+        put :close_for_contribution, id: @project.id
+        expect(response).to redirect_to(project_path(@project))
+      end
     end
   end
 end

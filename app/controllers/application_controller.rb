@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  check_authorization
+
   def current_user
     if session['cas']
       @current_user ||= User.find_by(email: session['cas']['user'])
