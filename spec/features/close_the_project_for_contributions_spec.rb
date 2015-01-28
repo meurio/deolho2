@@ -13,9 +13,7 @@ RSpec.feature "Close the project for contributions" do
 
   scenario "When I'm not an admin" do
     visit project_path project
-
     expect(page).to_not have_css('#close-contribution-button')
-    expect(page).to_not have_css('#open-contribution-button')
   end
 
   scenario "When I'm an admin" do
@@ -26,6 +24,5 @@ RSpec.feature "Close the project for contributions" do
 
     expect(project.reload.closed_for_contribution_at).to_not be_nil
     expect(page).to_not have_css('#close-contribution-button')
-    expect(page).to have_css('#open-contribution-button')
   end
 end
