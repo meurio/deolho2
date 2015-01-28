@@ -1,0 +1,7 @@
+.row
+  .large-12.columns.text-right
+    - if !@project.closed_for_contribution?
+      = link_to "Fechar projeto para contribuição", close_for_contribution_project_path(@project), id: "close-contribution-button", method: :put, class: [:button, :radius]
+    - else
+      | Fechado para contribuição há #{distance_of_time_in_words_to_now @project.closed_for_contribution_at}
+      |  #{link_to "Reabrir projeto para contribuição", "#", id: "open-contribution-button", method: :put, class: [:button, :radius]}

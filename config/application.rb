@@ -19,7 +19,7 @@ module Deolho2
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = "pt-BR"
 
     config.rack_cas.server_url = ENV['CAS_SERVER_URL']
     config.rack_cas.session_store = RackCAS::ActiveRecordStore
