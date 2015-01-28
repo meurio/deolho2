@@ -42,6 +42,9 @@ GEM
       activeresource (~> 4.0, >= 4.0.0)
       rails (~> 4.1, >= 4.1.5)
     addressable (2.3.6)
+    appsignal (0.11.3)
+      rack
+      thread_safe
     arel (5.0.1.20140414130214)
     builder (3.2.2)
     cancancan (1.10.1)
@@ -54,13 +57,6 @@ GEM
     chunky_png (1.3.3)
     codeclimate-test-reporter (0.4.6)
       simplecov (>= 0.7.1, < 1.0.0)
-    coffee-rails (4.1.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0, < 5.0)
-    coffee-script (2.3.0)
-      coffee-script-source
-      execjs
-    coffee-script-source (1.8.0)
     compass (0.12.7)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -180,8 +176,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
-    turbolinks (2.5.3)
-      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.0)
@@ -195,6 +189,7 @@ PLATFORMS
 
 DEPENDENCIES
   acts_as_our_cities
+  appsignal
   cancancan (~> 1.10)
   capybara
   codeclimate-test-reporter
@@ -214,5 +209,4 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   slim-rails
   spring
-  turbolinks
   uglifier (>= 1.3.0)
