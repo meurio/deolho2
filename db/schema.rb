@@ -11,20 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150128155540) do
+ActiveRecord::Schema.define(version: 20150129125755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "projects", force: true do |t|
+  create_table "projects", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "closed_for_contribution_at"
   end
 
-  create_table "sessions", force: true do |t|
-    t.string   "session_id", null: false
-    t.string   "cas_ticket"
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", limit: 255, null: false
+    t.string   "cas_ticket", limit: 255
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -34,12 +34,21 @@ ActiveRecord::Schema.define(version: 20150128155540) do
   add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", using: :btree
   add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
 
-  create_table "users", force: true do |t|
-    t.string  "email"
-    t.string  "avatar"
-    t.string  "first_name"
-    t.string  "last_name"
+  create_table "signatures", force: :cascade do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",    null: false
+    t.integer  "project_id", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string  "email",      limit: 255
+    t.string  "avatar",     limit: 255
+    t.string  "first_name", limit: 255
+    t.string  "last_name",  limit: 255
     t.boolean "admin"
   end
 
+  add_foreign_key "signatures", "projects"
+  add_foreign_key "signatures", "users"
 end
