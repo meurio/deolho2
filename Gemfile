@@ -52,3 +52,5 @@ gem 'appsignal'
 gem 'capybara'
 gem 'cancancan', '~> 1.10'
 gem 'shoulda-matchers', require: false, group: :test
+gem 'poltergeist'
+gem 'database_cleaner'
