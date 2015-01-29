@@ -2,11 +2,12 @@ require "rails_helper"
 
 RSpec.feature "Sign a project" do
   context "When I'm logged in" do
-    scenario "When I've never signed this project before" do
-      user = User.make!
-      project = Project.make!
+    let(:user) { User.make! }
+    let(:project) { Project.make! }
 
-      login(user)
+    before { login(user) }
+
+    scenario "When I've never signed this project before" do
       visit project_path(project)
       click_link("sign-project-button")
 
@@ -16,6 +17,10 @@ RSpec.feature "Sign a project" do
     end
 
     scenario "When I've already signed this project" do
+      Signature.make! user: user, project: project
+      visit project_path(project)
+
+      expect(page).to_not have_css("#sign-project-button")
     end
   end
 
