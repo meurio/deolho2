@@ -50,5 +50,4 @@ ActiveRecord::Schema.define(version: 20150129125755) do
   end
 
   add_foreign_key "signatures", "projects"
-  add_foreign_key "signatures", "users"
 end
