@@ -6,3 +6,8 @@ end
 
 Project.blueprint do
 end
+
+Signature.blueprint do
+  user
+  project
+end
