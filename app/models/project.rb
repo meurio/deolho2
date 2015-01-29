@@ -1,4 +1,7 @@
 class Project < ActiveRecord::Base
+  has_many :signatures
+  has_many :signers, through: :signatures, source: :user
+
   def closed_for_contribution?
     self.closed_for_contribution_at.present?
   end

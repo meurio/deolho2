@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Project, :type => :model do
+  it { should have_many :signatures }
+  it { should have_many :signers }
+
   describe "#closed_for_contribution?" do
     context "when closed_for_contribution_at is nil" do
       it "should be false" do
