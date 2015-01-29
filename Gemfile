@@ -37,10 +37,7 @@ gem 'spring', group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-group :development, :test do
-  gem 'rspec-rails'
-end
-
+gem 'rspec-rails', group: [:development, :test]
 gem 'codeclimate-test-reporter', group: :test, require: nil
 gem 'slim-rails'
 gem 'meurio_ui', git: 'https://github.com/meurio/meurio_ui.git', branch: 'deolho2'
@@ -54,3 +51,4 @@ gem 'acts_as_our_cities'
 gem 'appsignal'
 gem 'capybara'
 gem 'cancancan', '~> 1.10'
+gem 'shoulda-matchers', require: false, group: :test
