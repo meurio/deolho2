@@ -1,5 +1,10 @@
 .row
   .large-12.columns.text-right
+    - if current_user && current_user.signed?(@project)
+      .thanks-for-signing-this-project Obrigado por apoiar este projeto!
+    - else
+      = link_to "Assinar o projeto", project_signatures_path(@project), id: "sign-project-button", method: :post, class: [:button, :radius]
+  .large-12.columns.text-right
     - if @project.closed_for_contribution?
       | Fechado para contribuição há #{distance_of_time_in_words_to_now @project.closed_for_contribution_at}
       - if can?(:reopen_for_contribution, @project)

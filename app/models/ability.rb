@@ -3,6 +3,7 @@ class Ability
 
   def initialize(user)
     can :read, Project
+    can :create, Signature
 
     if user && user.admin?
       can :close_for_contribution, Project

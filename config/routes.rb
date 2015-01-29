@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       put 'close_for_contribution'
       put 'reopen_for_contribution'
     end
+
+    resources :signatures, only: [:create]
   end
 
   # You can have the root of your site routed with "root"
