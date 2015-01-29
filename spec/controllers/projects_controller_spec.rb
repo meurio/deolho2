@@ -4,9 +4,14 @@ RSpec.describe ProjectsController, :type => :controller do
   before { @project = Project.make! }
 
   describe "GET show" do
-    it "should assigns @project" do
+    it "should assign @project" do
       get :show, id: @project.id
       expect(assigns(:project)).to be_eql(@project)
+    end
+
+    it "should assign @signature" do
+      get :show, id: @project.id
+      expect(assigns(:signature)).to be_a Signature
     end
   end
 

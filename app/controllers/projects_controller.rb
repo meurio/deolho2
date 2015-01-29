@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @signature = Signature.new
   end
 
   def close_for_contribution
