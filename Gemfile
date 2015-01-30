@@ -21,7 +21,7 @@ gem 'meurio_ui', git: 'https://github.com/meurio/meurio_ui.git', branch: 'deolho
 gem 'compass-rails'
 gem 'foundation-rails', '~> 5.3.1.0'
 gem 'machinist'
-gem 'rails_12factor'
+gem 'rails_12factor', group: [:staging, :production]
 gem 'puma'
 gem 'rack-cas'
 gem 'acts_as_our_cities'
