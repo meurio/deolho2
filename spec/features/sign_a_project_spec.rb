@@ -49,7 +49,13 @@ RSpec.feature "Sign a project" do
       expect(page).to have_css(".thanks-for-signing-this-project")
     end
 
-    scenario "When I submit the signature form with errors" do
+    scenario "When I submit the signature form with errors", js: true do
+      visit project_path(project)
+      click_button("new-signature-button")
+
+      expect(page).to have_css("label.error[for='signature_user_first_name']")
+      expect(page).to have_css("label.error[for='signature_user_last_name']")
+      expect(page).to have_css("label.error[for='signature_user_email']")
     end
   end
 end
