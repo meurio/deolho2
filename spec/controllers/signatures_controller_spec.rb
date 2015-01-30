@@ -32,6 +32,25 @@ RSpec.describe SignaturesController, :type => :controller do
           ).to_not be_empty
         end
       end
+
+      context "when the user is new" do
+        let(:email){ "kylecrane@trashmail.com" }
+
+        it "should create a new user" do
+          expect{
+            post :create, project_id: project.id, signature: { user: { email: email } }
+          }.to change{ User.count }.by(1)
+        end
+
+        it "should create a new signature for the new user" do
+          post :create, project_id: project.id, signature: { user: { email: email } }
+          new_user = User.find_by(email: email)
+
+          expect(
+            Signature.where(project_id: project.id, user_id: new_user.id)
+          ).to_not be_empty
+        end
+      end
     end
   end
 end
