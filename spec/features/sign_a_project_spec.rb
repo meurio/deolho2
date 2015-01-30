@@ -36,7 +36,17 @@ RSpec.feature "Sign a project" do
       expect(page).to have_css(".thanks-for-signing-this-project")
     end
 
-    scenario "When I'm a new user" do
+    scenario "When I'm a new user", js: true do
+      visit project_path(project)
+      fill_in "signature[user][first_name]", with: "Kyle"
+      fill_in "signature[user][last_name]", with: "Crane"
+      fill_in "signature[user][email]", with: "kylecrane@trashmail.com"
+      click_button("new-signature-button")
+      new_user = User.find_by(email: "kylecrane@trashmail.com")
+
+      expect(new_user).to_not be_nil
+      expect(project.signers).to include(new_user)
+      expect(page).to have_css(".thanks-for-signing-this-project")
     end
 
     scenario "When I submit the signature form with errors" do
