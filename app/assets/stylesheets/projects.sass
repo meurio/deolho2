@@ -1,0 +1,17 @@
+body.projects.show
+  .share-buttons
+    text-align: center
+    .button
+      +grid-column(8, $center: true)
+      margin: 0 0 rem-calc(10) 0
+
+@media #{$medium-up}
+  body.projects.show
+    .share-buttons
+      .button
+        +grid-column(5)
+        float: none
+      .share-on-facebook-button
+        margin: 0 rem-calc(10) 0 0
+      .share-on-twitter-button
+        margin-left: 0 0 0 rem-calc(10)
