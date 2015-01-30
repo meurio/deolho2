@@ -17,7 +17,13 @@
 //= require_tree .
 
 $(function(){
-	$(document).foundation();
+	$(document).foundation({
+    abide: {
+      patterns: {
+        email: /^([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z\_\-]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$/
+      }
+		}
+  });
 
 	if(location.hash == "#thanks-for-signing-this-project"){
 		$('.thanks-for-signing-this-project').foundation('reveal', 'open');

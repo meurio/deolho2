@@ -19,14 +19,20 @@
       - else
         = link_to "Assinar o projeto", project_signatures_path(@project), id: "sign-project-button", method: :post, class: [:button, :radius]
     - else
-      = form_for [@project, @signature] do |form|
+      = form_for [@project, @signature], data: { abide: true } do |form|
         = form.fields_for :user do |user_form|
-          = user_form.label :first_name, "Nome"
-          = user_form.text_field :first_name
-          = user_form.label :last_name, "Sobrenome"
-          = user_form.text_field :last_name
-          = user_form.label :email, "Email"
-          = user_form.email_field :email
+          .first-name-field
+            = user_form.label :first_name, "Nome"
+            = user_form.text_field :first_name, required: true
+            small.error Nome é obrigatório
+          .last-name-field
+            = user_form.label :last_name, "Sobrenome"
+            = user_form.text_field :last_name, required: true
+            small.error Sobrenome é obrigatório
+          .email-field
+            = user_form.label :email, "Email"
+            = user_form.email_field :email, required: true
+            small.error Email é obrigatório e deve ser válido
         = form.submit "Assinar o projeto", id: "new-signature-button", class: [:button, :radius]
 
 .thanks-for-signing-this-project.small.reveal-modal data={ reveal: true }
