@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "Reopen the project for contributions" do
-  let(:project) { Project.create closed_for_contribution_at: Time.now }
+  let(:project) { Project.make! closed_for_contribution_at: Time.now }
   let(:admin) { User.make! admin: true }
 
   scenario "When I'm not an admin" do
