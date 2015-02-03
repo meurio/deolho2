@@ -14,9 +14,10 @@ RSpec.feature "Create new project" do
 
     scenario "when the project form is valid" do
       fill_in "project[title]", with: "My project"
-      fill_in "project[abstract]", with: "My project abstract"
       select @category.name, from: "project[category_id]"
       select @organization.city, from: "project[organization_id]"
+      fill_in "project[closes_for_contribution_at]", with: Time.now.next_week.strftime("%d/%m/%Y %H:%M")
+      fill_in "project[abstract]", with: "My project abstract"
       fill_in "project[google_drive_embed]", with: '<iframe src="https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/pub?embedded=true"></iframe>'
       fill_in "project[google_drive_url]", with: "https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/edit"
       click_button "new-project-submit-button"

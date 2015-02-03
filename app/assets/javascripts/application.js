@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require meurio_ui
+//= require datetimepicker
 //= require_tree .
 
 $(function(){
@@ -23,6 +24,11 @@ $(function(){
         email: /^([0-9a-zA-Z]+[-._+&amp;])*[0-9a-zA-Z\_\-]+@([-0-9a-zA-Z]+[.])+[a-zA-Z]{2,6}$/
       }
 		}
+  });
+
+	$('[data-datetimepicker]').datetimepicker({
+    lang: 'pt',
+    format: 'd/m/Y H:i'
   });
 
 	if(location.hash == "#thanks-for-signing-this-project"){

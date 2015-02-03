@@ -7,13 +7,16 @@
           = form.text_field :title
 
       .row
-        .category-id-field.large-6.columns
+        .category-id-field.large-4.columns
           = form.label :category_id
           = form.collection_select(:category_id, Category.order(:name), :id, :name, include_blank: "Escolha uma categoria...")
-
-        .organization-id-field.large-6.columns
+        .organization-id-field.large-4.columns
           = form.label :organization_id
           = form.collection_select(:organization_id, Organization.order(:city), :id, :city, include_blank: "Escolha uma cidade...")
+
+        .closes-for-contribution-at-field.large-4.columns
+          = form.label :closes_for_contribution_at
+          = form.text_field :closes_for_contribution_at, data: { datetimepicker: true }
 
       .row
         .abstract-field.large-12.columns

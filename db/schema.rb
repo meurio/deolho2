@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203113135) do
+ActiveRecord::Schema.define(version: 20150203183607) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150203113135) do
     t.integer  "organization_id",            null: false
     t.string   "google_drive_url",           null: false
     t.string   "google_drive_embed",         null: false
+    t.datetime "closes_for_contribution_at", null: false
   end
 
   create_table "sessions", force: :cascade do |t|

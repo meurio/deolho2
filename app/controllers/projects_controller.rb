@@ -20,6 +20,6 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :abstract, :category_id, :organization_id,
-    :google_drive_embed, :google_drive_url)
+    :google_drive_embed, :google_drive_url, :closes_for_contribution_at)
   end
 end

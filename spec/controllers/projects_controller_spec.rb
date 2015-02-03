@@ -67,7 +67,7 @@ RSpec.describe ProjectsController, :type => :controller do
       expect(assigns(:signature)).to be_a Signature
     end
   end
-  
+
   def project_params
     {
       project: {
@@ -76,7 +76,8 @@ RSpec.describe ProjectsController, :type => :controller do
         category_id: category.id,
         organization_id: organization.id,
         google_drive_embed: '<iframe src="https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/pub?embedded=true"></iframe>',
-        google_drive_url: "https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/edit"
+        google_drive_url: "https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/edit",
+        closes_for_contribution_at: Time.now.next_week
       }
     }
   end
