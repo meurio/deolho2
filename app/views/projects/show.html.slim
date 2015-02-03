@@ -35,11 +35,11 @@
             small.error Email é obrigatório e deve ser válido
         = form.submit "Assinar o projeto", id: "new-signature-button", class: [:button, :radius]
 
-    = link_to 'Quero adotar este projeto', '#adopt', id: "adopt-project-button", "data-reveal-id" => "adopt", "data-reveal" => true
+    = link_to 'Quero adotar este projeto', '#adopt', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adopt", "data-reveal" => true
 
 #adopt.small.reveal-modal data={ reveal: true }
-  p.lead Adoção parlamentar
-  p Se você é um parlamentar e gostaria de adotar o projeto "#{@project.title}", envie um email para #{ mail_to 'contato@nossascidades.org' }.
+  h2 Adoção parlamentar
+  p Obrigado por adotar o projeto de lei "#{@project.title}". Estamos muito felizes que você tenha demonstrado interesse em construir uma ponte entre os cidadãos e sua casa legislativa. Entre em contato com nossa equipe através do email #{ mail_to 'contato@nossascidades.org' } para receber instruções de como proceder.
   a.close-reveal-modal &#215;
 
 .thanks-for-signing-this-project.small.reveal-modal data={ reveal: true }
