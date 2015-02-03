@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :projects, only: [:index, :show] do
+  resources :projects, only: [:index, :show, :new, :create] do
     member do
       put 'close_for_contribution'
       put 'reopen_for_contribution'

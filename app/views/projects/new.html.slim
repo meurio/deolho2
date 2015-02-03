@@ -1,0 +1,34 @@
+.row
+  .large-8.large-offset-2.columns
+    = form_for @project do |form|
+      .row
+        .title-field.large-12.columns
+          = form.label :title
+          = form.text_field :title
+
+      .row
+        .category-id-field.large-6.columns
+          = form.label :category_id
+          = form.collection_select(:category_id, Category.order(:name), :id, :name, include_blank: "Escolha uma categoria...")
+
+        .organization-id-field.large-6.columns
+          = form.label :organization_id
+          = form.collection_select(:organization_id, Organization.order(:city), :id, :city, include_blank: "Escolha uma cidade...")
+
+      .row
+        .abstract-field.large-12.columns
+          = form.label :abstract
+          = form.text_area :abstract
+
+      .row
+        .google-drive-url-field.large-6.columns
+          = form.label :google_drive_url
+          = form.text_field :google_drive_url
+
+        .google-drive-embed-field.large-6.columns
+          = form.label :google_drive_embed
+          = form.text_field :google_drive_embed
+
+      .row
+        .large-12.columns.text-right
+          = form.submit id: "new-project-submit-button", class: [:button, :radius, :large]
