@@ -204,3 +204,14 @@ pt-BR:
       long: ! '%d de %B de %Y, %H:%M'
       short: ! '%d de %B, %H:%M'
     pm: ''
+  activerecord:
+    models:
+      project: "projeto"
+    attributes:
+      project:
+        title: "Título"
+        abstract: "Resumo"
+        category_id: "Categoria"
+        organization_id: "Cidade"
+        google_drive_url: "Link para o Google Drive"
+        google_drive_embed: "Embed do Google Drive"
