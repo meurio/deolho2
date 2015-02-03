@@ -1,8 +1,12 @@
+@import colors
+@import fonts
 @import foundation_and_overrides
 @import compass
 @import meurio_ui
-@import colors
 @import projects
+
+h1, h2, p, a
+  font-family: "Proxima Nova Soft"
 
 .share-on-facebook-button
   background: $facebook-blue
@@ -13,3 +17,6 @@
   background: $twitter-blue
   &:hover
     background: darken($twitter-blue, 10%)
+
+.reveal-modal
+  +border-radius(10px)
