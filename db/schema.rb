@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150202202716) do
+ActiveRecord::Schema.define(version: 20150203113135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20150202202716) do
   add_index "categories", ["name"], name: "index_categories_on_name", unique: true, using: :btree
 
   create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -34,6 +36,9 @@ ActiveRecord::Schema.define(version: 20150202202716) do
     t.string   "title"
     t.text     "abstract"
     t.integer  "category_id",                null: false
+    t.integer  "organization_id",            null: false
+    t.string   "google_drive_url",           null: false
+    t.string   "google_drive_embed",         null: false
   end
 
   create_table "sessions", force: :cascade do |t|
