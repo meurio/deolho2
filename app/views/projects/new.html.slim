@@ -3,7 +3,9 @@
     = form_for @project do |form|
       .row
         .title-field.large-12.columns
-          = form.label :title
+          = form.label :title do
+            = "#{t("activerecord.attributes.project.title")} "
+            span.has-tip data-tooltip=true title="Insira um título claro e envolvente para o seu Projeto de Lei." ?
           = form.text_field :title
 
       .row
@@ -15,13 +17,17 @@
           = form.collection_select(:organization_id, Organization.order(:city), :id, :city, include_blank: "Escolha uma cidade...")
 
         .closes-for-contribution-at-field.large-4.columns
-          = form.label :closes_for_contribution_at
+          = form.label :closes_for_contribution_at do
+            = "#{t("activerecord.attributes.project.closes_for_contribution_at")} "
+            span.has-tip data-tooltip=true title="Determine o período em que seu projeto estará aberto para colaboração." ?
           = form.text_field :closes_for_contribution_at, data: { datetimepicker: true }
 
       .row
         .abstract-field.large-12.columns
-          = form.label :abstract
-          = form.text_area :abstract
+          = form.label :abstract do
+            = "#{t("activerecord.attributes.project.abstract")} "
+            span.has-tip data-tooltip=true title="Descreva de forma objetiva o seu PL. Importante mencionar o contexto atual e a mudança que ele propõe no mundo." ?
+          = form.text_area :abstract, rows: 5
 
       .row
         .google-drive-url-field.large-6.columns
