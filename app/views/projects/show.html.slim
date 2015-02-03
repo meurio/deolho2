@@ -3,14 +3,6 @@
     .share-buttons
       = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
       = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.title}" }
-  .large-5.columns
-    - if @project.closed_for_contribution?
-      | Fechado para contribuição há #{distance_of_time_in_words_to_now @project.closed_for_contribution_at}
-      - if can?(:reopen_for_contribution, @project)
-        | , #{link_to "reabrir projeto para contribuição", reopen_for_contribution_project_path(@project), id: "reopen-contribution-button", method: :put}
-    - elsif can?(:close_for_contribution, @project)
-      = link_to "Fechar projeto para contribuição", close_for_contribution_project_path(@project), id: "close-contribution-button", method: :put, class: [:button, :radius]
-    hr
 
   .large-5.large-offset-7.columns
     - if current_user.present?

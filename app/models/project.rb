@@ -6,16 +6,4 @@ class Project < ActiveRecord::Base
 
   validates :title, :abstract, :category, :organization, :google_drive_url, :google_drive_embed,
     presence: true
-
-  def closed_for_contribution?
-    self.closed_for_contribution_at.present?
-  end
-
-  def close_for_contribution
-    self.update_attribute :closed_for_contribution_at, Time.now
-  end
-
-  def reopen_for_contribution
-    self.update_attribute :closed_for_contribution_at, nil
-  end
 end
