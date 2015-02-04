@@ -210,8 +210,17 @@ pt-BR:
     attributes:
       project:
         title: "Título"
-        abstract: "Resumo"
+        abstract: "Um pouco sobre seu PL"
         category_id: "Categoria"
         organization_id: "Cidade"
         google_drive_url: "Link para o Google Drive"
         google_drive_embed: "Embed do Google Drive"
+        closes_for_contribution_at: "Prazo para co-criação"
+        facebook_share_title: "Título"
+        facebook_share_description: "Sub-título"
+        facebook_share_image: "Imagem"
+        twitter_share_message: "Mensagem"
+        legislative_chamber: "Casa legislativa"
+        legislative_processing: "Processo legislativo"
+        email_to_signer: "Email para o apoiador"
+        email_to_contributor: "Email para o colaborador"

@@ -30,3 +30,9 @@ gem 'capybara'
 gem 'cancancan', '~> 1.10'
 gem 'poltergeist'
 gem 'database_cleaner'
+gem 'carrierwave'
+gem 'fog'
+
+# Rails assets
+source 'https://rails-assets.org'
+gem 'rails-assets-datetimepicker'
