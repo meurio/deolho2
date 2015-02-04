@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/meurio/meurio_ui.git
-  revision: 31e82d332c2f4ae365bf6a7c26f4b7a3267add44
+  revision: b72ac94f931a387c3112dafc1f833ac44dcfb478
   branch: deolho2
   specs:
     meurio_ui (1.4.13)
