@@ -43,7 +43,15 @@ RSpec.feature "Create new project" do
       expect(current_path).to be_eql(project_path(new_project))
     end
 
-    scenario "when the project form is invalid" do
+    scenario "when the project form is invalid", js: true do
+      click_button "new-project-submit-button"
+      expect(page).to have_css(".title-field.error")
+      expect(page).to have_css(".category-id-field.error")
+      expect(page).to have_css(".organization-id-field.error")
+      expect(page).to have_css(".closes-for-contribution-at-field")
+      expect(page).to have_css(".abstract-field")
+      expect(page).to have_css(".google-drive-url-field")
+      expect(page).to have_css(".google-drive-embed-field")
     end
   end
 
