@@ -216,3 +216,7 @@ pt-BR:
         google_drive_url: "Link para o Google Drive"
         google_drive_embed: "Embed do Google Drive"
         closes_for_contribution_at: "Prazo para co-criação"
+        facebook_share_title: "Título"
+        facebook_share_description: "Sub-título"
+        facebook_share_image: "Imagem"
+        twitter_share_message: "Mensagem"

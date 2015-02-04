@@ -30,6 +30,7 @@ gem 'capybara'
 gem 'cancancan', '~> 1.10'
 gem 'poltergeist'
 gem 'database_cleaner'
+gem 'carrierwave'
 
 # Rails assets
 source 'https://rails-assets.org'

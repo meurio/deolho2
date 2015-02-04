@@ -38,6 +38,33 @@
           = form.label :google_drive_embed
           = form.text_field :google_drive_embed
 
+      dl.accordion data-accordion=true
+        dd.accordion-navigation
+          a href="#facebook-share-fields" Personalizar o compartilhamento do Facebook
+          #facebook-share-fields.content
+            .row
+              .facebook-share-title-field.large-12.columns
+                = form.label :facebook_share_title
+                = form.text_field :facebook_share_title
+
+              .facebook-share-description-field.large-12.columns
+                = form.label :facebook_share_description
+                = form.text_area :facebook_share_description
+
+              .facebook-share-image-field.large-12.columns
+                = form.label :facebook_share_image
+                = form.file_field :facebook_share_image
+
+        dd.accordion-navigation
+          a href="#twitter-share-fields" Personalizar a mensagem do Twitter
+          #twitter-share-fields.content
+            .row
+              .twitter-share-message-field.large-12.columns
+                = form.label :twitter_share_message
+                = form.text_area :twitter_share_message
+
+      hr
+
       .row
         .large-12.columns.text-right
           = form.submit id: "new-project-submit-button", class: [:button, :radius, :large]

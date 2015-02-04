@@ -6,4 +6,6 @@ class Project < ActiveRecord::Base
 
   validates :title, :abstract, :category, :organization, :google_drive_url, :google_drive_embed,
     presence: true
+
+  mount_uploader :facebook_share_image, FacebookShareImageUploader
 end

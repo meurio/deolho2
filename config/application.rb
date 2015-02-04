@@ -23,5 +23,7 @@ module Deolho2
 
     config.rack_cas.server_url = ENV['CAS_SERVER_URL']
     config.rack_cas.session_store = RackCAS::ActiveRecordStore
+
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end
