@@ -1,0 +1,99 @@
+= form_for @project, data: { abide: true } do |form|
+  .row
+    .title-field.large-12.columns
+      = form.label :title do
+        = "#{t("activerecord.attributes.project.title")} "
+        span.has-tip data-tooltip=true title="Insira um título claro e envolvente para o seu Projeto de Lei." ?
+      = form.text_field :title, required: true
+      small.error O título é obrigatório
+
+  .row
+    .category-id-field.large-4.columns
+      = form.label :category_id
+      = form.collection_select(:category_id, Category.order(:name), :id, :name, { include_blank: "Escolha uma categoria..." }, { required: true })
+      small.error A categoria é obrigatória
+
+    .organization-id-field.large-4.columns
+      = form.label :organization_id
+      = form.collection_select(:organization_id, Organization.order(:city), :id, :city, { include_blank: "Escolha uma cidade..." }, { required: true })
+      small.error A cidade é obrigatória
+
+    .closes-for-contribution-at-field.large-4.columns
+      = form.label :closes_for_contribution_at do
+        = "#{t("activerecord.attributes.project.closes_for_contribution_at")} "
+        span.has-tip data-tooltip=true title="Determine o período em que seu projeto estará aberto para colaboração." ?
+      = form.text_field :closes_for_contribution_at, data: { datetimepicker: true }, required: true
+      small.error O prazo é obrigatório
+
+  .row
+    .abstract-field.large-12.columns
+      = form.label :abstract do
+        = "#{t("activerecord.attributes.project.abstract")} "
+        span.has-tip data-tooltip=true title="Descreva de forma objetiva o seu PL. Importante mencionar o contexto atual e a mudança que ele propõe no mundo." ?
+      = form.text_area :abstract, rows: 5, required: true
+      small.error O resumo é obrigatório
+
+  .row
+    .google-drive-url-field.large-6.columns
+      = form.label :google_drive_url
+      = form.text_field :google_drive_url, required: true
+      small.error O link para o Google Drive é obrigatório
+
+    .google-drive-embed-field.large-6.columns
+      = form.label :google_drive_embed
+      = form.text_field :google_drive_embed, required: true
+      small.error O embed do Google Drive é obrigatório
+
+  dl.accordion data-accordion=true
+    dd.accordion-navigation
+      a href="#legislative-fields" class="icon-bubbles" Tramitação
+      #legislative-fields.content
+        .row
+          .legislative-chamber-field.large-4.columns
+            = form.label :legislative_chamber
+            = form.text_field :legislative_chamber
+
+          .legislative-processing-field.large-8.columns
+            = form.label :legislative_processing
+            = form.text_area :legislative_processing
+
+    dd.accordion-navigation
+      a href="#facebook-share-fields" class="icon-facebook" Personalizar o compartilhamento do Facebook
+      #facebook-share-fields.content
+        .row
+          .facebook-share-title-field.large-12.columns
+            = form.label :facebook_share_title
+            = form.text_field :facebook_share_title
+
+          .facebook-share-description-field.large-12.columns
+            = form.label :facebook_share_description
+            = form.text_area :facebook_share_description
+
+          .facebook-share-image-field.large-12.columns
+            = form.label :facebook_share_image
+            = form.file_field :facebook_share_image
+
+    dd.accordion-navigation
+      a href="#twitter-share-fields" class="icon-twitter" Personalizar a mensagem do Twitter
+      #twitter-share-fields.content
+        .row
+          .twitter-share-message-field.large-12.columns
+            = form.label :twitter_share_message
+            = form.text_area :twitter_share_message
+
+    dd.accordion-navigation
+      a href="#email-fields" class="icon-mail2" Personalizar emails de agradecimento
+      #email-fields.content
+        .row
+          .email-to-contributor-field.large-12.columns
+            = form.label :email_to_contributor
+            = form.text_area :email_to_contributor, rows: 5
+
+          .email-to-signer-field.large-12.columns
+            = form.label :email_to_signer
+            = form.text_area :email_to_signer, rows: 5
+
+  hr
+  .row
+    .large-12.columns.text-right
+      = form.submit id: "new-project-submit-button", class: [:button, :radius, :large]
