@@ -1,9 +1,10 @@
 require "rails_helper"
 
 RSpec.feature "Create new project" do
-  context "when I'm an admin" do
-    let (:admin) { User.make! admin: true }
+  let (:admin) { User.make! admin: true }
+  let (:user) { User.make! }
 
+  context "when I'm an admin" do
     before do
       @category = Category.make!
       @organization = Organization.make!
@@ -55,7 +56,11 @@ RSpec.feature "Create new project" do
     end
   end
 
-  scenario "when I'm not an admin" do
+  scenario "when I'm not an admin", js: true do
+    login user
+    visit root_path
+    click_link "new-project-button"
 
+    expect(page).to have_css("#new-project-reveal")
   end
 end

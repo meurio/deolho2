@@ -1,7 +1,7 @@
 = form_for @project, data: { abide: true } do |form|
   .row
     .title-field.large-12.columns
-      = form.label :title do
+      = form.label :title, class: :required do
         = "#{t("activerecord.attributes.project.title")} "
         span.has-tip data-tooltip=true title="Insira um título claro e envolvente para o seu Projeto de Lei." ?
       = form.text_field :title, required: true
@@ -9,17 +9,19 @@
 
   .row
     .category-id-field.large-4.columns
-      = form.label :category_id
+      = form.label :category_id, class: :required do
+        = t("activerecord.attributes.project.category_id")
       = form.collection_select(:category_id, Category.order(:name), :id, :name, { include_blank: "Escolha uma categoria..." }, { required: true })
       small.error A categoria é obrigatória
 
     .organization-id-field.large-4.columns
-      = form.label :organization_id
+      = form.label :organization_id, class: :required do
+        = t("activerecord.attributes.project.organization_id")
       = form.collection_select(:organization_id, Organization.order(:city), :id, :city, { include_blank: "Escolha uma cidade..." }, { required: true })
       small.error A cidade é obrigatória
 
     .closes-for-contribution-at-field.large-4.columns
-      = form.label :closes_for_contribution_at do
+      = form.label :closes_for_contribution_at, class: :required do
         = "#{t("activerecord.attributes.project.closes_for_contribution_at")} "
         span.has-tip data-tooltip=true title="Determine o período em que seu projeto estará aberto para colaboração." ?
       = form.text_field :closes_for_contribution_at, data: { datetimepicker: true }, required: true
@@ -27,7 +29,7 @@
 
   .row
     .abstract-field.large-12.columns
-      = form.label :abstract do
+      = form.label :abstract, class: :required do
         = "#{t("activerecord.attributes.project.abstract")} "
         span.has-tip data-tooltip=true title="Descreva de forma objetiva o seu PL. Importante mencionar o contexto atual e a mudança que ele propõe no mundo." ?
       = form.text_area :abstract, rows: 5, required: true
@@ -35,12 +37,14 @@
 
   .row
     .google-drive-url-field.large-6.columns
-      = form.label :google_drive_url
+      = form.label :google_drive_url, class: :required do
+        = t("activerecord.attributes.project.google_drive_url")
       = form.text_field :google_drive_url, required: true
       small.error O link para o Google Drive é obrigatório
 
     .google-drive-embed-field.large-6.columns
-      = form.label :google_drive_embed
+      = form.label :google_drive_embed, class: :required do
+        = t("activerecord.attributes.project.google_drive_embed")
       = form.text_field :google_drive_embed, required: true
       small.error O embed do Google Drive é obrigatório
 
@@ -79,7 +83,7 @@
         .row
           .twitter-share-message-field.large-12.columns
             = form.label :twitter_share_message
-            = form.text_area :twitter_share_message
+            = form.text_area :twitter_share_message, maxlength: 140
 
     dd.accordion-navigation
       a href="#email-fields" class="icon-mail2" Personalizar emails de agradecimento

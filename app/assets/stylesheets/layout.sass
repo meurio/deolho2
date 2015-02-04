@@ -16,6 +16,19 @@ h1, h2, p, a
 
 .reveal-modal
   +border-radius(10px)
+  h2, p
+    font-size: rem-calc(18)
+  .title
+    margin-bottom: 1em
+    img
+      margin: 0 .5em 0 0
+    h2
+      color: $light-green
+      display: inline-block
+      text-transform: uppercase
+      vertical-align: middle
+      letter-spacing: .03em
+      font-weight: 500
 
 ul.accordion
   margin: 0
@@ -51,3 +64,10 @@ dd.accordion-navigation
       margin-right: rem-calc(7)
       position: relative
       top: 4px
+
+.no-margin
+  margin: 0
+
+label.required
+  &:before
+    content: "*"

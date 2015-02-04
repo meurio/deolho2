@@ -1,16 +1,30 @@
 doctype html
 html
   head
-    title De Olho
+    title Legislando
     meta name="viewport" content="width=device-width, initial-scale=1.0"
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag 'application'
     = meurio_ui_assets
     = csrf_meta_tags
+
   body class=[controller.controller_name, controller.action_name]
     - content_for :application_menu do
-      = link_to "Criar um projeto de lei", new_project_path, id: "new-project-button", class: [:button, :radius, :small]
+      - if can? :create, Project
+        = link_to "Criar um projeto de lei", new_project_path, id: "new-project-button", class: [:button, :radius, :small]
+      - else
+        = link_to "Criar um projeto de lei", "#", id: "new-project-button", class: [:button, :radius, :small], data: { "reveal-id" => "new-project-reveal" }
+
     = meurio_header_for :deolho2
     = yield
     footer
+
+    #new-project-reveal.reveal-modal.small data-reveal=true
+      .title
+        h2 Novos projetos de lei
+      p.no-margin
+        | Obrigad@ por demonstrar interese em criar um novo projeto de lei, esta funcionalidade ainda não
+        |  está disponível. Por favor, entre em contato através do email
+        |  #{ mail_to 'contato@nossascidades.org' } para receber instruções de como proceder.
+      a.close-reveal-modal &#215
