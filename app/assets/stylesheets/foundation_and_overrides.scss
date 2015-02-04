@@ -115,16 +115,23 @@ $oil         : #333333;
 $jet         : #222222;
 $black       : #000000;
 
+$facebook-blue: #3b5998;
+$twitter-blue: #55acee;
+$dark-green: #018a82;
+$light-green: #4eb8aa;
+$yellow: #FDB115;
+$text-gray: #353a3d;
+
 // We use these as default colors throughout
-$primary-color: #FDB115;
-$secondary-color: #037D77;
+$primary-color: $yellow;
+$secondary-color: $light-green;
 // $alert-color: #f04124;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
 
 // We use these to control various global styles
-// $body-bg: $white;
+$body-bg: $vapor;
 $body-font-color: $text-gray;
 $body-font-family: "Proxima Nova Soft", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
@@ -326,7 +333,7 @@ $body-font-family: "Proxima Nova Soft", "Helvetica Neue", "Helvetica", Helvetica
 // $accordion-navigation-font-family: $body-font-family;
 
 // $accordion-content-padding: ($column-gutter/2);
-$accordion-content-active-bg-color: #f6f6f6;
+$accordion-content-active-bg-color: $vapor;
 
 // 02. Alert Boxes
 // - - - - - - - - - - - - - - - - - - - - - - - - -

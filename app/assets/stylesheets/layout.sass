@@ -1,9 +1,3 @@
-body
-  background: #F2F3F6
-
-h1, h2, p, a
-  font-family: "Proxima Nova Soft"
-
 .share-on-facebook-button
   background: $facebook-blue
   &:hover
@@ -33,10 +27,20 @@ h1, h2, p, a
 ul.accordion
   margin: 0
 
+dd.accordion-navigation
+  [class^="icon-"]
+    line-height: rem-calc(35)
+    &:before
+      font-size: rem-calc(25)
+      color: $aluminum
+      margin-right: rem-calc(7)
+      position: relative
+      top: 4px
+
 .box
   background: white
   padding: rem-calc(20)
-  +box-shadow(3px 3px 3px #ccc)
+  +box-shadow(3px 3px 3px $iron)
   h2
     background: $silver
     color: $steel
@@ -54,16 +58,6 @@ ul.accordion
 footer
   margin-bottom: rem-calc(40)
   overflow: hidden
-
-dd.accordion-navigation
-  [class^="icon-"]
-    line-height: rem-calc(35)
-    &:before
-      font-size: rem-calc(25)
-      color: #999
-      margin-right: rem-calc(7)
-      position: relative
-      top: 4px
 
 .no-margin
   margin: 0
