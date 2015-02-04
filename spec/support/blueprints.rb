@@ -16,6 +16,26 @@ Project.blueprint do
   closes_for_contribution_at { Time.now.next_week }
 end
 
+Project.blueprint(:with_legislative_fields_changed) do
+  legislative_processing { "My project processing" }
+  legislative_chamber { "ALERJ" }
+end
+
+Project.blueprint(:with_custom_facebook_share_content) do
+  facebook_share_title { "Custom title" }
+  facebook_share_description { "Custom description" }
+  facebook_share_image { File.open("#{Rails.root}/spec/support/images/facebook_share_image.jpg") }
+end
+
+Project.blueprint(:with_custom_email) do
+  email_to_contributor { "Custom email to contributor" }
+  email_to_signer { "Custom email to signer" }
+end
+
+Project.blueprint(:with_custom_twitter_message) do
+  twitter_share_message { "Custom Twitter message" }
+end
+
 Signature.blueprint do
   user
   project

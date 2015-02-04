@@ -14,6 +14,16 @@ class ProjectsController < ApplicationController
     redirect_to @project
   end
 
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+    project = Project.find(params[:id])
+    project.update_attributes(project_params)
+    redirect_to project
+  end
+
   def show
     @project = Project.find(params[:id])
     @signature = Signature.new

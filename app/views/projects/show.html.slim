@@ -30,6 +30,9 @@
 
     = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adopt", "data-reveal" => true
 
+    - if can? :edit, @project
+      = link_to "Editar projeto de lei", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
+
 #adopt.small.reveal-modal data={ reveal: true }
   .title
     = image_tag 'icon-parlamentar.png'

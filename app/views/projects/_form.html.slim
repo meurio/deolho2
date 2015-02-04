@@ -51,7 +51,7 @@
   dl.accordion data-accordion=true
     dd.accordion-navigation
       a href="#legislative-fields" class="icon-bubbles" Tramitação
-      #legislative-fields.content
+      #legislative-fields.content class=legislative_fields_class
         .row
           .legislative-chamber-field.large-4.columns
             = form.label :legislative_chamber
@@ -63,7 +63,7 @@
 
     dd.accordion-navigation
       a href="#facebook-share-fields" class="icon-facebook" Personalizar o compartilhamento do Facebook
-      #facebook-share-fields.content
+      #facebook-share-fields.content class=facebook_share_fields_class
         .row
           .facebook-share-title-field.large-12.columns
             = form.label :facebook_share_title
@@ -79,7 +79,7 @@
 
     dd.accordion-navigation
       a href="#twitter-share-fields" class="icon-twitter" Personalizar a mensagem do Twitter
-      #twitter-share-fields.content
+      #twitter-share-fields.content class=twitter_share_fields_class
         .row
           .twitter-share-message-field.large-12.columns
             = form.label :twitter_share_message
@@ -87,7 +87,7 @@
 
     dd.accordion-navigation
       a href="#email-fields" class="icon-mail2" Personalizar emails de agradecimento
-      #email-fields.content
+      #email-fields.content class=email_fields_class
         .row
           .email-to-contributor-field.large-12.columns
             = form.label :email_to_contributor
@@ -100,4 +100,4 @@
   hr
   .row
     .large-12.columns.text-right
-      = form.submit id: "new-project-submit-button", class: [:button, :radius, :large, "no-margin"]
+      = form.submit id: "submit-project-button", class: [:button, :radius, :large, "no-margin"]

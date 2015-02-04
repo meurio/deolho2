@@ -56,6 +56,51 @@ RSpec.describe ProjectsController, :type => :controller do
     end
   end
 
+  describe "GET edit" do
+    context "when I'm not an admin" do
+      it "should raise an exception" do
+        login user
+        expect {
+          get :edit, id: @project.id
+        }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
+    context "when I'm an admin" do
+      it "should assign @project" do
+        login admin
+        get :edit, id: @project.id
+        expect(assigns(:project)).to be_eql(@project)
+      end
+    end
+  end
+
+  describe "PUT update" do
+    context "when I'm not an admin" do
+      it "should raise an exception" do
+        login user
+        expect {
+          put :update, id: @project.id
+        }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
+    context "when I'm an admin" do
+      before { login admin }
+
+      it "should update the project" do
+        new_title = "New title"
+        put :update, id: @project.id, project: { title: new_title }
+        expect(@project.reload.title).to be_eql(new_title)
+      end
+
+      it "should redirect to the project page" do
+        put :update, id: @project.id, project: project_params[:project]
+        expect(response).to redirect_to(project_path(@project))
+      end
+    end
+  end
+
   describe "GET show" do
     it "should assign @project" do
       get :show, id: @project.id

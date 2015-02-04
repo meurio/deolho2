@@ -29,7 +29,7 @@ RSpec.feature "Create new project" do
       fill_in "project[legislative_chamber]", with: "ALERJ"
       fill_in "project[email_to_contributor]", with: "My project's email to contributor"
       fill_in "project[email_to_signer]", with: "My project's email to signer"
-      click_button "new-project-submit-button"
+      click_button "submit-project-button"
 
       new_project = Project.find_by(title: "My project")
       expect(new_project).to_not be_nil
@@ -45,7 +45,7 @@ RSpec.feature "Create new project" do
     end
 
     scenario "when the project form is invalid", js: true do
-      click_button "new-project-submit-button"
+      click_button "submit-project-button"
       expect(page).to have_css(".title-field.error")
       expect(page).to have_css(".category-id-field.error")
       expect(page).to have_css(".organization-id-field.error")
