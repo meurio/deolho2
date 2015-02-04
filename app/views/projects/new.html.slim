@@ -40,6 +40,18 @@
 
       dl.accordion data-accordion=true
         dd.accordion-navigation
+          a href="#legislative-fields" Tramitação
+          #legislative-fields.content
+            .row
+              .legislative-chamber-field.large-4.columns
+                = form.label :legislative_chamber
+                = form.text_field :legislative_chamber
+
+              .legislative-processing-field.large-8.columns
+                = form.label :legislative_processing
+                = form.text_area :legislative_processing
+
+        dd.accordion-navigation
           a href="#facebook-share-fields" Personalizar o compartilhamento do Facebook
           #facebook-share-fields.content
             .row
@@ -64,19 +76,18 @@
                 = form.text_area :twitter_share_message
 
         dd.accordion-navigation
-          a href="#legislative-fields" Tramitação
-          #legislative-fields.content
+          a href="#email-fields" Personalizar emails de agradecimento
+          #email-fields.content
             .row
-              .legislative-chamber-field.large-4.columns
-                = form.label :legislative_chamber
-                = form.text_field :legislative_chamber
+              .email-to-contributor-field.large-12.columns
+                = form.label :email_to_contributor
+                = form.text_area :email_to_contributor, rows: 5
 
-              .legislative-processing-field.large-8.columns
-                = form.label :legislative_processing
-                = form.text_area :legislative_processing
+              .email-to-signer-field.large-12.columns
+                = form.label :email_to_signer
+                = form.text_area :email_to_signer, rows: 5
 
       hr
-
       .row
         .large-12.columns.text-right
           = form.submit id: "new-project-submit-button", class: [:button, :radius, :large]

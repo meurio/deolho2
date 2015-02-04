@@ -222,3 +222,5 @@ pt-BR:
         twitter_share_message: "Mensagem"
         legislative_chamber: "Casa legislativa"
         legislative_processing: "Processo legislativo"
+        email_to_signer: "Email para o apoiador"
+        email_to_contributor: "Email para o colaborador"

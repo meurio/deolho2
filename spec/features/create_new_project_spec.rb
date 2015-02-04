@@ -26,6 +26,8 @@ RSpec.feature "Create new project" do
       fill_in "project[twitter_share_message]", with: "My project on Twitter"
       fill_in "project[legislative_processing]", with: "My project processing"
       fill_in "project[legislative_chamber]", with: "ALERJ"
+      fill_in "project[email_to_contributor]", with: "My project's email to contributor"
+      fill_in "project[email_to_signer]", with: "My project's email to signer"
       click_button "new-project-submit-button"
 
       new_project = Project.find_by(title: "My project")
@@ -36,6 +38,8 @@ RSpec.feature "Create new project" do
       expect(new_project.twitter_share_message).to_not be_nil
       expect(new_project.legislative_processing).to_not be_nil
       expect(new_project.legislative_chamber).to_not be_nil
+      expect(new_project.email_to_contributor).to_not be_nil
+      expect(new_project.email_to_signer).to_not be_nil
       expect(current_path).to be_eql(project_path(new_project))
     end
 
