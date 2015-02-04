@@ -1,0 +1,45 @@
+body
+  background: #F2F3F6
+
+h1, h2, p, a
+  font-family: "Proxima Nova Soft"
+
+.share-on-facebook-button
+  background: $facebook-blue
+  &:hover
+    background: darken($facebook-blue, 10%)
+
+.share-on-twitter-button
+  background: $twitter-blue
+  &:hover
+    background: darken($twitter-blue, 10%)
+
+.reveal-modal
+  +border-radius(10px)
+
+ul.accordion
+  margin: 0
+
+.box
+  background: white
+  padding: rem-calc(20)
+  +box-shadow(3px 3px 3px #ccc)
+
+.meurio_header
+  margin-bottom: rem-calc(40)
+  .button
+    margin: 0
+
+footer
+  margin-bottom: rem-calc(40)
+  overflow: hidden
+
+dd.accordion-navigation
+  [class^="icon-"]
+    line-height: rem-calc(35)
+    &:before
+      font-size: rem-calc(25)
+      color: #999
+      margin-right: rem-calc(7)
+      position: relative
+      top: 4px

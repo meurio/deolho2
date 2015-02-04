@@ -6,9 +6,11 @@ html
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'vendor/modernizr'
     = javascript_include_tag 'application'
+    = meurio_ui_assets
     = csrf_meta_tags
   body class=[controller.controller_name, controller.action_name]
     - content_for :application_menu do
       = link_to "Criar um projeto de lei", new_project_path, id: "new-project-button", class: [:button, :radius, :large]
     = meurio_header_for :deolho2
     = yield
+    footer
