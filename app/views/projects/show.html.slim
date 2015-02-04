@@ -1,15 +1,16 @@
 .row
-  .large-7.columns
-    .share-buttons
-      = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
-      = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.title}" }
+  .large-7.columns.text-center
+    = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
+    | &nbsp;
+    = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.title}" }
 
-  .large-5.large-offset-7.columns
+  .large-5.columns
     - if current_user.present?
       - if current_user.signed?(@project)
         p Você já assinou este projeto
       - else
         = link_to "Assinar o projeto", project_signatures_path(@project), id: "sign-project-button", method: :post, class: [:button, :radius]
+        | &nbsp;
     - else
       = form_for [@project, @signature], data: { abide: true } do |form|
         = form.fields_for :user do |user_form|
