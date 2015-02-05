@@ -31,7 +31,7 @@
     .abstract-field.large-12.columns
       = form.label :abstract, class: :required do
         = "#{t("activerecord.attributes.project.abstract")} "
-        span.has-tip data-tooltip=true title="Descreva de forma objetiva o seu PL. Importante mencionar o contexto atual e a mudança que ele propõe no mundo." ?
+        span.has-tip data-tooltip=true title="Descreva de forma objetiva o seu projeto de lei. Importante mencionar o contexto atual e a mudança que ele propõe no mundo." ?
       = form.text_area :abstract, rows: 5, required: true
       small.error O resumo é obrigatório
 
