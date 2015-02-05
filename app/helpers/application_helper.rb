@@ -26,4 +26,10 @@ module ApplicationHelper
       "active"
     end
   end
+
+  def taf_fields_class
+    if @project.taf_message.present?
+      "active"
+    end
+  end
 end

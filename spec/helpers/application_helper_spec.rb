@@ -80,4 +80,24 @@ RSpec.describe ApplicationHelper, :type => :helper do
       end
     end
   end
+
+  describe "#taf_fields_class" do
+    context "when the project has a customized TAF message" do
+      let(:project) { Project.make!(:with_custom_taf_message) }
+
+      it "should be 'active'" do
+        assign(:project, project)
+        expect(helper.taf_fields_class).to eql("active")
+      end
+    end
+
+    context "when the project hasn't a customized TAF message" do
+      let(:project) { Project.make! }
+
+      it "should be nil" do
+        assign(:project, project)
+        expect(helper.taf_fields_class).to be_nil
+      end
+    end
+  end
 end

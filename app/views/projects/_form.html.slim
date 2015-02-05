@@ -50,7 +50,7 @@
 
   dl.accordion data-accordion=true
     dd.accordion-navigation
-      a href="#legislative-fields" class="icon-bubbles" Tramitação
+      a href="#legislative-fields" class="icon-bubbles" Atualizar a tramitação
       #legislative-fields.content class=legislative_fields_class
         .row
           .legislative-chamber-field.large-4.columns
@@ -86,7 +86,7 @@
             = form.text_area :twitter_share_message, maxlength: 140
 
     dd.accordion-navigation
-      a href="#email-fields" class="icon-mail2" Personalizar emails de agradecimento
+      a href="#email-fields" class="icon-mail2" Personalizar os emails de agradecimento
       #email-fields.content class=email_fields_class
         .row
           .email-to-contributor-field.large-12.columns
@@ -96,6 +96,16 @@
           .email-to-signer-field.large-12.columns
             = form.label :email_to_signer
             = form.text_area :email_to_signer, rows: 5
+
+    dd.accordion-navigation
+      a href="#taf-fields" class="icon-share" Personalizar o tell-a-friend
+      #taf-fields.content class=taf_fields_class
+        .row
+          .taf-message-field.large-12.columns
+            = form.label :taf_message do
+              = "#{t("activerecord.attributes.project.taf_message")} "
+              span.has-tip data-tooltip=true title="Esse é o texto que aparece para o usuário que co-criou ou apoiou o projeto de lei" ?
+            = form.text_area :taf_message
 
   hr
   .row

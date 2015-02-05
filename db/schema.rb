@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204120809) do
+ActiveRecord::Schema.define(version: 20150205131018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20150204120809) do
     t.text     "legislative_processing"
     t.text     "email_to_contributor"
     t.text     "email_to_signer"
+    t.text     "taf_message"
   end
 
   create_table "sessions", force: :cascade do |t|

@@ -29,6 +29,7 @@ RSpec.feature "Create new project" do
       fill_in "project[legislative_chamber]", with: "ALERJ"
       fill_in "project[email_to_contributor]", with: "My project's email to contributor"
       fill_in "project[email_to_signer]", with: "My project's email to signer"
+      fill_in "project[taf_message]", with: "My project's TAF message"
       click_button "submit-project-button"
 
       new_project = Project.find_by(title: "My project")
@@ -41,6 +42,7 @@ RSpec.feature "Create new project" do
       expect(new_project.legislative_chamber).to_not be_nil
       expect(new_project.email_to_contributor).to_not be_nil
       expect(new_project.email_to_signer).to_not be_nil
+      expect(new_project.taf_message).to_not be_nil
       expect(current_path).to be_eql(project_path(new_project))
     end
 

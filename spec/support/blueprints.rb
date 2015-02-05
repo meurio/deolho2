@@ -36,6 +36,10 @@ Project.blueprint(:with_custom_twitter_message) do
   twitter_share_message { "Custom Twitter message" }
 end
 
+Project.blueprint(:with_custom_taf_message) do
+  taf_message { "Custom TAF message" }
+end
+
 Signature.blueprint do
   user
   project

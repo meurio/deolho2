@@ -8,6 +8,7 @@ RSpec.feature "Edit a project" do
   let(:project_with_custom_facebook_share_content) { Project.make!(:with_custom_facebook_share_content) }
   let(:project_with_custom_email) { Project.make!(:with_custom_email) }
   let(:project_with_custom_twitter_message) { Project.make!(:with_custom_twitter_message) }
+  let(:project_with_custom_taf_message) { Project.make!(:with_custom_taf_message) }
 
   context "when I'm an admin" do
     before { login admin }
@@ -38,6 +39,13 @@ RSpec.feature "Edit a project" do
       click_link "edit-project-button"
 
       expect(page).to have_css("#email-fields.active")
+    end
+
+    scenario "when the TAF message was customized" do
+      visit project_path(project_with_custom_taf_message)
+      click_link "edit-project-button"
+
+      expect(page).to have_css("#taf-fields.active")
     end
 
     scenario "when I update the project name" do
