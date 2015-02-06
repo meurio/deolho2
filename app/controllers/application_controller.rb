@@ -19,4 +19,10 @@ class ApplicationController < ActionController::Base
       @current_user ||= User.find_by(email: session['cas']['user'])
     end
   end
+
+  def current_user_or_find_or_create resource_params
+    current_user ||
+      User.find_by(email: resource_params[:user][:email]) ||
+      User.create(resource_params[:user])
+  end
 end
