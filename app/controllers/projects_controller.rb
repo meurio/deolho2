@@ -27,6 +27,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @signature = Signature.new
+    @contribution = Contribution.new
   end
 
   def project_params

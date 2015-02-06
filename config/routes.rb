@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
 
     resources :signatures, only: [:create]
+    resources :contributions, only: [:create]
   end
 
   # You can have the root of your site routed with "root"

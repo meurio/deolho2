@@ -30,8 +30,39 @@
 
     = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adopt", "data-reveal" => true
 
+    - if current_user.present?
+      = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius], method: :post, target: :blank
+    - else
+      = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius], data: { "reveal-id" => "contribution-form" }
+
+    | &nbsp;
     - if can? :edit, @project
       = link_to "Editar projeto de lei", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
+
+#contribution-form.reveal-modal.small data={ reveal: true }
+  a.close-reveal-modal &#215;
+  .title
+    = image_tag "icon-contribution.png"
+    h2 Quero co-criar
+  = form_for [@project, @contribution], data: { abide: true } do |form|
+    = form.fields_for :user do |user_form|
+      .row
+        .first-name-field.large-6.columns
+          = user_form.label :first_name, "Nome"
+          = user_form.text_field :first_name, required: true
+          small.error Nome é obrigatório
+        .last-name-field.large-6.columns
+          = user_form.label :last_name, "Sobrenome"
+          = user_form.text_field :last_name, required: true
+          small.error Sobrenome é obrigatório
+      .row
+        .email-field.large-12.columns
+          = user_form.label :email, "Email"
+          = user_form.email_field :email, required: true
+          small.error Email é obrigatório e deve ser válido
+      .row
+        .text-right.large-12.columns
+          = user_form.submit "Co-criar", id: "contribution-submit-button", class: [:button, :radius, "no-margin"]
 
 #adopt.small.reveal-modal data={ reveal: true }
   .title
