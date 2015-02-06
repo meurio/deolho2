@@ -5,7 +5,7 @@ RSpec.feature "Contribute to a project" do
   let(:user) { User.make! }
 
   scenario "when I'm logged in" do
-    login user
+    login user, "feature"
     visit project_path(project)
     click_link "contribution-button"
 

@@ -9,7 +9,7 @@ RSpec.describe ProjectsController, :type => :controller do
 
   describe "GET new" do
     context "when I'm not an admin" do
-      before { login(user) }
+      before { login user, "controller" }
 
       it "should raise an exception" do
         expect {
@@ -19,7 +19,7 @@ RSpec.describe ProjectsController, :type => :controller do
     end
 
     context "when I'm an admin" do
-      before { login(admin) }
+      before { login admin, "controller" }
 
       it "should assign @project" do
         get :new
@@ -30,7 +30,7 @@ RSpec.describe ProjectsController, :type => :controller do
 
   describe "POST create" do
     context "when I'm not an admin" do
-      before { login(user) }
+      before { login(user, "controller") }
 
       it "should raise an exception" do
         expect {
@@ -40,7 +40,7 @@ RSpec.describe ProjectsController, :type => :controller do
     end
 
     context "when I'm an admin" do
-      before { login(admin) }
+      before { login(admin, "controller") }
 
       it "should create a new project" do
         expect {
@@ -59,7 +59,7 @@ RSpec.describe ProjectsController, :type => :controller do
   describe "GET edit" do
     context "when I'm not an admin" do
       it "should raise an exception" do
-        login user
+        login user, "controller"
         expect {
           get :edit, id: @project.id
         }.to raise_error(CanCan::AccessDenied)
@@ -68,7 +68,7 @@ RSpec.describe ProjectsController, :type => :controller do
 
     context "when I'm an admin" do
       it "should assign @project" do
-        login admin
+        login admin, "controller"
         get :edit, id: @project.id
         expect(assigns(:project)).to be_eql(@project)
       end
@@ -78,7 +78,7 @@ RSpec.describe ProjectsController, :type => :controller do
   describe "PUT update" do
     context "when I'm not an admin" do
       it "should raise an exception" do
-        login user
+        login user, "controller"
         expect {
           put :update, id: @project.id
         }.to raise_error(CanCan::AccessDenied)
@@ -86,7 +86,7 @@ RSpec.describe ProjectsController, :type => :controller do
     end
 
     context "when I'm an admin" do
-      before { login admin }
+      before { login admin, "controller" }
 
       it "should update the project" do
         new_title = "New title"
@@ -125,9 +125,5 @@ RSpec.describe ProjectsController, :type => :controller do
         closes_for_contribution_at: Time.now.next_week
       }
     }
-  end
-
-  def login user
-    session['cas'] = { 'user' => user.email }
   end
 end

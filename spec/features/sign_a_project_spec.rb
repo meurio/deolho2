@@ -5,7 +5,7 @@ RSpec.feature "Sign a project" do
   let(:user) { User.make! }
 
   context "When I'm logged in" do
-    before { login(user) }
+    before { login user, "feature" }
 
     scenario "When I've never signed this project before", js: true do
       visit project_path(project)

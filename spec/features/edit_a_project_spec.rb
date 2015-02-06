@@ -11,7 +11,7 @@ RSpec.feature "Edit a project" do
   let(:project_with_custom_taf_message) { Project.make!(:with_custom_taf_message) }
 
   context "when I'm an admin" do
-    before { login admin }
+    before { login admin, "feature" }
 
     scenario "when the legislative fields were changed" do
       visit project_path(project_with_legislative_fields_changed)
@@ -61,7 +61,7 @@ RSpec.feature "Edit a project" do
   end
 
   scenario "when I'm not an admin" do
-    login user
+    login user, "feature"
     visit project_path(project)
 
     expect(page).to_not have_css("#edit-project-button")

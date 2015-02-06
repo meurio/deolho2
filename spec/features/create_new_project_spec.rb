@@ -8,7 +8,7 @@ RSpec.feature "Create new project" do
     before do
       @category = Category.make!
       @organization = Organization.make!
-      login admin
+      login admin, "feature"
       visit root_path
       click_link "new-project-button"
     end
@@ -59,7 +59,7 @@ RSpec.feature "Create new project" do
   end
 
   scenario "when I'm not an admin", js: true do
-    login user
+    login user, "feature"
     visit root_path
     click_link "new-project-button"
 

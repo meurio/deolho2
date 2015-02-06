@@ -6,7 +6,7 @@ RSpec.describe SignaturesController, :type => :controller do
     let(:user) { User.make! }
 
     context "when the user is logged in" do
-      before { session['cas'] = { 'user' => user.email } }
+      before { login user, 'controller' }
 
       it "should create a new signature for the logged in user" do
         post :create, project_id: project.id
