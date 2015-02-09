@@ -1,3 +1,11 @@
+.cover
+  .row
+    h1= @project.title
+    p.info
+      = @project.category
+      |  &middot; no ar há #{distance_of_time_in_words_to_now @project.created_at}
+      |  &middot; #{@project.organization.city}
+      |  &middot; #{@project.legislative_chamber}
 .row
   .large-7.columns.text-center
     = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
