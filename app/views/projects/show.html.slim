@@ -42,43 +42,43 @@
       h3 Quem faz esse PL
     .panel data-equalizer-watch=true
       .item.clearfix
-        .data-container
+        .data-container.large-7.columns
           = image_tag "icon-contribution.png"
           .data
             strong PL iniciado por
             span Igor Campos
-        .cta
+        .cta.large-5.columns
           - if can? :edit, @project
             = link_to "Editar projeto de lei", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
 
       .item.clearfix
-        .data-container
+        .data-container.large-7.columns
           = image_tag "icon-contribution.png"
           .data
             strong Parlamentares
             span.number 20
-        .cta
+        .cta.large-5.columns
           = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adopt", "data-reveal" => true
 
       .item.clearfix
-        .data-container
+        .data-container.large-7.columns
           = image_tag "icon-contribution.png"
           .data
             strong Co-autores
             span.number 87.097
-        .cta
+        .cta.large-5.columns
           - if current_user.present?
             = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius], method: :post, target: :blank
           - else
             = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius], data: { "reveal-id" => "contribution-form" }
 
       .item.clearfix
-        .data-container
+        .data-container.large-7.columns
           = image_tag "icon-contribution.png"
           .data
             strong Apoiadores
             span.number 87.097
-        .cta
+        .cta.large-5.columns
           - if current_user.present?
             - if current_user.signed?(@project)
               p Você já assinou este projeto
