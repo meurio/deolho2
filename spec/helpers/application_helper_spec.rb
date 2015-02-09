@@ -100,4 +100,61 @@ RSpec.describe ApplicationHelper, :type => :helper do
       end
     end
   end
+
+  describe "#meta_title" do
+    context "when there is content_for :meta_title" do
+      let(:title) { "My title" }
+      before do
+        allow(helper).to receive(:content_for).with(:meta_title).and_return(title)
+      end
+
+      it "should be the content_for :meta_title" do
+        expect(helper.meta_title).to be_eql(title)
+      end
+    end
+
+    context "when there is no content_for :meta_title" do
+      it "should be the default meta_title" do
+        expect(helper.meta_title).to be_eql(t("meta.title"))
+      end
+    end
+  end
+
+  describe "#meta_description" do
+    context "when there is content_for :meta_description" do
+      let(:description) { "My description" }
+      before do
+        allow(helper).to receive(:content_for).with(:meta_description).and_return(description)
+      end
+
+      it "should be the content_for :meta_description" do
+        expect(helper.meta_description).to be_eql(description)
+      end
+    end
+
+    context "when there is no content_for :meta_description" do
+      it "should be the default meta_description" do
+        expect(helper.meta_description).to be_eql(t("meta.description"))
+      end
+    end
+  end
+
+  describe "#meta_image" do
+    context "when there is content_for :meta_image" do
+      let(:image) { "http://images.com/myimage.png" }
+      before do
+        allow(helper).to receive(:content_for).with(:meta_image).and_return(image)
+      end
+
+      it "should be the content_for :meta_image" do
+        expect(helper.meta_image).to be_eql(image)
+      end
+    end
+
+    context "when there is no content_for :meta_image" do
+      it "should be the default meta_image" do
+        expect(helper.meta_image).to include(asset_url("legislando.png"))
+      end
+    end
+  end
 end

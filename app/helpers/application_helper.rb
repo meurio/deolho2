@@ -32,4 +32,16 @@ module ApplicationHelper
       "active"
     end
   end
+
+  def meta_title
+    content_for(:meta_title) || t("meta.title")
+  end
+
+  def meta_description
+    content_for(:meta_description) || t("meta.description")
+  end
+
+  def meta_image
+    content_for(:meta_image) || image_url("legislando.png")
+  end
 end

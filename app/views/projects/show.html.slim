@@ -1,3 +1,7 @@
+= content_for :meta_title, @project.facebook_share_title || @project.title
+= content_for :meta_description, @project.facebook_share_description || @project.abstract
+= content_for :meta_image, image_url(@project.facebook_share_image) || nil
+
 .row
   .large-7.columns.text-center
     = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
