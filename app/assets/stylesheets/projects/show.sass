@@ -1,5 +1,5 @@
 body.projects.show
-  p, h3
+  h3, p, span
     color: $text-gray
   .meurio_header
     margin-bottom: 0
@@ -19,6 +19,28 @@ body.projects.show
       margin-bottom: rem-calc(40)
   .panel
     +border-radius(10px)
+    .item
+      margin-bottom: 1em
+      display: block
+      .data-container
+        img
+          width: 50px
+        .data
+          display: inline-block
+          vertical-align: middle
+          padding-left: .5em
+          strong
+            font-size: rem-calc(14)
+            display: block
+          span
+            font-size: rem-calc(20)
+            font-weight: bold
+            color: $yellow
+            &.number
+              font-size: rem-calc(30)
+      .cta
+        float: right
+
   .title
     margin-bottom: 1em
     img

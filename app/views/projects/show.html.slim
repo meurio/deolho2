@@ -11,61 +11,95 @@
       |  &middot; #{@project.organization.city}
       |  &middot; #{@project.legislative_chamber}
 .row data-equalizer=true
-  .large-4.medium-4.columns
+  .large-4.medium-6.columns
     .title
       = image_tag "icon-contribution.png"
       h3 Sobre o Projeto de Lei
     .panel data-equalizer-watch=true
       p= @project.abstract
-  .large-4.medium-4.columns
+  .large-4.medium-6.columns
     .title
       = image_tag "icon-contribution.png"
       h3 Tramitação Legislativa
     .panel data-equalizer-watch=true
-  .large-4.medium-4.columns
+  .large-4.medium-6.columns
     .title
       = image_tag "icon-contribution.png"
       h3 Quem faz esse PL
     .panel data-equalizer-watch=true
-      = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adopt", "data-reveal" => true
-      - if current_user.present?
-        = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius], method: :post, target: :blank
-      - else
-        = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius], data: { "reveal-id" => "contribution-form" }
+      .item.clearfix
+        .data-container
+          = image_tag "icon-contribution.png"
+          .data
+            strong PL iniciado por
+            span Igor Campos
+        .cta
+          - if can? :edit, @project
+            = link_to "Editar projeto de lei", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
 
-      | &nbsp;
-      - if can? :edit, @project
-        = link_to "Editar projeto de lei", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
-  
+      .item.clearfix
+        .data-container
+          = image_tag "icon-contribution.png"
+          .data
+            strong Parlamentares
+            span.number 20
+        .cta
+          = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adopt", "data-reveal" => true
+
+      .item.clearfix
+        .data-container
+          = image_tag "icon-contribution.png"
+          .data
+            strong Co-autores
+            span.number 87.097
+        .cta
+          - if current_user.present?
+            = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius], method: :post, target: :blank
+          - else
+            = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius], data: { "reveal-id" => "contribution-form" }
+
+      .item.clearfix
+        .data-container
+          = image_tag "icon-contribution.png"
+          .data
+            strong Apoiadores
+            span.number 87.097
+        .cta
+          - if current_user.present?
+            - if current_user.signed?(@project)
+              p Você já assinou este projeto
+            - else
+              = link_to "Assinar o projeto", project_signatures_path(@project), id: "sign-project-button", method: :post, class: [:button, :radius]
+              | &nbsp;
+          - else
+            = link_to 'Assinar o projeto', "#", id: "sign-project-button", class: [:button, :radius], data: { "reveal-id" => "signature-form" }
+            
 .row
   .large-7.columns.text-center
     = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
     | &nbsp;
     = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.title}" }
 
-  .large-5.columns
-    - if current_user.present?
-      - if current_user.signed?(@project)
-        p Você já assinou este projeto
-      - else
-        = link_to "Assinar o projeto", project_signatures_path(@project), id: "sign-project-button", method: :post, class: [:button, :radius]
-        | &nbsp;
-    - else
-      = form_for [@project, @signature], data: { abide: true } do |form|
-        = form.fields_for :user do |user_form|
-          .first-name-field
-            = user_form.label :first_name, "Nome"
-            = user_form.text_field :first_name, required: true
-            small.error Nome é obrigatório
-          .last-name-field
-            = user_form.label :last_name, "Sobrenome"
-            = user_form.text_field :last_name, required: true
-            small.error Sobrenome é obrigatório
-          .email-field
-            = user_form.label :email, "Email"
-            = user_form.email_field :email, required: true
-            small.error Email é obrigatório e deve ser válido
-        = form.submit "Assinar o projeto", id: "new-signature-button", class: [:button, :radius]
+#signature-form.reveal-modal.small data={ reveal: true }
+  a.close-reveal-modal &#215;
+  .title
+    = image_tag "icon-contribution.png"
+    h2 Quero apoiar
+  = form_for [@project, @signature], data: { abide: true } do |form|
+    = form.fields_for :user do |user_form|
+      .first-name-field
+        = user_form.label :first_name, "Nome"
+        = user_form.text_field :first_name, required: true
+        small.error Nome é obrigatório
+      .last-name-field
+        = user_form.label :last_name, "Sobrenome"
+        = user_form.text_field :last_name, required: true
+        small.error Sobrenome é obrigatório
+      .email-field
+        = user_form.label :email, "Email"
+        = user_form.email_field :email, required: true
+        small.error Email é obrigatório e deve ser válido
+    = form.submit "Assinar o projeto", id: "new-signature-button", class: [:button, :radius]
 
 #contribution-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
