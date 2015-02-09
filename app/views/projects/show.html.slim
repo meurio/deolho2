@@ -10,6 +10,33 @@
       |  &middot; no ar há #{distance_of_time_in_words_to_now @project.created_at}
       |  &middot; #{@project.organization.city}
       |  &middot; #{@project.legislative_chamber}
+.row data-equalizer=true
+  .large-4.medium-4.columns
+    .title
+      = image_tag "icon-contribution.png"
+      h3 Sobre o Projeto de Lei
+    .panel data-equalizer-watch=true
+      p= @project.abstract
+  .large-4.medium-4.columns
+    .title
+      = image_tag "icon-contribution.png"
+      h3 Tramitação Legislativa
+    .panel data-equalizer-watch=true
+  .large-4.medium-4.columns
+    .title
+      = image_tag "icon-contribution.png"
+      h3 Quem faz esse PL
+    .panel data-equalizer-watch=true
+      = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adopt", "data-reveal" => true
+      - if current_user.present?
+        = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius], method: :post, target: :blank
+      - else
+        = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius], data: { "reveal-id" => "contribution-form" }
+
+      | &nbsp;
+      - if can? :edit, @project
+        = link_to "Editar projeto de lei", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
+  
 .row
   .large-7.columns.text-center
     = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
@@ -39,17 +66,6 @@
             = user_form.email_field :email, required: true
             small.error Email é obrigatório e deve ser válido
         = form.submit "Assinar o projeto", id: "new-signature-button", class: [:button, :radius]
-
-    = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adopt", "data-reveal" => true
-
-    - if current_user.present?
-      = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius], method: :post, target: :blank
-    - else
-      = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius], data: { "reveal-id" => "contribution-form" }
-
-    | &nbsp;
-    - if can? :edit, @project
-      = link_to "Editar projeto de lei", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
 
 #contribution-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
