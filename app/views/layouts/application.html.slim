@@ -9,6 +9,11 @@ html
     = meurio_ui_assets
     = csrf_meta_tags
 
+    meta property="og:url" content=request.url
+    meta property="og:title" content=meta_title
+    meta property="og:description" content=meta_description
+    meta property="og:image" content=meta_image
+
   body class=[controller.controller_name, controller.action_name]
     - content_for :application_menu do
       - if can? :create, Project

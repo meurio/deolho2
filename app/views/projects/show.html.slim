@@ -1,3 +1,7 @@
+= content_for :meta_title, @project.facebook_share_title || @project.title
+= content_for :meta_description, @project.facebook_share_description || @project.abstract
+= content_for :meta_image, image_url(@project.facebook_share_image) || nil
+
 .cover
   .row
     h1= @project.title
