@@ -28,10 +28,10 @@ gem 'acts_as_our_cities'
 gem 'appsignal'
 gem 'capybara'
 gem 'cancancan', '~> 1.10'
-gem 'poltergeist'
 gem 'database_cleaner'
 gem 'carrierwave'
 gem 'fog'
+gem 'selenium-webdriver', group: [:test]
 
 # Rails assets
 source 'https://rails-assets.org'
