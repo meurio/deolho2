@@ -10,4 +10,6 @@ class Project < ActiveRecord::Base
     presence: true
 
   mount_uploader :facebook_share_image, FacebookShareImageUploader
+
+  scope :open_for_contribution, -> { where("closes_for_contribution_at > ?", Time.now) }
 end

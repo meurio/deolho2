@@ -113,6 +113,13 @@ RSpec.describe ProjectsController, :type => :controller do
     end
   end
 
+  describe "GET index" do
+    it "should assign @open_projects" do
+      get :index
+      expect(assigns(:open_projects)).to include(@project)
+    end
+  end
+
   def project_params
     {
       project: {

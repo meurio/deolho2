@@ -1,0 +1,10 @@
+.project.large-4.columns
+  .panel.radius
+    .title data-equalizer-watch=true
+      = project.title
+    .description= project.category.name
+    .description= project.organization.city
+    hr
+    .contribution-label Co-autores:
+    .contribution-count= project.contributors.count
+    = link_to "Quero co-criar!", project, class: [:button, :radius, :large]
