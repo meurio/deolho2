@@ -26,7 +26,10 @@ $(function(){
 		},
 		accordion: {
 			multi_expand: true
-		}
+		},
+		equalizer: {
+    	equalize_on_stack: true
+  	}
   });
 
 	$('[data-datetimepicker]').datetimepicker({
