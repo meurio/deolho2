@@ -27,6 +27,7 @@ RSpec.feature "Sign a project" do
   context "When I'm not logged in" do
     scenario "When I'm an existing user", js: true do
       visit project_path(project)
+      click_link("sign-project-button")
       fill_in "signature[user][first_name]", with: user.first_name
       fill_in "signature[user][last_name]", with: user.last_name
       fill_in "signature[user][email]", with: user.email
@@ -38,6 +39,7 @@ RSpec.feature "Sign a project" do
 
     scenario "When I'm a new user", js: true do
       visit project_path(project)
+      click_link("sign-project-button")
       fill_in "signature[user][first_name]", with: "Kyle"
       fill_in "signature[user][last_name]", with: "Crane"
       fill_in "signature[user][email]", with: "kylecrane@trashmail.com"
@@ -51,6 +53,7 @@ RSpec.feature "Sign a project" do
 
     scenario "When I submit the signature form with errors", js: true do
       visit project_path(project)
+      click_link("sign-project-button")
       click_button("new-signature-button")
 
       expect(page).to have_css("label.error[for='signature_user_first_name']")
