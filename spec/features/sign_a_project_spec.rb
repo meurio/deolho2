@@ -38,13 +38,14 @@ RSpec.feature "Sign a project" do
     end
 
     scenario "When I'm a new user", js: true do
+      email = "kylecrane@trashmail.com"
       visit project_path(project)
       click_link("sign-project-button")
       fill_in "signature[user][first_name]", with: "Kyle"
       fill_in "signature[user][last_name]", with: "Crane"
-      fill_in "signature[user][email]", with: "kylecrane@trashmail.com"
+      fill_in "signature[user][email]", with: email
       click_button("new-signature-button")
-      new_user = User.find_by(email: "kylecrane@trashmail.com")
+      new_user = User.find_by(email: email)
 
       expect(new_user).to_not be_nil
       expect(project.signers).to include(new_user)
