@@ -1,6 +1,6 @@
 = content_for :meta_title do
   - if @project.facebook_share_title.present?
-    = @project.facebook_share_title.present
+    = @project.facebook_share_title
   - else
     = @project.title
 
@@ -87,7 +87,7 @@
               | &nbsp;
           - else
             = link_to 'Assinar o projeto', "#", id: "sign-project-button", class: [:button, :radius], data: { "reveal-id" => "signature-form" }
-            
+
 .row
   .large-7.columns.text-center
     = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
