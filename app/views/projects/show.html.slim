@@ -102,6 +102,33 @@
     .panel.preview
       = raw @project.google_drive_embed
 
+.row
+  .large-12.columns.user-list
+    .title
+      = image_tag "icon-parlamentar-pequeno.png"
+      h3 Parlamentares que adotaram o Projeto de Lei
+    .panel
+      ul.large-block-grid-6.medium-block-grid-4
+        = render @project.adopters
+
+.row
+  .large-12.columns.user-list
+    .title
+      = image_tag "icon-parlamentar-pequeno.png"
+      h3 Cocriadores do Projeto de Lei
+    .panel
+      ul.large-block-grid-6.medium-block-grid-4
+        = render @project.contributors
+
+.row
+  .large-12.columns.user-list
+    .title
+      = image_tag "icon-parlamentar-pequeno.png"
+      h3 Apoiadores do Projeto de Lei
+    .panel
+      ul.large-block-grid-6.medium-block-grid-4
+        = render @project.signers
+
 #signature-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
   .title
