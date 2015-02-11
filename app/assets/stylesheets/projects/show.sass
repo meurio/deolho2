@@ -1,8 +1,10 @@
 body.projects.show
   h3, p, span
     color: $text-gray
+    
   .meurio_header
     margin-bottom: 0
+
   .cover
     background: asset-url('default-project-bg.jpg') center center
     background-size: cover
@@ -16,6 +18,7 @@ body.projects.show
       text-align: center
       text-transform: uppercase
       margin-bottom: rem-calc(40)
+
   .steps
     background: $dark-green
     padding: rem-calc(15) 0
@@ -30,6 +33,7 @@ body.projects.show
       margin-bottom: rem-calc(10)
     img
       width: 73px
+
   .panel
     +border-radius(10px)
     .item
@@ -45,6 +49,7 @@ body.projects.show
         padding-left: 0
         img
           width: 50px
+          +border-radius(50%)
         .data
           display: inline-block
           vertical-align: middle
@@ -74,3 +79,17 @@ body.projects.show
       vertical-align: middle
       font-weight: bold
       margin: 0
+
+  .user-list
+    margin-top: rem-calc(40)
+    .panel
+      padding-bottom: 0
+    li.user
+      .name
+        display: inline
+        color: $yellow
+      img
+        +border-radius(50%)
+        margin-right: .5em
+        width: 50px
+        float: left
