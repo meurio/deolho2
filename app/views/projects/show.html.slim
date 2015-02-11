@@ -43,10 +43,10 @@
     .panel data-equalizer-watch=true
       .item.clearfix
         .data-container.large-7.columns
-          = image_tag "icon-quem-faz-caixa.png"
+          = image_tag @project.user.avatar_url
           .data
             strong PL iniciado por
-            span Igor Campos
+            span= @project.user.name
         .cta.large-5.columns
           - if can? :edit, @project
             = link_to "Editar PL", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
