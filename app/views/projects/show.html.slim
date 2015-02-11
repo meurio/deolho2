@@ -27,33 +27,33 @@
 .row data-equalizer=true
   .large-4.medium-6.columns
     .title
-      = image_tag "icon-contribution.png"
+      = image_tag "icon-sobre-pequeno.png"
       h3 Sobre o Projeto de Lei
     .panel data-equalizer-watch=true
       p= @project.abstract
   .large-4.medium-6.columns
     .title
-      = image_tag "icon-contribution.png"
+      = image_tag "icon-tramite-on.png"
       h3 Tramitação Legislativa
     .panel data-equalizer-watch=true
   .large-4.medium-6.columns
     .title
-      = image_tag "icon-contribution.png"
+      = image_tag "icon-quem-faz-caixa.png"
       h3 Quem faz esse PL
     .panel data-equalizer-watch=true
       .item.clearfix
         .data-container.large-7.columns
-          = image_tag "icon-contribution.png"
+          = image_tag "icon-quem-faz-caixa.png"
           .data
             strong PL iniciado por
             span Igor Campos
         .cta.large-5.columns
           - if can? :edit, @project
-            = link_to "Editar projeto de lei", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
+            = link_to "Editar PL", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius]
 
       .item.clearfix
         .data-container.large-7.columns
-          = image_tag "icon-contribution.png"
+          = image_tag "icon-parlamentar.png"
           .data
             strong Parlamentares
             span.number 20
@@ -62,7 +62,7 @@
 
       .item.clearfix
         .data-container.large-7.columns
-          = image_tag "icon-contribution.png"
+          = image_tag "icon-coautor-caixa.png"
           .data
             strong Co-autores
             span.number 87.097
@@ -74,7 +74,7 @@
 
       .item.clearfix
         .data-container.large-7.columns
-          = image_tag "icon-contribution.png"
+          = image_tag "icon-apoiador-caixa.png"
           .data
             strong Apoiadores
             span.number 87.097
