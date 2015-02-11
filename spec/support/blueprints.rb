@@ -11,6 +11,7 @@ Project.blueprint do
   abstract { "My project abstract" }
   category
   organization
+  user
   google_drive_embed { '<iframe src="https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/pub?embedded=true"></iframe>' }
   google_drive_url { 'https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/edit' }
   closes_for_contribution_at { Time.now.next_week }
