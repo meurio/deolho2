@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205162140) do
+ActiveRecord::Schema.define(version: 20150211180023) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20150205162140) do
     t.text     "email_to_contributor"
     t.text     "email_to_signer"
     t.text     "taf_message"
+    t.integer  "user_id",                    null: false
   end
 
   create_table "sessions", force: :cascade do |t|

@@ -35,10 +35,11 @@ RSpec.describe SignaturesController, :type => :controller do
 
       context "when the user is new" do
         let(:email){ "kylecrane@trashmail.com" }
+        before { @project = Project.make! }
 
         it "should create a new user" do
           expect{
-            post :create, project_id: project.id, signature: { user: { email: email } }
+            post :create, project_id: @project.id, signature: { user: { email: email } }
           }.to change{ User.count }.by(1)
         end
 
