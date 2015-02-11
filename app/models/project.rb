@@ -3,6 +3,8 @@ class Project < ActiveRecord::Base
   has_many :signers, through: :signatures, source: :user
   has_many :contributions
   has_many :contributors, through: :contributions, source: :user
+  has_many :adoptions
+  has_many :adopters, through: :adoptions, source: :user
   belongs_to :category
   belongs_to :organization
 
