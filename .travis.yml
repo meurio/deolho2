@@ -4,8 +4,8 @@ rvm:
 
 before_script:
   - "cp config/database.sample.yml config/database.yml"
-  - "psql -c 'create role deolho2 SUPERUSER LOGIN;' postgres"
-  - "psql -c 'create database deolho2_test;' -U deolho2 postgres"
+  - "psql -c 'create role legislando SUPERUSER LOGIN;' postgres"
+  - "psql -c 'create database legislando_test;' -U legislando postgres"
   - "bin/rake db:migrate RAILS_ENV=test"
   - "sh -e /etc/init.d/xvfb start"
 

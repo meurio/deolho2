@@ -1,6 +1,6 @@
-{<img src="https://travis-ci.org/meurio/deolho2.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/meurio/deolho2]
-{<img src="https://codeclimate.com/github/meurio/deolho2/badges/gpa.svg" />}[https://codeclimate.com/github/meurio/deolho2]
-{<img src="https://codeclimate.com/github/meurio/deolho2/badges/coverage.svg" />}[https://codeclimate.com/github/meurio/deolho2]
+{<img src="https://travis-ci.org/meurio/legislando.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/meurio/legislando]
+{<img src="https://codeclimate.com/github/meurio/legislando/badges/gpa.svg" />}[https://codeclimate.com/github/meurio/legislando]
+{<img src="https://codeclimate.com/github/meurio/legislando/badges/coverage.svg" />}[https://codeclimate.com/github/meurio/legislando]
 
 == README
 
