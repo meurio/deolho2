@@ -904,9 +904,9 @@ $button-lrg: rem-calc(12);
 // $orbit-timer-show-progress-bar: true;
 
 // We use these to control the bullet nav styles
-// $orbit-bullet-nav-color: $iron;
-// $orbit-bullet-nav-color-active: $aluminum;
-// $orbit-bullet-radius: rem-calc(9);
+$orbit-bullet-nav-color: rgba($white, .5);
+$orbit-bullet-nav-color-active: $white;
+$orbit-bullet-radius: rem-calc(12);
 
 // We use these to controls the style of slide numbers
 // $orbit-slide-number-bg: rgba(0,0,0,0);
