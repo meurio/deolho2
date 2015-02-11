@@ -7,7 +7,6 @@ body.projects.show
     background: asset-url('default-project-bg.jpg') center center
     background-size: cover
     padding-top: rem-calc(40)
-    margin-bottom: rem-calc(40)
     h1
       font-size: rem-calc(40)
       text-align: center
@@ -17,6 +16,20 @@ body.projects.show
       text-align: center
       text-transform: uppercase
       margin-bottom: rem-calc(40)
+  .steps
+    background: $dark-green
+    padding: rem-calc(15) 0
+    margin-bottom: rem-calc(40)
+    color: white
+    .step-number
+      font-size: rem-calc(14)
+    .step-name
+      text-transform: uppercase
+      font-weight: bold
+    img, .step-number
+      margin-bottom: rem-calc(10)
+    img
+      width: 73px
   .panel
     +border-radius(10px)
     .item

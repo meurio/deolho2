@@ -67,4 +67,22 @@ RSpec.describe Project, :type => :model do
       end
     end
   end
+
+  describe "#adopted?" do
+    subject { Project.make! }
+
+    context "when there is no adopter" do
+      it "should be false" do
+        expect(subject.adopted?).to be_falsey
+      end
+    end
+
+    context "when there is at least one adopter" do
+      it "should be true" do
+        user = User.make!
+        subject.adopters << user
+        expect(subject.adopted?).to be_truthy
+      end
+    end
+  end
 end

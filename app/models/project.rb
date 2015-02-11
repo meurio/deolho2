@@ -24,4 +24,8 @@ class Project < ActiveRecord::Base
   def processing_in_legislative?
     legislative_processing.present?
   end
+
+  def adopted?
+    adopters.any?
+  end
 end
