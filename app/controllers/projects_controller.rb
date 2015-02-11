@@ -3,6 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @open_projects = Project.open_for_contribution
+    @projects_in_legislative_processing = Project.processing_in_legislative
   end
 
   def new

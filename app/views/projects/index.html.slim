@@ -14,3 +14,13 @@
       = render @open_projects
     - else
       .empty.large-12.columns.text-center No momento não existem projetos abertos para colaboração
+
+.projects-in-legislative-processing
+  .row
+    .large-12.columns.text-center
+      h2 Projetos de Lei em tramitação legislativa
+  .row data-equalizer=true
+    - if @projects_in_legislative_processing.any?
+      = render @projects_in_legislative_processing
+    - else
+      .empty.large-12.columns.text-center No momento não existem projetos em tramitação legislativa

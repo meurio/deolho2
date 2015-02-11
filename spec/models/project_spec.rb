@@ -33,4 +33,36 @@ RSpec.describe Project, :type => :model do
       end
     end
   end
+
+  describe "#open_for_contribution?" do
+    context "when closes_for_contribution_at is bigger than now" do
+      subject { Project.make! closes_for_contribution_at: 1.day.from_now }
+      it "should be true" do
+        expect(subject.open_for_contribution?).to be_truthy
+      end
+    end
+
+    context "when closes_for_contribution_at is smaller than now" do
+      subject { Project.make! closes_for_contribution_at: 1.day.ago }
+      it "should be false" do
+        expect(subject.open_for_contribution?).to be_falsey
+      end
+    end
+  end
+
+  describe "#processing_in_legislative?" do
+    context "when legislative_processing is blank" do
+      subject { Project.make! }
+      it "should be false" do
+        expect(subject.processing_in_legislative?).to be_falsey
+      end
+    end
+
+    context "when legislative_processing is not blank" do
+      subject { Project.make! legislative_processing: "Hello world" }
+      it "should be true" do
+        expect(subject.processing_in_legislative?).to be_truthy
+      end
+    end
+  end
 end

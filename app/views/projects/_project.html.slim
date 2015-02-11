@@ -5,6 +5,11 @@
     .description= project.category.name
     .description= project.organization.city
     hr
-    .contribution-label Co-autores:
-    .contribution-count= project.contributors.count
-    = link_to "Quero co-criar!", project, class: [:button, :radius, :large]
+    - if project.processing_in_legislative?
+      .counter-label Apoiadores:
+      .counter= project.signers.count
+      = link_to "Quero apoiar!", project, class: [:button, :radius, :large]
+    - elsif project.open_for_contribution?
+      .counter-label Co-autores:
+      .counter= project.contributors.count
+      = link_to "Quero co-criar!", project, class: [:button, :radius, :large]
