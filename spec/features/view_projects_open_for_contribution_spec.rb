@@ -1,10 +1,10 @@
 require "rails_helper"
 
-RSpec.feature "View all projects" do
+RSpec.feature "View projects open for contribution" do
   context "when there is no project open for contribution" do
     it "should display a empty message" do
       visit root_path
-      expect(page).to have_css(".projects-open-for-collaboration .empty")
+      expect(page).to have_css(".projects-open-for-contribution .empty")
     end
   end
 
