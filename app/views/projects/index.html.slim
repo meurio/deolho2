@@ -26,16 +26,21 @@
 .projects-open-for-contribution
   .row
     .large-12.columns.text-center
+      = image_tag "open-projects-divider.png"
       h2 Projetos de Lei abertos para cocriação
   .row data-equalizer=true
     - if @open_projects.any?
       = render @open_projects
     - else
       .empty.large-12.columns.text-center No momento não existem projetos abertos para colaboração
+  .row
+    .large-12.columns
+      hr
 
 .projects-in-legislative-processing
   .row
     .large-12.columns.text-center
+      = image_tag "processing-projects-divider.png"
       h2 Projetos de Lei em tramitação legislativa
   .row data-equalizer=true
     - if @projects_in_legislative_processing.any?
