@@ -89,10 +89,18 @@
             = link_to 'Assinar o projeto', "#", id: "sign-project-button", class: [:button, :radius], data: { "reveal-id" => "signature-form" }
 
 .row
-  .large-7.columns.text-center
+  .large-12.columns.text-center
     = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
     | &nbsp;
     = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.twitter_share_message.present? ? @project.twitter_share_message : @project.title}" }
+
+.row
+  .large-12.columns
+    .title
+      = image_tag "icon-sobre-pequeno.png"
+      h3 Veja o Projeto de Lei colaborativo
+    .panel.preview
+      = raw @project.google_drive_embed
 
 #signature-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
