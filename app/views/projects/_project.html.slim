@@ -1,15 +1,13 @@
-.project.large-4.columns.left
+.project.large-3.columns.left
   .panel.radius
-    .title data-equalizer-watch=true
-      = link_to project.title, project
-    .description= project.category.name
-    .description= project.organization.city
-    hr
-    - if project.processing_in_legislative?
-      .counter-label Apoiadores:
-      .counter= project.signers.count
-      = link_to "Quero apoiar!", project, class: [:button, :radius, :large]
-    - elsif project.open_for_contribution?
-      .counter-label Co-autores:
-      .counter= project.contributors.count
-      = link_to "Quero co-criar!", project, class: [:button, :radius, :large]
+    = link_to project, class: :image do
+      .overlay
+      = image_tag(project.image.thumb)
+      span= project.title
+    span.label.radius.secondary.no-margin= project_status(project)
+    .description.icon-user
+      span= link_to project.user.name, user_path(project.user)
+    .description.icon-tag
+      span title=project.category.name = truncate(project.category.name, length: 30)
+    .description.icon-location
+      span= project.organization.city
