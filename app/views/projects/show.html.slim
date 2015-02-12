@@ -65,10 +65,10 @@
       = image_tag "icon-tramite-on.png"
       h3 Tramitação Legislativa
     .panel data-equalizer-watch=true
-      - if @project.processing_in_legislative?
+      - if @project.processing?
         = simple_format @project.legislative_processing
       - else
-        .not-processing-in-legislative
+        .not-processing
           = image_tag("icon-cadeado.png")
           .strong Situação atual:
           p Este projeto ainda não está em tramitação legislativa.
