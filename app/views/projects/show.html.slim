@@ -65,7 +65,7 @@
       - if @project.processing_in_legislative?
         = simple_format @project.legislative_processing
       - else
-        .not-processing-in-legislative
+        .not-processing
           = image_tag("icon-cadeado.png")
           .strong Situação atual:
           p Este projeto ainda não está em tramitação legislativa.
