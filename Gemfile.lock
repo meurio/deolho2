@@ -75,6 +75,7 @@ GEM
     chunky_png (1.3.3)
     codeclimate-test-reporter (0.4.6)
       simplecov (>= 0.7.1, < 1.0.0)
+    colorize (0.7.5)
     compass (0.12.7)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
@@ -267,6 +268,9 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 2.12)
       sprockets-rails (~> 2.0)
+    scss-lint (0.7.0)
+      colorize
+      sass
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -341,6 +345,7 @@ DEPENDENCIES
   rails_12factor
   rspec-rails
   sass-rails (~> 4.0.3)
+  scss-lint
   sdoc (~> 0.4.0)
   selenium-webdriver
   shoulda-matchers

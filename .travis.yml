@@ -14,6 +14,7 @@ env:
 
 script:
   - "bundle exec rspec spec"
+  - "bundle exec scss-lint app/assets/stylesheets/**/*.scss"
 
 branches:
   only:

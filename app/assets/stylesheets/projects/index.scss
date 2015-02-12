@@ -9,16 +9,16 @@ body.projects.index {
   .cover {
     background: asset-url("projects-index-bg.jpg");
     background-size: cover;
-    padding: rem-calc(60) 0;
     margin-bottom: rem-calc(30);
+    padding: rem-calc(60) 0;
     h2 {
       color: white;
       margin: 0;
     }
     h2.subheader {
-      margin: 0;
       color: $light-green;
       font-size: rem-calc(20);
+      margin: 0;
     }
     img {
       display: inline-block;
