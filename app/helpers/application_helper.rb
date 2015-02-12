@@ -50,7 +50,7 @@ module ApplicationHelper
   end
 
   def project_status project
-    if project.processing_in_legislative?
+    if project.processing?
       "Tramitando"
     elsif project.adopted?
       "Adotado"

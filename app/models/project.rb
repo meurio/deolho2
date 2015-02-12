@@ -15,14 +15,11 @@ class Project < ActiveRecord::Base
   mount_uploader :facebook_share_image, FacebookShareImageUploader
   mount_uploader :image, ThumbUploader
 
-  scope :open_for_contribution, -> { where("closes_for_contribution_at > ?", Time.now) }
-  scope :processing_in_legislative, -> { where("legislative_processing <> ''") }
-
-  def open_for_contribution?
+  def open?
     closes_for_contribution_at > Time.now
   end
 
-  def processing_in_legislative?
+  def processing?
     legislative_processing.present?
   end
 

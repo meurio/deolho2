@@ -23,27 +23,14 @@
           h2.subheader
             | Junte-se a milhares de pessoas que participam ativamente do processo legislativo em suas cidades
 
-.projects-open-for-contribution
+.projects
   .row
     .large-12.columns.text-center
       = image_tag "open-projects-divider.png"
-      h2 Projetos de Lei abertos para cocriação
-  .row data-equalizer=true
-    - if @open_projects.any?
-      = render @open_projects
-    - else
-      .empty.large-12.columns.text-center No momento não existem projetos abertos para colaboração
+      h2 Projetos de Lei
   .row
-    .large-12.columns
-      hr
-
-.projects-in-legislative-processing
-  .row
-    .large-12.columns.text-center
-      = image_tag "processing-projects-divider.png"
-      h2 Projetos de Lei em tramitação legislativa
-  .row data-equalizer=true
-    - if @projects_in_legislative_processing.any?
-      = render @projects_in_legislative_processing
+    - if @projects.any?
+      = render @projects
     - else
-      .empty.large-12.columns.text-center No momento não existem projetos em tramitação legislativa
+      .empty.large-12.columns.text-center
+        | Nenhum projeto encontrado

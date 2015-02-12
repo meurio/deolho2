@@ -2,8 +2,7 @@ class ProjectsController < ApplicationController
   authorize_resource
 
   def index
-    @open_projects = Project.open_for_contribution
-    @projects_in_legislative_processing = Project.processing_in_legislative
+    @projects = Project.all
   end
 
   def new
