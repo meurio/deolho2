@@ -114,15 +114,9 @@ RSpec.describe ProjectsController, :type => :controller do
   end
 
   describe "GET index" do
-    it "should assign @open_projects" do
+    it "should assign @projects" do
       get :index
-      expect(assigns(:open_projects)).to include(@project)
-    end
-
-    it "should assign @projects_in_legislative_processing" do
-      project_in_legislative_processing = Project.make! legislative_processing: "Hello world"
-      get :index
-      expect(assigns(:projects_in_legislative_processing)).to include(project_in_legislative_processing)
+      expect(assigns(:projects)).to include(@project)
     end
   end
 

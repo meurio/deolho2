@@ -31,6 +31,7 @@
       .step-number Passo 1
       = image_tag("icon-colab-fim.png")
       .step-name Colaboração
+
     .large-3.columns.text-center
       .step-number Passo 2
       - if @project.adopted?
@@ -38,13 +39,15 @@
       - else
         = image_tag("icon-locked-fim.png")
       .step-name Adoção parlamentar
+
     .large-3.columns.text-center
       .step-number Passo 3
-      - if @project.processing_in_legislative?
+      - if @project.processing?
         = image_tag("icon-tramite-fim.png")
       - else
         = image_tag("icon-locked-fim.png")
       .step-name Tramitação legislativa
+
     .large-3.columns.text-center
       .step-number Passo 4
       = image_tag("icon-locked-fim.png")
