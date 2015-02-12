@@ -11,16 +11,27 @@ body.projects.show {
     background: asset-url("default-project-bg.jpg") center center;
     background-size: cover;
     padding-top: rem-calc(40);
+    padding-bottom: rem-calc(40);
     h1 {
       color: white;
       font-size: rem-calc(40);
       text-align: center;
     }
-    p.info {
+    p.info, span.info {
       color: $light-green;
       margin-bottom: rem-calc(40);
       text-align: center;
+      display: block;
+    }
+    p.info {
       text-transform: uppercase;
+    }
+    input.full {
+      width: 100%;
+      font-size: 1.5em;
+      font-weight: bold;
+      padding: .7em;
+      margin-bottom: .5em;
     }
   }
   .steps {
