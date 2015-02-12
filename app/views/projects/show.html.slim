@@ -56,12 +56,13 @@
       = image_tag "icon-sobre-pequeno.png"
       h3 Sobre o Projeto de Lei
     .panel data-equalizer-watch=true
-      p= @project.abstract
+      = simple_format @project.abstract
   .large-4.medium-6.columns
     .title
       = image_tag "icon-tramite-on.png"
       h3 Tramitação Legislativa
     .panel data-equalizer-watch=true
+      = simple_format @project.legislative_processing
   .large-4.medium-6.columns
     .title
       = image_tag "icon-quem-faz-caixa.png"
