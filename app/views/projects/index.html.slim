@@ -1,7 +1,12 @@
 .cover
   .row
     .large-12.columns.text-center
-      ul data-orbit=true data-options="navigation_arrows: false; slide_number: false; timer: false;"
+      ul data-orbit=true data-options="
+        navigation_arrows: false;
+        slide_number: false;
+        resume_on_mouseout: true;
+        timer_speed: 5000"
+        
         li
           = image_tag("cover-step-1.png")
           h2 Crie seu próprio Projeto de Lei
