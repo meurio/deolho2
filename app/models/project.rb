@@ -10,9 +10,10 @@ class Project < ActiveRecord::Base
   belongs_to :user
 
   validates :title, :abstract, :category, :organization, :google_drive_url, :google_drive_embed, :user,
-    presence: true
+    :image, presence: true
 
   mount_uploader :facebook_share_image, FacebookShareImageUploader
+  mount_uploader :image, ThumbUploader
 
   scope :open_for_contribution, -> { where("closes_for_contribution_at > ?", Time.now) }
   scope :processing_in_legislative, -> { where("legislative_processing <> ''") }

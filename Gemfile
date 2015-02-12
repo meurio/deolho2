@@ -32,6 +32,7 @@ gem 'database_cleaner'
 gem 'carrierwave'
 gem 'fog'
 gem 'selenium-webdriver', group: [:test]
+gem 'mini_magick'
 
 # Rails assets
 source 'https://rails-assets.org'

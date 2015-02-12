@@ -44,4 +44,18 @@ module ApplicationHelper
   def meta_image
     content_for(:meta_image) || image_url("legislando.png")
   end
+
+  def user_path user
+    "#{ENV['MEURIO_HOST']}/users/#{user.id}"
+  end
+
+  def project_status project
+    if project.processing_in_legislative?
+      "Tramitando"
+    elsif project.adopted?
+      "Adotado"
+    else
+      "Cocriando"
+    end
+  end
 end

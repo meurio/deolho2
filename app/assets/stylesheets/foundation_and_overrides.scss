@@ -92,8 +92,8 @@ $row-width: rem-calc(1200);
 // $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 
 // We use these to define default font weights
-// $font-weight-normal: normal !default;
-// $font-weight-bold: bold !default;
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
 
 $white       : #FFFFFF;
 $ghost       : #FAFAFA;
@@ -147,7 +147,7 @@ $body-font-family: "Proxima Nova Soft", "Helvetica Neue", "Helvetica", Helvetica
 // $last-child-float: $opposite-direction;
 
 // We use these to make sure border radius matches unless we want it different.
-// $global-radius: 3px;
+$global-radius: 3px;
 // $global-rounded: 1000px;
 
 // We use these to control inset shadow shiny edges and depressions.
@@ -789,12 +789,12 @@ $button-lrg: rem-calc(12);
 // $include-html-label-classes: $include-html-classes;
 
 // We use these to style the labels
-// $label-padding: rem-calc(4 8 4);
+$label-padding: rem-calc(4);
 // $label-radius: $global-radius;
 
 // We use these to style the label text
-// $label-font-sizing: rem-calc(11);
-// $label-font-weight: $font-weight-normal;
+$label-font-sizing: rem-calc(13);
+$label-font-weight: $font-weight-normal;
 // $label-font-color: $oil;
 // $label-font-color-alt: $white;
 // $label-font-family: $body-font-family;
@@ -971,7 +971,7 @@ $panel-border-size: 0;
 
 // We use these to set default inner padding and bottom margin
 // $panel-margin-bottom: rem-calc(20);
-// $panel-padding: rem-calc(20);
+$panel-padding: rem-calc(20);
 
 // We use these to set default font colors
 // $panel-font-color: $oil;
