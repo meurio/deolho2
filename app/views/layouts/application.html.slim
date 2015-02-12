@@ -18,6 +18,7 @@ html
 
   body class=[controller.controller_name, controller.action_name]
     - content_for :application_menu do
+      = link_to "Sobre o Legislando", about_path, class: :link
       - if can? :create, Project
         = link_to "Criar um projeto de lei", new_project_path, id: "new-project-button", class: [:button, :radius, :small]
       - else

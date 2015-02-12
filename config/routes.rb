@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :contributions, only: [:create]
   end
 
+  get 'about' => 'pages#about'
+
   # You can have the root of your site routed with "root"
   root 'projects#index'
 
