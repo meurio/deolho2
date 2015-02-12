@@ -13,6 +13,7 @@ RSpec.describe Project, :type => :model do
   it { should validate_presence_of :google_drive_url }
   it { should validate_presence_of :google_drive_embed }
   it { should validate_presence_of :user }
+  it { should validate_presence_of :image }
 
   describe ".open_for_contribution" do
     context "when there is no project" do
