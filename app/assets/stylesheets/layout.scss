@@ -14,7 +14,8 @@
 
 .reveal-modal {
   @include border-radius(10px);
-  h2, p {
+  h2,
+  p {
     font-size: rem-calc(18);
   }
   .title {
@@ -25,10 +26,10 @@
     h2 {
       color: $light-green;
       display: inline-block;
+      font-weight: 500;
+      letter-spacing: 0.03em;
       text-transform: uppercase;
       vertical-align: middle;
-      letter-spacing: 0.03em;
-      font-weight: 500;
     }
   }
 }
@@ -41,13 +42,13 @@ dd.accordion-navigation {
   [class^="icon-"] {
     line-height: rem-calc(35);
     &:before {
-      font-size: rem-calc(25);
       color: $aluminum;
-      position: relative;
-      top: 5px;
       display: inline-block;
-      width: 50px;
+      font-size: rem-calc(25);
+      position: relative;
       text-align: center;
+      top: 5px;
+      width: 50px;
     }
   }
 }
@@ -57,11 +58,11 @@ dd.accordion-navigation {
   h2 {
     background: $silver;
     color: $steel;
-    margin-top: rem-calc(-20);
+    font-size: rem-calc(20);
     margin-left: rem-calc(-20);
     margin-right: rem-calc(-20);
+    margin-top: rem-calc(-20);
     padding: rem-calc(20);
-    font-size: rem-calc(20);
   }
 }
 

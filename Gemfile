@@ -33,6 +33,7 @@ gem 'carrierwave'
 gem 'fog'
 gem 'selenium-webdriver', group: [:test]
 gem 'mini_magick'
+gem 'scss-lint', group: [:test, :development]
 
 # Rails assets
 source 'https://rails-assets.org'
