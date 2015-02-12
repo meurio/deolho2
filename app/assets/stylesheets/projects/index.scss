@@ -1,0 +1,28 @@
+body.projects.index {
+  .meurio_header {
+    margin: 0;
+  }
+  h2 {
+    color: $text-gray;
+    margin-bottom: rem-calc(40);
+  }
+  .cover {
+    background: asset-url("projects-index-bg.jpg");
+    background-size: cover;
+    padding: rem-calc(60) 0;
+    margin-bottom: rem-calc(30);
+    h2 {
+      color: white;
+      margin: 0;
+    }
+    h2.subheader {
+      margin: 0;
+      color: $light-green;
+      font-size: rem-calc(20);
+    }
+    img {
+      display: inline-block;
+      margin-bottom: rem-calc(20);
+    }
+  }
+}
