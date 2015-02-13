@@ -5,7 +5,11 @@ class ContributionsController < ApplicationController
     user = current_user_or_find_or_create(contribution_params)
     project = Project.find(params[:project_id])
     contribution = project.contributions.create user: user
-    Notifier.thanks_for_contributing(contribution).deliver_later
+
+    if contribution.persisted?
+      Notifier.thanks_for_contributing(contribution).deliver_later
+    end
+
     redirect_to project.google_drive_url
   end
 

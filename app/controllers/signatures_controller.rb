@@ -5,7 +5,11 @@ class SignaturesController < ApplicationController
     user = current_user_or_find_or_create(signature_params)
     project = Project.find(params[:project_id])
     signature = Signature.create project_id: project.id, user_id: user.id
-    Notifier.thanks_for_signing(signature).deliver_later
+
+    if signature.persisted?
+      Notifier.thanks_for_signing(signature).deliver_later
+    end
+
     redirect_to project_path(project, anchor: "thanks-for-signing-this-project")
   end
 
