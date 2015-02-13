@@ -18,10 +18,13 @@ RSpec.feature "Contribute to a project" do
         email = "hansolo@trashmail.com"
         visit project_path(project)
         click_link "contribution-button"
-        fill_in "contribution[user][first_name]", with: "Han"
-        fill_in "contribution[user][last_name]", with: "Solo"
-        fill_in "contribution[user][email]", with: email
-        click_button "contribution-submit-button"
+
+        within("#contribution-form") do
+          fill_in "contribution[user][first_name]", with: "Han"
+          fill_in "contribution[user][last_name]", with: "Solo"
+          fill_in "contribution[user][email]", with: email
+          click_button "contribution-submit-button"
+        end
 
         new_user = User.find_by(email: email)
         expect(new_user).to_not be_nil
@@ -31,10 +34,13 @@ RSpec.feature "Contribute to a project" do
       scenario "when I'm an existing user", js: true do
         visit project_path(project)
         click_link "contribution-button"
-        fill_in "contribution[user][first_name]", with: user.first_name
-        fill_in "contribution[user][last_name]", with: user.last_name
-        fill_in "contribution[user][email]", with: user.email
-        click_button "contribution-submit-button"
+
+        within("#contribution-form") do
+          fill_in "contribution[user][first_name]", with: user.first_name
+          fill_in "contribution[user][last_name]", with: user.last_name
+          fill_in "contribution[user][email]", with: user.email
+          click_button "contribution-submit-button"
+        end
 
         expect(project.contributors).to include(user)
       end
