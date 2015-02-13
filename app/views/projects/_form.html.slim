@@ -60,7 +60,9 @@
       #legislative-fields.content class=legislative_fields_class
         .row
           .legislative-chamber-field.large-4.columns
-            = form.label :legislative_chamber
+            = form.label :legislative_chamber do
+              = "#{t("activerecord.attributes.project.legislative_chamber")} "
+              span.has-tip data-tooltip=true title="Alerj, Alesp, Câmara dos vereadores, etc" ?
             = form.text_field :legislative_chamber
 
           .legislative-processing-field.large-8.columns
