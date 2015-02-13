@@ -26,4 +26,16 @@ class Project < ActiveRecord::Base
   def adopted?
     adopters.any?
   end
+
+  def accepted?
+    !self.accepted_at.nil?
+  end
+
+  def rejected?
+    !self.rejected_at.nil?
+  end
+
+  def finished?
+    accepted? || rejected?
+  end
 end
