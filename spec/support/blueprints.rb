@@ -52,6 +52,11 @@ Contribution.blueprint do
   project
 end
 
+Adoption.blueprint do
+  user
+  project
+end
+
 Category.blueprint do
   name { "Category #{sn}" }
 end
