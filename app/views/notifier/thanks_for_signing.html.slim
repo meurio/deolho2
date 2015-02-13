@@ -1,0 +1,14 @@
+- if @project.email_to_signer.present?
+  = simple_format @project.email_to_signer
+
+- else
+  p Olá #{@user.first_name},
+
+  p
+    | Obrigad@ por apoiar o projeto de lei #{project_url @project.title, @project}. Agora você também faz
+    | parte de sua construção e receberá atualizações sobre seu progresso na respectiva casa legislativa.
+    | Para que nossa iniciativa popular se torne lei precisamos que mais gente demonstre interesse por sua
+    | aprovação. Compartilhe agora com seus amigos para que participem da construção desse sonho coletivo!
+
+  p Forte abraço,
+  p= @project.user.name

@@ -47,6 +47,11 @@ Signature.blueprint do
   project
 end
 
+Contribution.blueprint do
+  user
+  project
+end
+
 Category.blueprint do
   name { "Category #{sn}" }
 end

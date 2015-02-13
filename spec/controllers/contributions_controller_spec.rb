@@ -18,6 +18,12 @@ RSpec.describe ContributionsController, :type => :controller do
         post :create, project_id: project.id
         expect(response).to redirect_to(project.google_drive_url)
       end
+
+      it "should send an email to the current user" do
+        post :create, project_id: project.id
+        email = ActionMailer::Base.deliveries.last
+        expect(email.to).to be_eql([user.email])
+      end
     end
 
     context "when the user is not logged in" do

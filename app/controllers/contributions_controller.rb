@@ -4,7 +4,8 @@ class ContributionsController < ApplicationController
   def create
     user = current_user_or_find_or_create(contribution_params)
     project = Project.find(params[:project_id])
-    project.contributions.create user: user
+    contribution = project.contributions.create user: user
+    Notifier.thanks_for_contributing(contribution).deliver_later
     redirect_to project.google_drive_url
   end
 
