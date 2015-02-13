@@ -1,5 +1,6 @@
 .project {
   .image {
+    @include border-radius($global-radius $global-radius 0 0);
     display: block;
     margin-bottom: $panel-padding;
     margin-left: -$panel-padding;
@@ -7,34 +8,38 @@
     margin-top: -$panel-padding;
     overflow: hidden;
     position: relative;
-    @include border-radius($global-radius $global-radius 0 0);
+
     .overlay {
+      @include background-image(linear-gradient(transparent 10%, rgba($black, .5) 90%));
       height: 100%;
       position: absolute;
       width: 100%;
-      @include background-image(linear-gradient(transparent 10%, rgba($black, 0.5) 90%));
     }
+
     span {
+      @include text-shadow($black 1px 1px 2px);
       bottom: 0;
       color: $white;
       font-size: rem-calc(17);
       left: 0;
       padding: rem-calc(10);
       position: absolute;
-      @include text-shadow($black 1px 1px 2px);
     }
   }
+
   .description {
     font-size: rem-calc(14);
     margin-top: rem-calc(7);
+
     span {
       font-family: $body-font-family;
       font-weight: bold;
     }
+
     &:before {
       float: left;
       margin-right: rem-calc(5);
-      opacity: 0.5;
+      opacity: .5;
       position: relative;
       top: 1px;
     }

@@ -1,25 +1,32 @@
-body.projects.index {
+.projects.index {
+
+  // scss-lint:disable SelectorFormat
   .meurio_header {
     margin: 0;
   }
+
   h2 {
     color: $text-gray;
     margin-bottom: rem-calc(40);
   }
+
   .cover {
-    background: asset-url("projects-index-bg.jpg");
+    background: asset-url('projects-index-bg.jpg');
     background-size: cover;
     margin-bottom: rem-calc(30);
     padding: rem-calc(60) 0;
+
     h2 {
-      color: white;
+      color: $white;
       margin: 0;
     }
-    h2.subheader {
+
+    .subheader {
       color: $light-green;
       font-size: rem-calc(20);
       margin: 0;
     }
+
     img {
       display: inline-block;
       margin-bottom: rem-calc(20);

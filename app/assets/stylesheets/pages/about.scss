@@ -1,12 +1,14 @@
-body.pages.about {
+.pages.about {
   h2 {
     color: $light-green;
     font-size: rem-calc(22);
     font-weight: $font-weight-bold;
   }
+
   h4 {
     font-size: rem-calc(16);
     font-weight: $font-weight-bold;
+
     small {
       font-size: rem-calc(16);
     }
