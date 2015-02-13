@@ -28,7 +28,7 @@
     .large-8.large-centered.columns
       - if @project.accepted?
         .large-12.columns.text-center.accepted
-          = image_tag 'icon-vitoria-above.png'
+          = image_tag("icon-vitoria-above.png")
           h2.head Vitória!
           span Este Projeto virou Lei!
       - elsif @project.processing?
