@@ -26,7 +26,12 @@
       |  &middot; #{@project.legislative_chamber}
   .row
     .large-8.large-centered.columns
-      - if @project.processing?
+      - if @project.accepted?
+        .large-12.columns.text-center.accepted
+          = image_tag 'icon-vitoria-above.png'
+          h2.head Vitória!
+          span Este Projeto virou Lei!
+      - elsif @project.processing?
         = form_for [@project, @signature], data: { abide: true } do |form|
           .large-6.columns
             = form.fields_for :user do |user_form|
@@ -92,9 +97,13 @@
 
     .large-3.columns.text-center
       .step-number Passo 4
-      = image_tag("icon-locked-fim.png")
-      .step-name Votação
-
+      - if @project.finished?
+        = image_tag("icon-votacao-fim.png")
+        .step-name Votação
+      - else
+        = image_tag("icon-locked-fim.png")
+        .step-name #{ 'Aguardando ' if @project.processing? } Votação
+        
 .row data-equalizer=true
   .large-4.medium-6.columns
     .title

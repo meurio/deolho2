@@ -21,7 +21,7 @@ body.projects.show {
     span.info {
       color: $light-green;
       display: block;
-      margin-bottom: rem-calc(40);
+      margin-bottom: rem-calc(20);
       text-align: center;
     }
     p.info {
@@ -35,11 +35,24 @@ body.projects.show {
       width: 100%;
     }
   }
+  .accepted {
+    h2 {
+      color: white;
+      font-weight: bold;
+      line-height: 100%;
+      margin-bottom: 0;
+      margin-top: rem-calc(20);
+      text-transform: uppercase;
+    }
+    span {
+      color: $yellow;
+    }
+  }
   .steps {
     background: $dark-green;
     color: white;
     margin-bottom: rem-calc(40);
-    padding: rem-calc(15) 0;
+    padding: rem-calc(25) 0;
     .step-number {
       font-size: rem-calc(14);
     }
