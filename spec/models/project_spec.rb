@@ -64,4 +64,63 @@ RSpec.describe Project, :type => :model do
       end
     end
   end
+
+  describe "#accepted?" do
+    subject { Project.make! }
+
+    context "when the project is accepted" do
+      it "should be true" do
+        subject.update accepted_at: Time.now
+        expect(subject.accepted?).to be_truthy
+      end
+    end
+
+    context "when the project is not accepted" do
+      it "should be false" do
+        expect(subject.accepted?).to be_falsey
+      end
+    end
+  end
+
+  describe "#rejected?" do
+    subject { Project.make! }
+
+    context "when the project is rejected" do
+      it "should be true" do
+        subject.update rejected_at: Time.now
+        expect(subject.rejected?).to be_truthy
+      end
+    end
+
+    context "when the project is not rejected" do
+      it "should be false" do
+        expect(subject.rejected?).to be_falsey
+      end
+    end
+  end
+
+  describe "#finished?" do
+    subject { Project.make! }
+
+    context "when the project is accepted" do
+      it "should be true" do
+        subject.update accepted_at: Time.now
+        expect(subject.finished?).to be_truthy
+      end
+    end
+
+    context "when the project is rejected" do
+      it "should be true" do
+        subject.update rejected_at: Time.now
+        expect(subject.finished?).to be_truthy
+      end
+    end
+
+    context "when the project was not voted yet" do
+      it "should be false" do
+        expect(subject.finished?).to be_falsey
+      end
+    end
+  end
 end
+
