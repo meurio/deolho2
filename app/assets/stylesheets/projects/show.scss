@@ -70,6 +70,9 @@ body.projects.show {
   }
   .panel {
     @include border-radius(10px);
+    .empty p {
+      padding-bottom: rem-calc(16);
+    }
     .item {
       display: block;
       margin-bottom: 1em;
