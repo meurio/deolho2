@@ -32,45 +32,53 @@
           h2.head Vitória!
           span Este Projeto virou Lei!
       - elsif @project.processing?
-        = form_for [@project, @signature], data: { abide: true } do |form|
-          .large-6.columns
-            = form.fields_for :user do |user_form|
-              .row
+        - if current_user.present?
+          .large-6.large-centered.columns.text-center
+            = link_to "Assinar o projeto", project_signatures_path(@project), id: "cover-sign-project-button", method: :post, class: [:button, :radius, :full]
+        - else
+          = form_for [@project, @signature], data: { abide: true } do |form|
+            .large-6.columns
+              = form.fields_for :user do |user_form|
                 .row
-                  .first-name-field.large-6.columns
-                    = user_form.text_field :first_name, required: true, placeholder: 'Nome'
-                    small.error Nome é obrigatório
-                  .last-name-field.large-6.columns
-                    = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
-                    small.error Sobrenome é obrigatório
-              .row
+                  .row
+                    .first-name-field.large-6.columns
+                      = user_form.text_field :first_name, required: true, placeholder: 'Nome'
+                      small.error Nome é obrigatório
+                    .last-name-field.large-6.columns
+                      = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
+                      small.error Sobrenome é obrigatório
                 .row
-                  .email-field.large-12.columns
-                    = user_form.email_field :email, required: true, placeholder: 'Email'
-                    small.error Email é obrigatório e deve ser válido
-          .large-6.columns
-            = form.submit "Assinar o projeto", id: "cover-new-signature-button", class: [:button, :radius, :full]
-            span.info Prazo de colaboração encerrado há #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
+                  .row
+                    .email-field.large-12.columns
+                      = user_form.email_field :email, required: true, placeholder: 'Email'
+                      small.error Email é obrigatório e deve ser válido
+            .large-6.columns
+              = form.submit "Assinar o projeto", id: "cover-new-signature-button", class: [:button, :radius, :full]
+              span.info Prazo de colaboração encerrado há #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
       - else
-        = form_for [@project, @contribution], data: { abide: true } do |form|
-          = form.fields_for :user do |user_form|
-            .large-6.columns
-              .row
+        - if current_user.present?
+          .large-6.large-centered.columns.text-center
+            = link_to 'Quero co-criar', project_contributions_path(@project), id: "cover-contribution-button", class: [:button, :radius, :full], method: :post, target: :blank
+        - else
+          = form_for [@project, @contribution], data: { abide: true } do |form|
+            = form.fields_for :user do |user_form|
+              .large-6.columns
                 .row
-                  .first-name-field.large-6.columns
-                    = user_form.text_field :first_name, required: true, placeholder: 'Nome'
-                    small.error Nome é obrigatório
-                  .last-name-field.large-6.columns
-                    = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
-                    small.error Sobrenome é obrigatório
-              .row
+                  .row
+                    .first-name-field.large-6.columns
+                      = user_form.text_field :first_name, required: true, placeholder: 'Nome'
+                      small.error Nome é obrigatório
+                    .last-name-field.large-6.columns
+                      = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
+                      small.error Sobrenome é obrigatório
                 .row
-                  .email-field.large-12.columns
-                    = user_form.email_field :email, required: true, placeholder: 'Email'
-                    small.error Email é obrigatório e deve ser válido
-            .large-6.columns
-              = user_form.submit "Quero co-criar!", id: "cover-contribution-submit-button", class: [:button, :radius, :full]
-              span.info Prazo de colaboração encerra em #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
+                  .row
+                    .email-field.large-12.columns
+                      = user_form.email_field :email, required: true, placeholder: 'Email'
+                      small.error Email é obrigatório e deve ser válido
+              .large-6.columns
+                = user_form.submit "Quero co-criar!", id: "cover-contribution-submit-button", class: [:button, :radius, :full]
+                span.info Prazo de colaboração encerra em #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
 
 .steps
   .row
