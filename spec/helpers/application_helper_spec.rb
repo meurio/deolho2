@@ -101,6 +101,55 @@ RSpec.describe ApplicationHelper, :type => :helper do
     end
   end
 
+  describe "#accepted_field_class" do
+    context "when the project is accepted" do
+      let(:project) { Project.make!(accepted_at: Time.now) }
+
+      it "should be 'active'" do
+        assign(:project, project)
+        expect(helper.accepted_field_class).to eql("active")
+      end
+    end
+
+    context "when the project is not accepted" do
+      let(:project) { Project.make! }
+
+      it "should be nil" do
+        assign(:project, project)
+        expect(helper.accepted_field_class).to be_nil
+      end
+    end
+  end
+
+  describe "#rejected_field_class" do
+    context "when the project is rejected" do
+      let(:project) { Project.make!(rejected_at: Time.now) }
+
+      it "should be 'active'" do
+        assign(:project, project)
+        expect(helper.rejected_field_class).to eql("active")
+      end
+    end
+
+    context "when the project is accepted" do
+      let(:project) { Project.make!(accepted_at: Time.now) }
+
+      it "should be nil" do
+        assign(:project, project)
+        expect(helper.rejected_field_class).to be_nil
+      end
+    end
+
+    context "when the project is not finished" do
+      let(:project) { Project.make! }
+
+      it "should be nil" do
+        assign(:project, project)
+        expect(helper.rejected_field_class).to be_nil
+      end
+    end
+  end
+
   describe "#meta_title" do
     context "when there is content_for :meta_title" do
       let(:title) { "My title" }
