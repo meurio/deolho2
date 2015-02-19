@@ -206,4 +206,31 @@ RSpec.describe ApplicationHelper, :type => :helper do
       end
     end
   end
+
+  describe "#project_status" do
+    context "when the project is processing" do
+      let(:project) { Project.make!(legislative_processing: "Any value") }
+
+      it "should be 'Tramitando'" do
+        expect(helper.project_status(project)).to be_eql("Tramitando")
+      end
+    end
+
+    context "when the process is adopted" do
+      let(:project) { Project.make! }
+      before { Adoption.make!(project: project) }
+
+      it "should be 'Adotado'" do
+        expect(helper.project_status(project)).to be_eql("Adotado")
+      end
+    end
+
+    context "when the project is open for contribution" do
+      let(:project) { Project.make! }
+
+      it "should be 'Cocriando'" do
+        expect(helper.project_status(project)).to be_eql("Cocriando")
+      end
+    end
+  end
 end
