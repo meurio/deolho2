@@ -31,6 +31,11 @@
           = image_tag("icon-vitoria-above.png")
           h2.head Vitória!
           span Este Projeto virou Lei!
+      - elsif @project.rejected?
+        .large-12.columns.text-center.rejected
+          = image_tag("icon-nao-aprovado-above.png")
+          h2.head Não aprovado!
+          span Este Projeto não foi aprovado!
       - elsif @project.processing?
         - if current_user.present?
           .large-6.large-centered.columns.text-center
