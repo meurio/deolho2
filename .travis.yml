@@ -1,24 +1,22 @@
 language: ruby
 rvm:
-  - 2.2.0
-
+- 2.2.0
 before_script:
-  - "cp config/database.sample.yml config/database.yml"
-  - "psql -c 'create role legislando SUPERUSER LOGIN;' postgres"
-  - "psql -c 'create database legislando_test;' -U legislando postgres"
-  - "bin/rake db:migrate RAILS_ENV=test"
-  - "sh -e /etc/init.d/xvfb start"
-
+- cp config/database.sample.yml config/database.yml
+- psql -c 'create role legislando SUPERUSER LOGIN;' postgres
+- psql -c 'create database legislando_test;' -U legislando postgres
+- bin/rake db:migrate RAILS_ENV=test
+- sh -e /etc/init.d/xvfb start
 env:
-  - DISPLAY=:99.0
-
+- DISPLAY=:99.0
 script:
-  - "bundle exec rspec spec"
-  - "bundle exec scss-lint app/assets/stylesheets/**/*.scss"
-
+- bundle exec rspec spec
+- bundle exec scss-lint app/assets/stylesheets/**/*.scss
 branches:
   only:
-    - master
-
+  - master
 services:
-  - redis-server
+- redis-server
+notifications:
+  slack:
+    secure: ipW8I66xS2WwdiSMkG853N8aJA5lwiF5rBGCcxTswPcKlEOYUuzsxRjTfhhya7hSmz9pkEpFKxXve7XsGrDL7ublTAKjuH85HgIhx+lymTLio2YwzlLfZaM3/Req35RuJmzSW0lCJx6F6zgSS/R3q4mS71jIO67xFR08yaZqQ3k=
