@@ -26,46 +26,59 @@
       |  &middot; #{@project.legislative_chamber}
   .row
     .large-8.large-centered.columns
-      - if @project.processing?
-        = form_for [@project, @signature], data: { abide: true } do |form|
-          .large-6.columns
-            = form.fields_for :user do |user_form|
-              .row
+      - if @project.accepted?
+        .large-12.columns.text-center.accepted
+          = image_tag("icon-vitoria-above.png")
+          h2.head Vitória!
+          span Este Projeto virou Lei!
+      - elsif @project.processing?
+        - if current_user.present?
+          .large-6.large-centered.columns.text-center
+            = link_to "Assinar o projeto", project_signatures_path(@project), id: "cover-sign-project-button", method: :post, class: [:button, :radius, :full]
+        - else
+          = form_for [@project, @signature], data: { abide: true } do |form|
+            .large-6.columns
+              = form.fields_for :user do |user_form|
                 .row
-                  .first-name-field.large-6.columns
-                    = user_form.text_field :first_name, required: true, placeholder: 'Nome'
-                    small.error Nome é obrigatório
-                  .last-name-field.large-6.columns
-                    = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
-                    small.error Sobrenome é obrigatório
-              .row
+                  .row
+                    .first-name-field.large-6.columns
+                      = user_form.text_field :first_name, required: true, placeholder: 'Nome'
+                      small.error Nome é obrigatório
+                    .last-name-field.large-6.columns
+                      = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
+                      small.error Sobrenome é obrigatório
                 .row
-                  .email-field.large-12.columns
-                    = user_form.email_field :email, required: true, placeholder: 'Email'
-                    small.error Email é obrigatório e deve ser válido
-          .large-6.columns
-            = form.submit "Assinar o projeto", id: "cover-new-signature-button", class: [:button, :radius, :full]
-            span.info Prazo de colaboração encerrado há #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
+                  .row
+                    .email-field.large-12.columns
+                      = user_form.email_field :email, required: true, placeholder: 'Email'
+                      small.error Email é obrigatório e deve ser válido
+            .large-6.columns
+              = form.submit "Assinar o projeto", id: "cover-new-signature-button", class: [:button, :radius, :full]
+              span.info Prazo de colaboração encerrado há #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
       - else
-        = form_for [@project, @contribution], data: { abide: true } do |form|
-          = form.fields_for :user do |user_form|
-            .large-6.columns
-              .row
+        - if current_user.present?
+          .large-6.large-centered.columns.text-center
+            = link_to 'Quero co-criar', project_contributions_path(@project), id: "cover-contribution-button", class: [:button, :radius, :full], method: :post, target: :blank
+        - else
+          = form_for [@project, @contribution], data: { abide: true } do |form|
+            = form.fields_for :user do |user_form|
+              .large-6.columns
                 .row
-                  .first-name-field.large-6.columns
-                    = user_form.text_field :first_name, required: true, placeholder: 'Nome'
-                    small.error Nome é obrigatório
-                  .last-name-field.large-6.columns
-                    = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
-                    small.error Sobrenome é obrigatório
-              .row
+                  .row
+                    .first-name-field.large-6.columns
+                      = user_form.text_field :first_name, required: true, placeholder: 'Nome'
+                      small.error Nome é obrigatório
+                    .last-name-field.large-6.columns
+                      = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
+                      small.error Sobrenome é obrigatório
                 .row
-                  .email-field.large-12.columns
-                    = user_form.email_field :email, required: true, placeholder: 'Email'
-                    small.error Email é obrigatório e deve ser válido
-            .large-6.columns
-              = user_form.submit "Quero co-criar!", id: "cover-contribution-submit-button", class: [:button, :radius, :full]
-              span.info Prazo de colaboração encerra em #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
+                  .row
+                    .email-field.large-12.columns
+                      = user_form.email_field :email, required: true, placeholder: 'Email'
+                      small.error Email é obrigatório e deve ser válido
+              .large-6.columns
+                = user_form.submit "Quero co-criar!", id: "cover-contribution-submit-button", class: [:button, :radius, :full]
+                span.info Prazo de colaboração encerra em #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
 
 .steps
   .row
@@ -92,9 +105,13 @@
 
     .large-3.columns.text-center
       .step-number Passo 4
-      = image_tag("icon-locked-fim.png")
-      .step-name Votação
-
+      - if @project.finished?
+        = image_tag("icon-votacao-fim.png")
+        .step-name Votação
+      - else
+        = image_tag("icon-locked-fim.png")
+        .step-name #{ 'Aguardando ' if @project.processing? } Votação
+        
 .row data-equalizer=true
   .large-4.medium-6.columns
     .title
@@ -186,8 +203,12 @@
       = image_tag "icon-parlamentar-pequeno.png"
       h3 Parlamentares que adotaram o Projeto de Lei
     .panel
-      ul.large-block-grid-6.medium-block-grid-4
-        = render @project.adopters
+      - if @project.adopters.any?
+        ul.large-block-grid-6.medium-block-grid-4
+          = render @project.adopters
+      - else
+        .empty
+          p.text-center Nenhum parlamentar adotou este projeto ainda.
 
 .row
   .large-12.columns.user-list
@@ -195,8 +216,12 @@
       = image_tag "icon-contribution.png"
       h3 Cocriadores do Projeto de Lei
     .panel
-      ul.large-block-grid-6.medium-block-grid-4
-        = render @project.contributors
+      - if @project.contributors.any?
+        ul.large-block-grid-6.medium-block-grid-4
+          = render @project.contributors
+      - else
+        .empty
+          p.text-center Este projeto ainda não possui cocriadores.
 
 .row
   .large-12.columns.user-list
@@ -204,8 +229,12 @@
       = image_tag "icon-apoiador-caixa.png"
       h3 Apoiadores do Projeto de Lei
     .panel
-      ul.large-block-grid-6.medium-block-grid-4
-        = render @project.signers
+      - if @project.signers.any?
+        ul.large-block-grid-6.medium-block-grid-4
+          = render @project.signers
+      - else
+        .empty
+          p.text-center Este projeto ainda não possui apoiadores.
 
 #signature-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
