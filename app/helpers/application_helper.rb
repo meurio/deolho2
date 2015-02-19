@@ -33,6 +33,14 @@ module ApplicationHelper
     end
   end
 
+  def accepted_field_class
+    "active" if @project.accepted?
+  end
+
+  def rejected_field_class
+    "active" if @project.rejected? && !@project.accepted?
+  end
+
   def meta_title
     content_for(:meta_title) || t("meta.title")
   end
