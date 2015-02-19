@@ -68,6 +68,21 @@
           .legislative-processing-field.large-8.columns
             = form.label :legislative_processing
             = form.text_area :legislative_processing
+        .row
+          .large-6.columns
+            ul.tabs.small-block-grid-2 data-tab=true
+              li.tab-title.accepted.no-pad.text-center class=accepted_field_class 
+                = link_to 'Aprovado', '#accepted'
+              li.tab-title.rejected.no-pad.text-center class=rejected_field_class 
+                = link_to 'Rejeitado', '#rejected'
+          .large-6.columns
+            .tabs-content
+              #accepted.content.no-pad class=accepted_field_class
+                = form.label :accepted_at
+                = form.text_field :accepted_at, data: { datetimepicker: true }
+              #rejected.content.no-pad class=rejected_field_class
+                = form.label :rejected_at
+                = form.text_field :rejected_at, data: { datetimepicker: true }
 
     dd.accordion-navigation
       a href="#facebook-share-fields" class="icon-facebook" Personalizar o compartilhamento do Facebook
