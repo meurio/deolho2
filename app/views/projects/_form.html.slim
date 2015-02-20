@@ -8,7 +8,8 @@
       small.error O título é obrigatório
     .image-field.large-4.columns
       = form.label :image, class: :required do
-        = "#{t("activerecord.attributes.project.image")}"
+        = "#{t("activerecord.attributes.project.image")} "
+        span.has-tip data-tooltip=true title="Escolha uma imagem impactante que represente seu Projeto de Lei." ?
       = form.file_field :image, required: @project.image.nil?
       small.error A imagem é obrigatória
 
@@ -66,7 +67,9 @@
             = form.text_field :legislative_chamber
 
           .legislative-processing-field.large-8.columns
-            = form.label :legislative_processing
+            = form.label :legislative_processing do
+              = "#{t("activerecord.attributes.project.legislative_processing")} "
+              span.has-tip data-tooltip=true title="Uma vez em tramitação, descreva o estágio atual e os próximos passos do seu PL!" ?
             = form.text_area :legislative_processing
 
     dd.accordion-navigation
@@ -74,15 +77,21 @@
       #facebook-share-fields.content class=facebook_share_fields_class
         .row
           .facebook-share-title-field.large-12.columns
-            = form.label :facebook_share_title
-            = form.text_field :facebook_share_title
+            = form.label :facebook_share_title do
+              = "#{t("activerecord.attributes.project.facebook_share_title")} "
+              span.has-tip data-tooltip=true title="Insira o título que será publicado no post de facebook de todas as pessoas que compartilharem a página do seu PL. Máximo de 66 caracteres." ?
+            = form.text_field :facebook_share_title, maxlength: 66
 
           .facebook-share-description-field.large-12.columns
-            = form.label :facebook_share_description
-            = form.text_area :facebook_share_description
+            = form.label :facebook_share_description do
+              = "#{t("activerecord.attributes.project.facebook_share_description")} "
+              span.has-tip data-tooltip=true title="Agora pense num sub-título que peça diretamente a participação das pessoas. Máximo de 120 caracteres." ?
+            = form.text_area :facebook_share_description, maxlength: 120
 
           .facebook-share-image-field.large-12.columns
-            = form.label :facebook_share_image
+            = form.label :facebook_share_image do
+              = "#{t("activerecord.attributes.project.facebook_share_image")} "
+              span.has-tip data-tooltip=true title="Uma imagem vale mais que mil palavras. Capriche!" ?
             = form.file_field :facebook_share_image
 
     dd.accordion-navigation
@@ -90,7 +99,9 @@
       #twitter-share-fields.content class=twitter_share_fields_class
         .row
           .twitter-share-message-field.large-12.columns
-            = form.label :twitter_share_message
+            = form.label :twitter_share_message do
+              = "#{t("activerecord.attributes.project.twitter_share_message")} "
+              span.has-tip data-tooltip=true title="Personalize aqui o texto que será publicado pelas pessoas que compartilharem a página do seu PL no Twitter. Máximo de 140 caracteres." ?
             = form.text_area :twitter_share_message, maxlength: 140
 
     dd.accordion-navigation
