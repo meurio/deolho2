@@ -58,12 +58,16 @@ module ApplicationHelper
   end
 
   def project_status project
-    if project.processing?
-      "Tramitando"
+    if project.accepted?
+      "Agora é lei!"
+    elsif project.rejected?
+      "Rejeitado"
+    elsif project.processing?
+      "Em tramitação"
     elsif project.adopted?
       "Adotado"
     else
-      "Cocriando"
+      "Em colaboração"
     end
   end
 end

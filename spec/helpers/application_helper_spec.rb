@@ -208,15 +208,31 @@ RSpec.describe ApplicationHelper, :type => :helper do
   end
 
   describe "#project_status" do
-    context "when the project is processing" do
-      let(:project) { Project.make!(legislative_processing: "Any value") }
+    context "when the project was accepted" do
+      let(:project) { Project.make!(accepted_at: Time.now) }
 
-      it "should be 'Tramitando'" do
-        expect(helper.project_status(project)).to be_eql("Tramitando")
+      it "should be 'Agora é lei!'" do
+        expect(helper.project_status(project)).to be_eql("Agora é lei!")
       end
     end
 
-    context "when the process is adopted" do
+    context "when the project was rejected" do
+      let(:project) { Project.make!(rejected_at: Time.now) }
+
+      it "should be 'Rejeitado'" do
+        expect(helper.project_status(project)).to be_eql("Rejeitado")
+      end
+    end
+
+    context "when the project is processing" do
+      let(:project) { Project.make!(legislative_processing: "Any value") }
+
+      it "should be 'Em tramitação'" do
+        expect(helper.project_status(project)).to be_eql("Em tramitação")
+      end
+    end
+
+    context "when the process was adopted" do
       let(:project) { Project.make! }
       before { Adoption.make!(project: project) }
 
@@ -228,8 +244,8 @@ RSpec.describe ApplicationHelper, :type => :helper do
     context "when the project is open for contribution" do
       let(:project) { Project.make! }
 
-      it "should be 'Cocriando'" do
-        expect(helper.project_status(project)).to be_eql("Cocriando")
+      it "should be 'Em colaboração'" do
+        expect(helper.project_status(project)).to be_eql("Em colaboração")
       end
     end
   end
