@@ -301,5 +301,12 @@
     p
       | Obrigad@ por participar da criação desse projeto de lei. Agora você também faz parte da construção
       |  coletiva desse sonho. Quanto mais pessoas apoiarem essa iniciativa popular, mais fortes chegaremos à
-      |  sua aprovação. Compartilhe agora com seus amigos e traga mais gente pra essa nossa causa!
+      |  sua aprovação.
+    p
+      | Compartilhe agora com seus amigos e traga mais gente pra essa nossa causa!
+    p.no-margin.text-center
+      = link_to "Compartilhe no Facebook", "#", class: ['share-on-facebook-button', :button, :radius, "no-margin"], data: { href: "https://www.facebook.com/sharer/sharer.php?u=#{URI::encode(project_url(@project))}" }
+      | &nbsp;
+      = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius, "no-margin"], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.twitter_share_message.present? ? @project.twitter_share_message : @project.title}" }
+
   a.close-reveal-modal &#215;
