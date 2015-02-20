@@ -116,7 +116,7 @@
       - else
         = image_tag("icon-locked-fim.png")
         .step-name #{ 'Aguardando ' if @project.processing? } Votação
-        
+
 .row data-equalizer=true
   .large-4.medium-6.columns
     .title
@@ -295,5 +295,11 @@
   a.close-reveal-modal &#215;
 
 .thanks-for-signing-this-project.small.reveal-modal data={ reveal: true }
-  p.lead Obrigado por apoiar este projeto!
+  - if @project.taf_message.present?
+    = simple_format @project.taf_message
+  - else
+    p
+      | Obrigad@ por participar da criação desse projeto de lei. Agora você também faz parte da construção
+      |  coletiva desse sonho. Quanto mais pessoas apoiarem essa iniciativa popular, mais fortes chegaremos à
+      |  sua aprovação. Compartilhe agora com seus amigos e traga mais gente pra essa nossa causa!
   a.close-reveal-modal &#215;

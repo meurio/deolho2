@@ -74,9 +74,9 @@
         .row
           .large-6.columns
             ul.tabs.small-block-grid-2 data-tab=true
-              li.tab-title.accepted.no-pad.text-center class=accepted_field_class 
+              li.tab-title.accepted.no-pad.text-center class=accepted_field_class
                 = link_to 'Aprovado', '#accepted'
-              li.tab-title.rejected.no-pad.text-center class=rejected_field_class 
+              li.tab-title.rejected.no-pad.text-center class=rejected_field_class
                 = link_to 'Rejeitado', '#rejected'
           .large-6.columns
             .tabs-content
@@ -138,7 +138,7 @@
           .taf-message-field.large-12.columns
             = form.label :taf_message do
               = "#{t("activerecord.attributes.project.taf_message")} "
-              span.has-tip data-tooltip=true title="Esse é o texto que aparece para o usuário que co-criou ou apoiou o projeto de lei" ?
+              span.has-tip data-tooltip=true title="Esse é o texto que aparece para os usuários imediatamente após terem co-criado ou apoiado o seu PL. É importante agradecer pela participação e pedir pra que compartilhem em suas redes para que mais pessoas apoiem e participem da criação desse PL. Os botões e links de compartilhamento entrarão automaticamente." ?
             = form.text_area :taf_message
 
   hr
