@@ -14,6 +14,16 @@
   }
 }
 
+.tab-title.accepted.active a {
+  background-color: $dark-green;
+  color: white;
+}
+
+.tab-title.rejected.active a {
+  background-color: red;
+  color: white;
+}
+
 .reveal-modal {
   @include border-radius(10px);
 
@@ -90,6 +100,10 @@ footer {
 
 .no-margin {
   margin: 0;
+}
+
+.no-pad {
+  padding: 0 !important;
 }
 
 .required {

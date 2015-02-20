@@ -101,6 +101,55 @@ RSpec.describe ApplicationHelper, :type => :helper do
     end
   end
 
+  describe "#accepted_field_class" do
+    context "when the project is accepted" do
+      let(:project) { Project.make!(accepted_at: Time.now) }
+
+      it "should be 'active'" do
+        assign(:project, project)
+        expect(helper.accepted_field_class).to eql("active")
+      end
+    end
+
+    context "when the project is not accepted" do
+      let(:project) { Project.make! }
+
+      it "should be nil" do
+        assign(:project, project)
+        expect(helper.accepted_field_class).to be_nil
+      end
+    end
+  end
+
+  describe "#rejected_field_class" do
+    context "when the project is rejected" do
+      let(:project) { Project.make!(rejected_at: Time.now) }
+
+      it "should be 'active'" do
+        assign(:project, project)
+        expect(helper.rejected_field_class).to eql("active")
+      end
+    end
+
+    context "when the project is accepted" do
+      let(:project) { Project.make!(accepted_at: Time.now) }
+
+      it "should be nil" do
+        assign(:project, project)
+        expect(helper.rejected_field_class).to be_nil
+      end
+    end
+
+    context "when the project is not finished" do
+      let(:project) { Project.make! }
+
+      it "should be nil" do
+        assign(:project, project)
+        expect(helper.rejected_field_class).to be_nil
+      end
+    end
+  end
+
   describe "#meta_title" do
     context "when there is content_for :meta_title" do
       let(:title) { "My title" }
@@ -154,6 +203,33 @@ RSpec.describe ApplicationHelper, :type => :helper do
     context "when there is no content_for :meta_image" do
       it "should be the default meta_image" do
         expect(helper.meta_image).to include(asset_url("legislando.png"))
+      end
+    end
+  end
+
+  describe "#project_status" do
+    context "when the project is processing" do
+      let(:project) { Project.make!(legislative_processing: "Any value") }
+
+      it "should be 'Tramitando'" do
+        expect(helper.project_status(project)).to be_eql("Tramitando")
+      end
+    end
+
+    context "when the process is adopted" do
+      let(:project) { Project.make! }
+      before { Adoption.make!(project: project) }
+
+      it "should be 'Adotado'" do
+        expect(helper.project_status(project)).to be_eql("Adotado")
+      end
+    end
+
+    context "when the project is open for contribution" do
+      let(:project) { Project.make! }
+
+      it "should be 'Cocriando'" do
+        expect(helper.project_status(project)).to be_eql("Cocriando")
       end
     end
   end

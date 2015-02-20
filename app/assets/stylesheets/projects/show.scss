@@ -35,7 +35,8 @@ body.projects.show {
       width: 100%;
     }
   }
-  .accepted {
+  .accepted,
+  .rejected {
     h2 {
       color: white;
       font-weight: bold;
