@@ -58,7 +58,7 @@
             .medium-6.columns
               = form.submit "Assinar o projeto", id: "cover-new-signature-button", class: [:button, :radius, :full]
               span.info Prazo de colaboração encerrado há #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
-      - else
+      - elsif @project.open?
         - if current_user.present?
           .medium-6.medium-centered.columns.text-center
             = link_to 'Quero co-criar', project_contributions_path(@project), id: "cover-contribution-button", class: [:button, :radius, :full], method: :post, target: :blank
@@ -168,10 +168,11 @@
               strong Co-autores
               span.number= @project.contributors.count
           .cta.large-5.medium-5.columns
-            - if current_user.present?
-              = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius], method: :post, target: :blank
-            - else
-              = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius], data: { "reveal-id" => "contribution-form" }
+            - if @project.open?
+              - if current_user.present?
+                = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius], method: :post, target: :blank
+              - else
+                = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius], data: { "reveal-id" => "contribution-form" }
 
       .row
         .item.large-12.medium-12.columns

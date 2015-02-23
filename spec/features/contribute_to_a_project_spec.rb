@@ -4,12 +4,22 @@ RSpec.feature "Contribute to a project" do
   let(:project) { Project.make! google_drive_url: root_path }
   let(:user) { User.make! }
 
-  scenario "when I'm logged in" do
-    login user, "feature"
-    visit project_path(project)
-    click_link "contribution-button"
+  context "when I'm logged in" do
+    scenario "when the project is open for contribution" do
+      login user, "feature"
+      visit project_path(project)
+      click_link "contribution-button"
 
-    expect(project.contributors).to include(user)
+      expect(project.contributors).to include(user)
+    end
+
+    scenario "when the project is close for contribution" do
+      project = Project.make! closes_for_contribution_at: Time.now
+      login user, "feature"
+      visit project_path(project)
+
+      expect(page).to_not have_css("#contribution-button")
+    end
   end
 
   context "when I'm not logged in" do
