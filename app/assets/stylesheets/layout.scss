@@ -88,6 +88,12 @@
 .meurio_header {
   margin-bottom: rem-calc(40);
 
+  .meurio_apps {
+    @include grid-column(4);
+  }
+  .application_menu {
+    @include grid-column(8);
+  }
   .alert {
     display: none;
   }
@@ -118,4 +124,31 @@ footer {
 
 .orbit-timer {
   display: none;
+}
+
+@media #{$medium-down} {
+  .meurio_header .meurio_apps_and_application_menu .meurio_apps .current_app span {
+    display: none;    
+  }
+  .meurio_header .top-bar {
+    section.top-bar-section ul.left {
+      display: none;
+    }
+    ul.title-area {
+      li.toggle-topbar.icon-list:before {
+        color:white;
+        font-size:2rem;
+        cursor:pointer;
+      }
+      li.name {
+        border: 0;        
+      }
+    }
+  }
+}
+
+@media #{$small-only} {
+  .meurio_header .application_menu { 
+    display: none;
+  }
 }
