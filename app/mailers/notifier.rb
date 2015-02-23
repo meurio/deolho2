@@ -4,6 +4,7 @@ class Notifier < ApplicationMailer
   def thanks_for_contributing contribution
     @user = contribution.user
     @project = contribution.project
+    @organization = @project.organization
 
     mail(
       to: @user.email,
@@ -15,6 +16,7 @@ class Notifier < ApplicationMailer
   def thanks_for_signing signature
     @user = signature.user
     @project = signature.project
+    @organization = @project.organization
 
     mail(
       to: @user.email,
