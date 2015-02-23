@@ -38,31 +38,29 @@
           span Este Projeto não foi aprovado!
       - elsif @project.processing?
         - if current_user.present?
-          .large-6.large-centered.columns.text-center
+          .medium-6.medium-centered.columns.text-center
             = link_to "Assinar o projeto", project_signatures_path(@project), id: "cover-sign-project-button", method: :post, class: [:button, :radius, :full]
         - else
           = form_for [@project, @signature], data: { abide: true } do |form|
-            .large-6.columns
+            .medium-6.columns
               = form.fields_for :user do |user_form|
+                .row.collapse
+                  .first-name-field.large-6.columns
+                    = user_form.text_field :first_name, required: true, placeholder: 'Nome'
+                    small.error Nome é obrigatório
+                  .last-name-field.large-6.columns
+                    = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
+                    small.error Sobrenome é obrigatório
                 .row
-                  .row
-                    .first-name-field.large-6.columns
-                      = user_form.text_field :first_name, required: true, placeholder: 'Nome'
-                      small.error Nome é obrigatório
-                    .last-name-field.large-6.columns
-                      = user_form.text_field :last_name, required: true, placeholder: 'Sobrenome'
-                      small.error Sobrenome é obrigatório
-                .row
-                  .row
-                    .email-field.large-12.columns
-                      = user_form.email_field :email, required: true, placeholder: 'Email'
-                      small.error Email é obrigatório e deve ser válido
-            .large-6.columns
+                  .email-field.large-12.columns
+                    = user_form.email_field :email, required: true, placeholder: 'Email'
+                    small.error Email é obrigatório e deve ser válido
+            .medium-6.columns
               = form.submit "Assinar o projeto", id: "cover-new-signature-button", class: [:button, :radius, :full]
               span.info Prazo de colaboração encerrado há #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
       - else
         - if current_user.present?
-          .large-6.large-centered.columns.text-center
+          .medium-6.medium-centered.columns.text-center
             = link_to 'Quero co-criar', project_contributions_path(@project), id: "cover-contribution-button", class: [:button, :radius, :full], method: :post, target: :blank
         - else
           = form_for [@project, @contribution], data: { abide: true } do |form|
@@ -87,12 +85,12 @@
 
 .steps
   .row
-    .large-3.columns.text-center
+    .step.large-3.medium-3.columns.text-center
       .step-number Passo 1
       = image_tag("icon-colab-fim.png")
       .step-name Colaboração
 
-    .large-3.columns.text-center
+    .step.large-3.medium-3.columns.text-center
       .step-number Passo 2
       - if @project.adopted?
         = image_tag("icon-adocao-on.png")
@@ -100,7 +98,7 @@
         = image_tag("icon-locked-fim.png")
       .step-name Adoção parlamentar
 
-    .large-3.columns.text-center
+    .step.large-3.medium-3.columns.text-center
       .step-number Passo 3
       - if @project.processing?
         = image_tag("icon-tramite-fim.png")
@@ -108,7 +106,7 @@
         = image_tag("icon-locked-fim.png")
       .step-name Tramitação legislativa
 
-    .large-3.columns.text-center
+    .step.large-3.medium-3.columns.text-center
       .step-number Passo 4
       - if @project.finished?
         = image_tag("icon-votacao-fim.png")
