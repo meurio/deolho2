@@ -54,6 +54,9 @@ body.projects.show {
     color: white;
     margin-bottom: rem-calc(40);
     padding: rem-calc(25) 0;
+    .step {
+      margin-bottom: 2em;
+    }
     .step-number {
       font-size: rem-calc(14);
     }
@@ -86,6 +89,7 @@ body.projects.show {
         }
       }
       .data-container {
+        margin-bottom: .5em;
         padding-left: 0;
         img {
           width: 50px;
@@ -160,6 +164,22 @@ body.projects.show {
         width: 50px;
         @include border-radius(50%);
       }
+    }
+  }
+}
+
+@media #{$large-up} {
+  body.projects.show {
+    form .row.collapse {
+      .first-name-field {
+        padding-right: .5em;
+      }
+      .last-name-field {
+        padding-left: .5em;
+      }
+    }
+    .step {
+      margin-bottom: 0 !important;
     }
   }
 }
