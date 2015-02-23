@@ -2,9 +2,7 @@ class Notifier < ApplicationMailer
   default from: "contato@nossascidades.org"
 
   def thanks_for_contributing contribution
-    @user = contribution.user
-    @project = contribution.project
-    @organization = @project.organization
+    set_variables contribution
 
     mail(
       to: @user.email,
@@ -14,14 +12,19 @@ class Notifier < ApplicationMailer
   end
 
   def thanks_for_signing signature
-    @user = signature.user
-    @project = signature.project
-    @organization = @project.organization
+    set_variables signature
 
     mail(
       to: @user.email,
       subject: "Oba, você está apoiando nosso Projeto de Lei!",
       from: @project.user.email
     )
+  end
+
+  private
+  def set_variables resource
+    @user = resource.user
+    @project = resource.project
+    @organization = @project.organization
   end
 end
