@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/meurio/meurio_ui.git
-  revision: 8a99a73dd786a966443a0c50c422ae027acc5589
+  revision: 75c80a0df122701a9c35fd887d4461b8f3eada9f
   branch: new-header
   specs:
     meurio_ui (1.5.0)
