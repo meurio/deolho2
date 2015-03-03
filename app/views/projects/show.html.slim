@@ -118,7 +118,7 @@
 - if can? :create, Adoption
   .row.admin-only
     .large-12.columns
-      = link_to 'Adicionar um parlamentar', '#adoption-form', id: "adopt-project-button", class: [:button, :radius], "data-reveal-id" => "adoption-form", "data-reveal" => true
+      = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius], "data-reveal-id" => "adoption-form", "data-reveal" => true
 
 .row data-equalizer=true
   .large-4.medium-6.columns
@@ -211,7 +211,7 @@
       = raw @project.google_drive_embed
 
 .row
-  .large-12.columns.user-list
+  #adopters.large-12.columns.user-list
     .title
       = image_tag "icon-parlamentar-pequeno.png"
       h3 Parlamentares que adotaram o Projeto de Lei
@@ -325,7 +325,7 @@
     .title
       = image_tag "icon-parlamentar.png"
       h2 Adicionar um parlamentar a este PL
-    = form_for [@project, @contribution], data: { abide: true } do |form|
+    = form_for [@project, @adoption], data: { abide: true } do |form|
       = form.fields_for :user do |user_form|
         .row
           .first-name-field.large-6.columns
@@ -343,5 +343,5 @@
             small.error Email é obrigatório e deve ser válido
         .row
           .text-right.large-12.columns
-            = user_form.submit "Adicionar", id: "adoption-form-button", class: [:button, :radius, "no-margin"]
+            = user_form.submit "Adicionar", id: "adoption-submit-button", class: [:button, :radius, "no-margin"]
 
