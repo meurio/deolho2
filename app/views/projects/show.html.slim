@@ -24,7 +24,7 @@
       |  &middot; no ar há #{distance_of_time_in_words_to_now @project.created_at}
       |  &middot; #{@project.organization.city}
       |  &middot; #{@project.legislative_chamber}
-  .row
+  .row#cover-forms
     .large-8.large-centered.columns
       - if @project.accepted?
         .large-12.columns.text-center.accepted
@@ -83,7 +83,7 @@
                 = user_form.submit "Quero co-criar!", id: "cover-contribution-submit-button", class: [:button, :radius, :full]
                 span.info Prazo de colaboração encerra em #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
 
-.steps
+.steps#steps
   .row
     .step.large-3.medium-3.columns.text-center
       .step-number Passo 1
@@ -313,3 +313,10 @@
       = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius, "no-margin"], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.twitter_share_message.present? ? @project.twitter_share_message : @project.title}" }
 
   a.close-reveal-modal &#215;
+
+ol.joyride-list data-joyride=true
+  li data-id="cover-forms" data-text="Próximo"
+    p Hello and welcome to the Joyride
+  li data-id="steps" data-prev-text="Anterior" data-text="Próximo"
+    h4 Stop #1
+    p You can control all the details for you tour stop. Any valid HTML will work inside of Joyride.

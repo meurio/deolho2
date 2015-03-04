@@ -32,6 +32,8 @@ $(function(){
   	}
   });
 
+	$(document).foundation('joyride', 'start');
+
 	$('[data-datetimepicker]').datetimepicker({
     lang: 'pt',
     format: 'd/m/Y H:i'
