@@ -115,6 +115,11 @@
         = image_tag("icon-locked-fim.png")
         .step-name #{ 'Aguardando ' if @project.processing? } Votação
 
+- if can? :create, Adoption
+  .row.admin-only
+    .large-12.columns
+      = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius], "data-reveal-id" => "adoption-form", "data-reveal" => true
+
 .row data-equalizer=true
   .large-4.medium-6.columns
     .title
@@ -206,7 +211,7 @@
       = raw @project.google_drive_embed
 
 .row
-  .large-12.columns.user-list
+  #adopters.large-12.columns.user-list
     .title
       = image_tag "icon-parlamentar-pequeno.png"
       h3 Parlamentares que adotaram o Projeto de Lei
@@ -313,6 +318,32 @@
       = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius, "no-margin"], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.twitter_share_message.present? ? @project.twitter_share_message : @project.title}" }
 
   a.close-reveal-modal &#215;
+
+- if can? :create, Adoption
+  #adoption-form.reveal-modal.small data={ reveal: true }
+    a.close-reveal-modal &#215;
+    .title
+      = image_tag "icon-parlamentar.png"
+      h2 Adicionar um parlamentar a este PL
+    = form_for [@project, @adoption], data: { abide: true } do |form|
+      = form.fields_for :user do |user_form|
+        .row
+          .first-name-field.large-6.columns
+            = user_form.label :first_name, "Nome"
+            = user_form.text_field :first_name, required: true
+            small.error Nome é obrigatório
+          .last-name-field.large-6.columns
+            = user_form.label :last_name, "Sobrenome"
+            = user_form.text_field :last_name, required: true
+            small.error Sobrenome é obrigatório
+        .row
+          .email-field.large-12.columns
+            = user_form.label :email, "Email"
+            = user_form.email_field :email, required: true
+            small.error Email é obrigatório e deve ser válido
+        .row
+          .text-right.large-12.columns
+            = user_form.submit "Adicionar", id: "adoption-submit-button", class: [:button, :radius, "no-margin"]
 
 ol.joyride-list data-joyride=true
   li data-id="cover-forms" data-text="Próximo"

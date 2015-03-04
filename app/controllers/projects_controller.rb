@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @signature = Signature.new
     @contribution = Contribution.new
+    @adoption = Adoption.new
   end
 
   def project_params
