@@ -32,8 +32,7 @@ $(function(){
     	equalize_on_stack: true
   	},
 		joyride: {
-			// cookie_monster: true,
-			start_offset: 0
+			cookie_monster: true
 		}
   });
 
