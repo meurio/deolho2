@@ -38,3 +38,4 @@ gem 'scss-lint', group: [:test, :development]
 # Rails assets
 source 'https://rails-assets.org'
 gem 'rails-assets-datetimepicker'
+gem 'rails-assets-jquery.cookie'
