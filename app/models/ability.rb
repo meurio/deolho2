@@ -9,6 +9,7 @@ class Ability
     if user && user.admin?
       can :close_for_contribution, Project
       can :reopen_for_contribution, Project
+      can :create, Adoption
       can :manage, Project
     end
   end
