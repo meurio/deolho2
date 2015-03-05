@@ -162,7 +162,7 @@
             = image_tag "icon-parlamentar.png"
             .data
               strong Parlamentares
-              span.number= @project.adopters.count
+              span.number= @project.adoptions.count
           .cta.large-5.medium-5.columns
             = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius, 'joyride-step5'], "data-reveal-id" => "adopt", "data-reveal" => true
 
@@ -172,7 +172,7 @@
             = image_tag "icon-coautor-caixa.png"
             .data
               strong Co-autores
-              span.number= @project.contributors.count
+              span.number= @project.contributions.count
           .cta.large-5.medium-5.columns
             - if @project.open?
               - if current_user.present?
@@ -186,7 +186,7 @@
             = image_tag "icon-apoiador-caixa.png"
             .data
               strong Apoiadores
-              span.number= @project.signers.count
+              span.number= @project.signatures.count
           .cta.large-5.medium-5.columns
             - if current_user.present?
               - if current_user.signed?(@project)
@@ -211,7 +211,7 @@
       = image_tag "icon-parlamentar-pequeno.png"
       h3 Parlamentares que adotaram o Projeto de Lei
     .panel
-      - if @project.adopters.any?
+      - if @project.adoptions.any?
         ul.large-block-grid-6.medium-block-grid-4
           = render @project.adopters
       - else
@@ -224,7 +224,7 @@
       = image_tag "icon-contribution.png"
       h3 Cocriadores do Projeto de Lei
     .panel
-      - if @project.contributors.any?
+      - if @project.contributions.any?
         ul.large-block-grid-6.medium-block-grid-4
           = render @project.contributors
       - else
@@ -237,7 +237,7 @@
       = image_tag "icon-apoiador-caixa.png"
       h3 Apoiadores do Projeto de Lei
     .panel
-      - if @project.signers.any?
+      - if @project.signatures.any?
         ul.large-block-grid-6.medium-block-grid-4
           = render @project.signers
       - else
