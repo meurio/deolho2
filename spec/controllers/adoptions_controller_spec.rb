@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe AdoptionsController, :type => :controller do
-  describe "POST create" do
-    let(:user){ User.make! }
-    let(:admin) { User.make! admin: true }
-    let(:project) { Project.make! }
+  let(:user){ User.make! }
+  let(:admin) { User.make! admin: true }
+  let(:project) { Project.make! }
 
+  describe "POST create" do
     context "when I'm an admin" do
       before { login admin, "controller" }
 
@@ -63,6 +63,27 @@ RSpec.describe AdoptionsController, :type => :controller do
         expect {
           post(:create, project_id: project.id, adoption: { user: { email: user.email } })
         }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+  end
+
+  describe "DELETE destroy" do
+    context "when I'm an admin" do
+      before do
+        login admin, "controller"
+        @project = Project.make!
+        @adoption = Adoption.make! project: @project
+      end
+
+      it "should delete the adoption" do
+        expect {
+          delete(:destroy, project_id: @adoption.project.id, id: @adoption.id)
+        }.to change{ Adoption.count }.from(1).to(0)
+      end
+
+      it "should redirect to the project page" do
+        delete(:destroy, project_id: @adoption.project.id, id: @adoption.id)
+        expect(response).to redirect_to project_path(@project, anchor: "adopters")
       end
     end
   end

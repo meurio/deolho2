@@ -116,11 +116,6 @@
         = image_tag("icon-locked-fim.png")
         .step-name #{ 'Aguardando ' if @project.processing? } Votação
 
-- if can? :create, Adoption
-  .row.admin-only
-    .large-12.columns
-      = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius], "data-reveal-id" => "adoption-form", "data-reveal" => true
-
 .row data-equalizer=true
   .large-4.medium-6.columns
     .title
@@ -162,7 +157,7 @@
             = image_tag "icon-parlamentar.png"
             .data
               strong Parlamentares
-              span.number= @project.adopters.count
+              span.number= @adoptions.count
           .cta.large-5.medium-5.columns
             = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius, 'joyride-step5'], "data-reveal-id" => "adopt", "data-reveal" => true
 
@@ -172,7 +167,7 @@
             = image_tag "icon-coautor-caixa.png"
             .data
               strong Co-autores
-              span.number= @project.contributors.count
+              span.number= @contributions.count
           .cta.large-5.medium-5.columns
             - if @project.open?
               - if current_user.present?
@@ -186,7 +181,7 @@
             = image_tag "icon-apoiador-caixa.png"
             .data
               strong Apoiadores
-              span.number= @project.signers.count
+              span.number= @signatures.count
           .cta.large-5.medium-5.columns
             - if current_user.present?
               - if current_user.signed?(@project)
@@ -211,12 +206,16 @@
       = image_tag "icon-parlamentar-pequeno.png"
       h3 Parlamentares que adotaram o Projeto de Lei
     .panel
-      - if @project.adopters.any?
+      - if @adoptions.any?
         ul.large-block-grid-6.medium-block-grid-4
-          = render @project.adopters
+          = render @adoptions
       - else
         .empty
           p.text-center Nenhum parlamentar adotou este projeto ainda.
+    - if can?(:create, Adoption)
+      .row
+        .large-12.columns.admin-only.text-center
+          = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius], "data-reveal-id" => "adoption-form", "data-reveal" => true
 
 .row
   .large-12.columns.user-list
@@ -224,9 +223,10 @@
       = image_tag "icon-contribution.png"
       h3 Cocriadores do Projeto de Lei
     .panel
-      - if @project.contributors.any?
+      - if @contributions.any?
         ul.large-block-grid-6.medium-block-grid-4
-          = render @project.contributors
+          - @contributions.each do |contribution|
+            = render contribution.user
       - else
         .empty
           p.text-center Este projeto ainda não possui cocriadores.
@@ -237,9 +237,10 @@
       = image_tag "icon-apoiador-caixa.png"
       h3 Apoiadores do Projeto de Lei
     .panel
-      - if @project.signers.any?
+      - if @signatures.any?
         ul.large-block-grid-6.medium-block-grid-4
-          = render @project.signers
+          - @signatures.each do |signature|
+            = render signature.user
       - else
         .empty
           p.text-center Este projeto ainda não possui apoiadores.

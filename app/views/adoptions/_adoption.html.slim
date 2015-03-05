@@ -1,0 +1,7 @@
+li.user.adoption id="adoption-#{adoption.id}"
+  = link_to user_path(adoption.user) do
+    = image_tag adoption.user.avatar_url
+    .name title=adoption.user.name = truncate(adoption.user.name, length: 20)
+  - if can?(:delete, adoption)
+    = link_to project_adoption_path(adoption.project, adoption), method: :delete, id: "remove-adoption-#{adoption.id}", class: "remove-adoption-button" do
+      .icon-close &nbsp;

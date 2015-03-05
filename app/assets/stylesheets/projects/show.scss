@@ -160,15 +160,29 @@ body.projects.show {
     }
     li.user {
       .name {
-        color: $yellow;
+        color: $text-gray;
         display: inline;
+        line-height: 25px;
       }
       img {
         float: left;
         margin-right: 0.5em;
-        width: 50px;
+        width: 25px;
+        height: 25px;
         @include border-radius(50%);
       }
+    }
+  }
+
+  li.adoption {
+    position: relative;
+
+    .remove-adoption-button {
+      position: absolute;
+      font-size: rem-calc(10);
+      right: 0;
+      top: 0;
+      color: $text-gray;
     }
   }
 

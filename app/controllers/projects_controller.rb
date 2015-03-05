@@ -31,6 +31,9 @@ class ProjectsController < ApplicationController
     @signature = Signature.new
     @contribution = Contribution.new
     @adoption = Adoption.new
+    @signatures = @project.signatures.includes(:user)
+    @contributions = @project.contributions.includes(:user)
+    @adoptions = @project.adoptions.includes(:user)
   end
 
   def project_params
