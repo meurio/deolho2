@@ -2,7 +2,9 @@ class AdoptionsController < ApplicationController
   authorize_resource
 
   def create
-    user = User.create_with(adoption_params[:user].merge(password: SecureRandom.hex)).find_or_create_by(email: adoption_params[:user][:email])
+    user = User.find_by(email: user_params[:email]) ||
+      User.create(user_params.merge(password: SecureRandom.hex))
+
     project = Project.find(params[:project_id])
     adoption = project.adoptions.create user: user
 
@@ -13,5 +15,9 @@ class AdoptionsController < ApplicationController
     if params[:adoption].present?
       params.require(:adoption).permit(user: [:first_name, :last_name, :email])
     end
+  end
+
+  def user_params
+    adoption_params[:user]
   end
 end
