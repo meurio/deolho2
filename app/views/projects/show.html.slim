@@ -116,11 +116,6 @@
         = image_tag("icon-locked-fim.png")
         .step-name #{ 'Aguardando ' if @project.processing? } Votação
 
-- if can? :create, Adoption
-  .row.admin-only
-    .large-12.columns
-      = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius], "data-reveal-id" => "adoption-form", "data-reveal" => true
-
 .row data-equalizer=true
   .large-4.medium-6.columns
     .title
@@ -218,6 +213,10 @@
       - else
         .empty
           p.text-center Nenhum parlamentar adotou este projeto ainda.
+    - if can?(:create, Adoption)
+      .row
+        .large-12.columns.admin-only.text-center
+          = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius], "data-reveal-id" => "adoption-form", "data-reveal" => true
 
 .row
   .large-12.columns.user-list
