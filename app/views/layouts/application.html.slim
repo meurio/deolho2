@@ -6,7 +6,6 @@ html
     = favicon_link_tag 'favicon.png'
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'vendor/modernizr'
-    = javascript_include_tag 'application'
     = meurio_ui_assets
     = csrf_meta_tags
 
@@ -41,3 +40,5 @@ html
         |  email #{mail_to 'legislando@nossascidades.org'} pra gente te mandar as instruções de como proceder,
         |  ok?! ;)
       a.close-reveal-modal &#215
+
+    = javascript_include_tag 'application'
