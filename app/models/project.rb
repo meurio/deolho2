@@ -24,7 +24,7 @@ class Project < ActiveRecord::Base
   end
 
   def adopted?
-    adopters.any?
+    adoptions.any?
   end
 
   def accepted?
