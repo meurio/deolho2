@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     resources :signatures, only: [:create]
     resources :contributions, only: [:create]
-    resources :adoptions, only: [:create]
+    resources :adoptions, only: [:create, :destroy]
   end
 
   get 'about' => 'pages#about'

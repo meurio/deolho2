@@ -208,8 +208,7 @@
     .panel
       - if @adoptions.any?
         ul.large-block-grid-6.medium-block-grid-4
-          - @adoptions.each do |adoption|
-            = render adoption.user
+          = render @adoptions
       - else
         .empty
           p.text-center Nenhum parlamentar adotou este projeto ainda.

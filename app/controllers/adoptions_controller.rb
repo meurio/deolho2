@@ -11,6 +11,12 @@ class AdoptionsController < ApplicationController
     redirect_to project_path(project, anchor: "adopters")
   end
 
+  def destroy
+    Adoption.find(params[:id]).destroy
+    project = Project.find(params[:project_id])
+    redirect_to project_path(project, anchor: "adopters")
+  end
+
   def adoption_params
     if params[:adoption].present?
       params.require(:adoption).permit(user: [:first_name, :last_name, :email])
