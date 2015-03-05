@@ -153,24 +153,6 @@ body.projects.show {
       vertical-align: middle;
     }
   }
-  .user-list {
-    margin-top: rem-calc(40);
-    .panel {
-      padding-bottom: 0;
-    }
-    li.user {
-      .name {
-        color: $yellow;
-        display: inline;
-      }
-      img {
-        float: left;
-        margin-right: 0.5em;
-        width: 50px;
-        @include border-radius(50%);
-      }
-    }
-  }
 
   .joyride-content-wrapper {
     p {
