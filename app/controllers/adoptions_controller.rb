@@ -6,7 +6,7 @@ class AdoptionsController < ApplicationController
       User.create(user_params.merge(password: SecureRandom.hex))
 
     project = Project.find(params[:project_id])
-    adoption = project.adoptions.create user: user
+    adoption = project.adoptions.create user_id: user.id
 
     redirect_to project_path(project, anchor: "adopters")
   end
