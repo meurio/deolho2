@@ -162,7 +162,7 @@
             = image_tag "icon-parlamentar.png"
             .data
               strong Parlamentares
-              span.number= @project.adoptions.count
+              span.number= @adoptions.count
           .cta.large-5.medium-5.columns
             = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius, 'joyride-step5'], "data-reveal-id" => "adopt", "data-reveal" => true
 
@@ -172,7 +172,7 @@
             = image_tag "icon-coautor-caixa.png"
             .data
               strong Co-autores
-              span.number= @project.contributions.count
+              span.number= @contributions.count
           .cta.large-5.medium-5.columns
             - if @project.open?
               - if current_user.present?
@@ -186,7 +186,7 @@
             = image_tag "icon-apoiador-caixa.png"
             .data
               strong Apoiadores
-              span.number= @project.signatures.count
+              span.number= @signatures.count
           .cta.large-5.medium-5.columns
             - if current_user.present?
               - if current_user.signed?(@project)
@@ -204,6 +204,48 @@
       h3 Veja o Projeto de Lei colaborativo
     .panel.preview
       = raw @project.google_drive_embed
+
+.row
+  #adopters.large-12.columns.user-list
+    .title
+      = image_tag "icon-parlamentar-pequeno.png"
+      h3 Parlamentares que adotaram o Projeto de Lei
+    .panel
+      - if @adoptions.any?
+        ul.large-block-grid-6.medium-block-grid-4
+          - @adoptions.each do |adoption|
+            = render adoption.user
+      - else
+        .empty
+          p.text-center Nenhum parlamentar adotou este projeto ainda.
+
+.row
+  .large-12.columns.user-list
+    .title
+      = image_tag "icon-contribution.png"
+      h3 Cocriadores do Projeto de Lei
+    .panel
+      - if @contributions.any?
+        ul.large-block-grid-6.medium-block-grid-4
+          - @contributions.each do |contribution|
+            = render contribution.user
+      - else
+        .empty
+          p.text-center Este projeto ainda não possui cocriadores.
+
+.row
+  .large-12.columns.user-list
+    .title
+      = image_tag "icon-apoiador-caixa.png"
+      h3 Apoiadores do Projeto de Lei
+    .panel
+      - if @signatures.any?
+        ul.large-block-grid-6.medium-block-grid-4
+          - @signatures.each do |signature|
+            = render signature.user
+      - else
+        .empty
+          p.text-center Este projeto ainda não possui apoiadores.
 
 #signature-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
