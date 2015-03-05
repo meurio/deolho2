@@ -15,6 +15,7 @@
 //= require foundation
 //= require meurio_ui
 //= require datetimepicker
+//= require jquery.cookie
 //= require_tree .
 
 $(function(){
@@ -29,8 +30,13 @@ $(function(){
 		},
 		equalizer: {
     	equalize_on_stack: true
-  	}
+  	},
+		joyride: {
+			cookie_monster: true
+		}
   });
+
+	$(document).foundation('joyride', 'start');
 
 	$('[data-datetimepicker]').datetimepicker({
     lang: 'pt',

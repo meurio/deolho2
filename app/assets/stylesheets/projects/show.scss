@@ -17,7 +17,7 @@ body.projects.show {
       font-size: rem-calc(40);
       text-align: center;
     }
-    p.info, 
+    p.info,
     span.info {
       color: $light-green;
       display: block;
@@ -63,6 +63,10 @@ body.projects.show {
     .step-name {
       font-weight: bold;
       text-transform: uppercase;
+      span {
+        color: $white;
+        padding-bottom: 10px;
+      }
     }
     img,
     .step-number {
@@ -70,6 +74,7 @@ body.projects.show {
     }
     img {
       width: 73px;
+      height: 73px;
     }
   }
   .panel {
@@ -135,7 +140,7 @@ body.projects.show {
     }
   }
   .title {
-    margin-bottom: 1em;
+    padding-bottom: 1em;
     img {
       margin: 0 0.5em 0 0;
       width: 40px;
@@ -164,6 +169,12 @@ body.projects.show {
         width: 50px;
         @include border-radius(50%);
       }
+    }
+  }
+
+  .joyride-content-wrapper {
+    p {
+      color: $white;
     }
   }
 }
