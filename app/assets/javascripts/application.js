@@ -32,11 +32,16 @@ $(function(){
     	equalize_on_stack: true
   	},
 		joyride: {
-			cookie_monster: true
+			// cookie_monster: true
 		}
   });
 
 	$(document).foundation('joyride', 'start');
+
+	// Closes joyride whenever a reveal is opened
+	$(document).on('open.fndtn.reveal', '[data-reveal]', function () {
+  	$(".joyride-close-tip").trigger("click")
+	});
 
 	$('[data-datetimepicker]').datetimepicker({
     lang: 'pt',
