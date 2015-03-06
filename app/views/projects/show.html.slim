@@ -154,16 +154,6 @@
       .row
         .item.large-12.medium-12.columns
           .data-container.large-7.medium-7.columns
-            = image_tag "icon-parlamentar.png"
-            .data
-              strong Parlamentares
-              span.number= @adoptions.count
-          .cta.large-5.medium-5.columns
-            = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius, 'joyride-step5'], "data-reveal-id" => "adopt", "data-reveal" => true
-
-      .row
-        .item.large-12.medium-12.columns
-          .data-container.large-7.medium-7.columns
             = image_tag "icon-coautor-caixa.png"
             .data
               strong Co-autores
@@ -174,6 +164,8 @@
                 = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius, 'joyride-step6'], method: :post, target: :blank
               - else
                 = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius, 'joyride-step6'], data: { "reveal-id" => "contribution-form" }
+            - else
+              span Prazo expirado
 
       .row
         .item.large-12.medium-12.columns
@@ -188,9 +180,18 @@
                 p Você já assinou este projeto
               - else
                 = link_to "Assinar o projeto", project_signatures_path(@project), id: "sign-project-button", method: :post, class: [:button, :radius, 'joyride-step7']
-                | &nbsp;
             - else
               = link_to 'Assinar o projeto', "#", id: "sign-project-button", class: [:button, :radius, 'joyride-step7'], data: { "reveal-id" => "signature-form" }
+
+      .row
+        .item.large-12.medium-12.columns
+          .data-container.large-7.medium-7.columns
+            = image_tag "icon-parlamentar.png"
+            .data
+              strong Parlamentares
+              span.number= @adoptions.count
+          .cta.large-5.medium-5.columns
+            = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius, 'joyride-step5'], "data-reveal-id" => "adopt", "data-reveal" => true
 
 .row
   .large-12.columns
@@ -355,14 +356,14 @@ ol.joyride-list data-joyride=true
     h4 #4 Falta muito?!
     p Acompanhe em que etapa está o PL rumo à sua aprovação.
   li data-class="joyride-step5" data-prev-text="Anterior" data-text="Próximo" data-options="tip_location: left"
-    h4 #5 Me representa sim!
-    p Deputado ou vereador, que tal representar o sonho de milhares em sua casa legislativa?!
-  li data-class="joyride-step6" data-prev-text="Anterior" data-text="Próximo" data-options="tip_location: left"
-    h4 #6 Chega junto!
+    h4 #5 Chega junto!
     p Edite, comente e colabore com sugestões que podem virar lei!
-  li data-class="joyride-step7" data-prev-text="Anterior" data-text="Próximo" data-options="tip_location: left"
-    h4 #7 Um empurrãozinho!
+  li data-class="joyride-step6" data-prev-text="Anterior" data-text="Próximo" data-options="tip_location: left"
+    h4 #6 Um empurrãozinho!
     p Ao favoritar esse PL você dá a ele muito mais chances de vitória!
+  li data-class="joyride-step7" data-prev-text="Anterior" data-text="Próximo" data-options="tip_location: left"
+    h4 #7 Me representa sim!
+    p Deputado ou vereador, que tal representar o sonho de milhares em sua casa legislativa?!
   li data-class="joyride-step8" data-button="Fim"
     h4 #8 Lei do Povo!
     p Confira na integra o processo ou o resultado desse PL colaborativo!
