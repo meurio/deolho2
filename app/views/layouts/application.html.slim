@@ -6,7 +6,6 @@ html
     = favicon_link_tag 'favicon.png'
     = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'vendor/modernizr'
-    = javascript_include_tag 'application'
     = meurio_ui_assets
     = csrf_meta_tags
 
@@ -18,11 +17,16 @@ html
 
   body class=[controller.controller_name, controller.action_name]
     - content_for :application_menu do
-      = link_to "Como funciona?", about_path, class: :link
-      - if can? :create, Project
-        = link_to "Criar projeto de lei", new_project_path, id: "new-project-button", class: [:button, :radius, :small]
-      - else
-        = link_to "Criar projeto de lei", "#", id: "new-project-button", class: [:button, :radius, :small], data: { "reveal-id" => "new-project-reveal" }
+      li= link_to "Como funciona?", about_path
+      li.active
+        - if can? :create, Project
+          = link_to new_project_path, id: "new-project-button" do
+            span.icon-plus &nbsp;
+            | Criar projeto de lei
+        - else
+          = link_to "#", id: "new-project-button", data: { "reveal-id" => "new-project-reveal" }
+            span.icon-plus &nbsp;
+            | Criar projeto de lei
 
     = meurio_header_for :legislando
     = yield
@@ -36,3 +40,5 @@ html
         |  email #{mail_to 'legislando@nossascidades.org'} pra gente te mandar as instruções de como proceder,
         |  ok?! ;)
       a.close-reveal-modal &#215
+
+    = javascript_include_tag 'application'

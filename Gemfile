@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'pg'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
@@ -17,9 +17,9 @@ end
 
 gem 'rspec-rails', group: [:development, :test]
 gem 'slim-rails'
-gem 'meurio_ui', git: 'https://github.com/meurio/meurio_ui.git', branch: 'deolho2'
+gem 'meurio_ui', github: "meurio/meurio_ui", branch: 'new-header'
 gem 'compass-rails'
-gem 'foundation-rails', '~> 5.3.1.0'
+gem 'foundation-rails'
 gem 'machinist'
 gem 'rails_12factor', group: [:staging, :production]
 gem 'puma'
