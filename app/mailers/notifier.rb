@@ -6,7 +6,7 @@ class Notifier < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "Que legal, agora você é um co-autor do nosso Projeto de Lei!",
+      subject: "Que legal, agora você é um editor do nosso Projeto de Lei!",
       from: @project.user.email
     )
   end
@@ -16,7 +16,7 @@ class Notifier < ApplicationMailer
 
     mail(
       to: @user.email,
-      subject: "Oba, você está apoiando nosso Projeto de Lei!",
+      subject: "Oba, você assinou o nosso Projeto de Lei!",
       from: @project.user.email
     )
   end

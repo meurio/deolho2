@@ -67,7 +67,7 @@ module ApplicationHelper
     elsif project.adopted?
       "Adotado"
     else
-      "Em colaboração"
+      "Em edição"
     end
   end
 

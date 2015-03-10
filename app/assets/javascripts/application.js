@@ -32,7 +32,7 @@ $(function(){
     	equalize_on_stack: true
   	},
 		joyride: {
-			// cookie_monster: true
+			cookie_monster: true
 		}
   });
 

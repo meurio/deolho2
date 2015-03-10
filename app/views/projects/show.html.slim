@@ -57,11 +57,12 @@
                     small.error Email é obrigatório e deve ser válido
             .medium-6.columns
               = form.submit "Assinar o projeto", id: "cover-new-signature-button", class: [:button, :radius, :full, 'joyride-step1']
-              span.info Prazo de colaboração encerrado há #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
+              span.info Prazo de edição encerrado há #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
       - elsif @project.open?
         - if current_user.present?
           .medium-6.medium-centered.columns.text-center
-            = link_to 'Quero co-criar', project_contributions_path(@project), id: "cover-contribution-button", class: [:button, :radius, :full, 'joyride-step1'], method: :post, target: :blank
+            = link_to 'Editar o projeto', project_contributions_path(@project), id: "cover-contribution-button", class: [:button, :radius, :full, 'joyride-step1'], method: :post, target: :blank
+            span.info Prazo de edição encerra em #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
         - else
           = form_for [@project, @contribution], data: { abide: true } do |form|
             = form.fields_for :user do |user_form|
@@ -80,8 +81,8 @@
                       = user_form.email_field :email, required: true, placeholder: 'Email'
                       small.error Email é obrigatório e deve ser válido
               .large-6.columns
-                = user_form.submit "Quero co-criar!", id: "cover-contribution-submit-button", class: [:button, :radius, :full, 'joyride-step1']
-                span.info Prazo de colaboração encerra em #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
+                = user_form.submit "Editar o projeto", id: "cover-contribution-submit-button", class: [:button, :radius, :full, 'joyride-step1']
+                span.info Prazo de edição encerra em #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
 
 .steps
   .row
@@ -89,7 +90,7 @@
       .step-number Passo 1
       = image_tag("icon-colab-fim.png")
       .step-name
-        span.joyride-step2 Colaboração
+        span.joyride-step2 Edição
 
     .step.large-3.medium-3.columns.text-center
       .step-number Passo 2
@@ -145,7 +146,7 @@
           .data-container.large-12.medium-7.columns.user
             = image_tag @project.user.avatar_url
             .data
-              strong PL iniciado por
+              strong Autor
               span= @project.user.name
           .cta.large-12.medium-5.columns
             - if can? :edit, @project
@@ -156,23 +157,23 @@
           .data-container.large-7.medium-7.columns
             = image_tag "icon-coautor-caixa.png"
             .data
-              strong Co-autores
+              strong Editores
               span.number= @contributions.count
           .cta.large-5.medium-5.columns
             - if @project.open?
               - if current_user.present?
-                = link_to 'Quero co-criar', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius, 'joyride-step6'], method: :post, target: :blank
+                = link_to 'Editar o projeto', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius, 'joyride-step6'], method: :post, target: :blank
               - else
-                = link_to 'Quero co-criar', "#", id: "contribution-button", class: [:button, :radius, 'joyride-step6'], data: { "reveal-id" => "contribution-form" }
+                = link_to 'Editar o projeto', "#", id: "contribution-button", class: [:button, :radius, 'joyride-step6'], data: { "reveal-id" => "contribution-form" }
             - else
-              span Colaboração encerrada
+              span Edição encerrada
 
       .row
         .item.large-12.medium-12.columns
           .data-container.large-7.medium-7.columns
             = image_tag "icon-apoiador-caixa.png"
             .data
-              strong Apoiadores
+              strong Assinantes
               span.number= @signatures.count
           .cta.large-5.medium-5.columns
             - if current_user.present?
@@ -188,10 +189,10 @@
           .data-container.large-7.medium-7.columns
             = image_tag "icon-parlamentar.png"
             .data
-              strong Parlamentares
+              strong Adotantes
               span.number= @adoptions.count
           .cta.large-5.medium-5.columns
-            = link_to 'Quero adotar', '#adopt', id: "adopt-project-button", class: [:button, :radius, 'joyride-step5'], "data-reveal-id" => "adopt", "data-reveal" => true
+            = link_to 'Adotar o projeto', '#adopt', id: "adopt-project-button", class: [:button, :radius, 'joyride-step5'], "data-reveal-id" => "adopt", "data-reveal" => true
 
 .row
   .large-12.columns
@@ -222,7 +223,7 @@
   .large-12.columns.user-list
     .title
       = image_tag "icon-contribution.png"
-      h3 Cocriadores do Projeto de Lei
+      h3 Editores do Projeto de Lei
     .panel
       - if @contributions.any?
         ul.large-block-grid-6.medium-block-grid-4
@@ -236,7 +237,7 @@
   .large-12.columns.user-list
     .title
       = image_tag "icon-apoiador-caixa.png"
-      h3 Apoiadores do Projeto de Lei
+      h3 Assinantes do Projeto de Lei
     .panel
       - if @signatures.any?
         ul.large-block-grid-6.medium-block-grid-4
@@ -244,13 +245,13 @@
             = render signature.user
       - else
         .empty
-          p.text-center Este projeto ainda não possui apoiadores.
+          p.text-center Este projeto ainda não possui assinantes.
 
 #signature-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
   .title
     = image_tag "icon-contribution.png"
-    h2 Quero apoiar
+    h2 Quero assinar
   = form_for [@project, @signature], data: { abide: true } do |form|
     = form.fields_for :user do |user_form|
       .first-name-field
@@ -271,7 +272,7 @@
   a.close-reveal-modal &#215;
   .title
     = image_tag "icon-contribution.png"
-    h2 Quero co-criar
+    h2 Quero editar
   = form_for [@project, @contribution], data: { abide: true } do |form|
     = form.fields_for :user do |user_form|
       .row
@@ -290,7 +291,7 @@
           small.error Email é obrigatório e deve ser válido
       .row
         .text-right.large-12.columns
-          = user_form.submit "Co-criar", id: "contribution-submit-button", class: [:button, :radius, "no-margin"]
+          = user_form.submit "Editar o projeto", id: "contribution-submit-button", class: [:button, :radius, "no-margin"]
 
 #adopt.small.reveal-modal data={ reveal: true }
   .title
@@ -305,7 +306,7 @@
   - else
     p
       | Obrigad@ por participar da criação desse projeto de lei. Agora você também faz parte da construção
-      |  coletiva desse sonho. Quanto mais pessoas apoiarem essa iniciativa popular, mais fortes chegaremos à
+      |  coletiva desse sonho. Quanto mais pessoas assinarem essa iniciativa popular, mais fortes chegaremos à
       |  sua aprovação.
     p
       | Compartilhe agora com seus amigos e traga mais gente pra essa nossa causa!
@@ -345,10 +346,10 @@
 ol.joyride-list data-joyride=true
   li data-class="joyride-step1" data-text="Próximo"
     h4 #1 Faça parte!
-    p Participe da criação desse Projeto de Lei apoiando ou colaborando com sua construção.
+    p Participe da criação desse Projeto de Lei assinando ou colaborando com sua construção.
   li data-class="joyride-step2" data-prev-text="Anterior" data-text="Próximo"
     h4 #2 Ainda rola?!
-    p Saiba se esse PL ainda está aberto para colaboração.
+    p Saiba se esse PL ainda está aberto para edição.
   li data-class="joyride-step3" data-prev-text="Anterior" data-text="Próximo" data-options="tip_location: right"
     h4 #3 Qual é a boa?!
     p Entenda do que se trata esse Projeto de Lei.
