@@ -244,7 +244,7 @@ RSpec.describe ApplicationHelper, :type => :helper do
     context "when the project is open for contribution" do
       let(:project) { Project.make! }
 
-      it "should be 'Em colaboração'" do
+      it "should be 'Em edição'" do
         expect(helper.project_status(project)).to be_eql("Em colaboração")
       end
     end
