@@ -66,6 +66,8 @@ module ApplicationHelper
       "Em tramitação"
     elsif project.adopted?
       "Adotado"
+    elsif !project.open?
+      "Edição encerrada"
     else
       "Em edição"
     end

@@ -248,5 +248,13 @@ RSpec.describe ApplicationHelper, :type => :helper do
         expect(helper.project_status(project)).to be_eql("Em edição")
       end
     end
+
+    context "when the project is close for contribution" do
+      let(:project) { Project.make! closes_for_contribution_at: Date.yesterday }
+
+      it "should be 'Edição encerrada'" do
+        expect(helper.project_status(project)).to be_eql("Edição encerrada")
+      end
+    end
   end
 end
