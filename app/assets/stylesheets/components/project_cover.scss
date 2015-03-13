@@ -17,6 +17,7 @@
   }
 
   .panel {
+    @include box-shadow(2px 2px 2px #333);
     margin: 0;
   }
 }

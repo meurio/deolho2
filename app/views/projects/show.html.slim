@@ -19,6 +19,11 @@
 .ProjectCover.u-mb1
   .row
     .large-7.columns
+      .text-center
+        - if @project.user.politician?
+          .Ribbon.u-mb1
+            .Ribbon-line1 Projeto de iniciativa
+            .Ribbon-line2 parlamentar
       h1= @project.title
       .ProjectCover-details
         = @project.category
@@ -27,7 +32,7 @@
         - if @project.legislative_chamber.present?
           |  &middot; #{@project.legislative_chamber}
       = simple_format @project.abstract
-      .UserPartial
+      .UserPartial.u-mb1
         = image_tag @project.user.avatar_url
         .UserPartial-data
           .UserPartial-decription Autor

@@ -1,0 +1,45 @@
+.Ribbon {
+  background-color: $primary-color;
+  text-align: center;
+  position: relative;
+  padding: .25em 0;
+  font-size: 1.5em;
+  color: white;
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: 0px;
+    top: 100%;
+    border-width: 5px 5px;
+    border-style: solid;
+    border-color: darken($primary-color, 20%) darken($primary-color, 20%) transparent transparent;
+  }
+
+  &:before {
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 0px;
+    top: 100%;
+    border-width: 5px 5px;
+    border-style: solid;
+    border-color: darken($primary-color, 20%) transparent transparent darken($primary-color, 20%);
+  }
+}
+
+.Ribbon-line1 {
+  color: darken($primary-color, 20%);
+}
+
+.Ribbon-line2 {
+  font-weight: bold;
+}
+
+.Ribbon-line1,
+.Ribbon-line2 {
+  display: inline;
+}
