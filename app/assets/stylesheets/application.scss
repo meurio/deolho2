@@ -2,10 +2,12 @@
 @import 'compass';
 @import 'meurio_ui';
 @import 'datetimepicker';
+@import 'utility';
 
 // App
 @import 'fonts';
 @import 'foundation_and_overrides';
 @import 'layout';
+@import 'components/*';
 @import 'projects/*';
 @import 'pages/*';
