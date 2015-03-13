@@ -122,7 +122,12 @@
       hr
 
       p.u-normalLineHeight Se você possui uma ideia que poderia virar projeto de lei, não deixe de dividir com a gente
-      = link_to "Criar projeto de lei", new_project_path, class: [:button, :secondary, :radius], data: { "reveal-id" => "new-project-reveal" }
+      - if can? :create, Project
+        = link_to new_project_path, class: [:button, :secondary, :radius] do
+          | Criar projeto de lei
+      - else
+        = link_to "#", id: "new-project-button", data: { "reveal-id" => "new-project-reveal" }, class: [:button, :secondary, :radius] do
+          | Criar projeto de lei
 
     h3.HeaderWithIcon
       = image_tag("icon-tramite-on.png")
