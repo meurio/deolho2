@@ -76,4 +76,30 @@ module ApplicationHelper
   def user_path user
     "#{ENV['MEURIO_HOST']}/users/#{user.id}"
   end
+
+  def contributions_list contributions
+    if contributions.size < 4
+      "<span>#{contributions.map{|c| link_to c.user.name, c.user}.to_sentence}</span> #{t(".contributed", count: contributions.size)}"
+    else
+      "<span>#{contributions[0..2].map{|c| link_to c.user.name, c.user}.join(', ')}</span> e mais #{contributions.size - 3} #{t(".contributed", count: contributions.size)}"
+    end
+  end
+
+  def signatures_list signatures
+    if signatures.size < 4
+      "<span>#{signatures.map{|c| link_to c.user.name, c.user}.to_sentence}</span> #{t(".signed", count: signatures.size)}"
+    else
+      "<span>#{signatures[0..2].map{|c| link_to c.user.name, c.user}.join(', ')}</span> e mais #{signatures.size - 3} #{t(".signed", count: signatures.size)}"
+    end
+  end
+
+  def step_bubble_class project
+    if @project.finished?
+      "StepsList-stepBubble--finished"
+    elsif @project.processing?
+      "StepsList-stepBubble--processing"
+    elsif @project.adopted?
+      "StepsList-stepBubble--adopted"
+    end
+  end
 end
