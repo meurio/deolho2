@@ -1,0 +1,9 @@
+pt-BR:
+  projects:
+    show:
+      contributed:
+        one: "contribuiu para este projeto"
+        other: "contribuíram para este projeto"
+      signed:
+        one: "assinou este projeto"
+        other: "assinaram este projeto"
