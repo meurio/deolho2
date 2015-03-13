@@ -77,19 +77,11 @@ module ApplicationHelper
     "#{ENV['MEURIO_HOST']}/users/#{user.id}"
   end
 
-  def contributions_list contributions
-    if contributions.size < 4
-      "<span>#{contributions.map{|c| link_to c.user.name, c.user}.to_sentence}</span> #{t(".contributed", count: contributions.size)}"
+  def users_list users, verb
+    if users.size < 4
+      "<span>#{users.map{|u| link_to u.name, u}.to_sentence}</span> #{t("." + verb, count: users.size)}"
     else
-      "<span>#{contributions[0..2].map{|c| link_to c.user.name, c.user}.join(', ')}</span> e mais #{contributions.size - 3} #{t(".contributed", count: contributions.size)}"
-    end
-  end
-
-  def signatures_list signatures
-    if signatures.size < 4
-      "<span>#{signatures.map{|c| link_to c.user.name, c.user}.to_sentence}</span> #{t(".signed", count: signatures.size)}"
-    else
-      "<span>#{signatures[0..2].map{|c| link_to c.user.name, c.user}.join(', ')}</span> e mais #{signatures.size - 3} #{t(".signed", count: signatures.size)}"
+      "<span>#{users[0..2].map{|u| link_to u.name, u}.join(', ')}</span> e mais #{users.size - 3} #{t("." + verb, count: users.size)}"
     end
   end
 

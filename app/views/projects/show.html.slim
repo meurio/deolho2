@@ -50,7 +50,7 @@
             | A edição deste projeto foi encerrada há
             |  #{distance_of_time_in_words_to_now @project.closes_for_contribution_at} atrás
         - if @contributions.any?
-          p.UsersList= raw contributions_list(@contributions)
+          p.UsersList= raw users_list(@contributions.map{|c| c.user}, "contributed")
 
 .row
   .large-7.columns
@@ -117,7 +117,7 @@
       - else
         = link_to 'Assinar o projeto', "#", id: "sign-project-button", class: [:button, :radius, :secondary], data: { "reveal-id" => "signature-form" }
       - if @signatures.any?
-        p.UsersList= raw signatures_list(@signatures)
+        p.UsersList= raw users_list(@signatures.map{|s| s.user}, "signed")
 
       hr
 
