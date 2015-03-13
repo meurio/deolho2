@@ -1,7 +1,8 @@
-li.user.adoption id="adoption-#{adoption.id}"
-  = link_to user_path(adoption.user) do
-    = image_tag adoption.user.avatar_url
-    .name title=adoption.user.name = truncate(adoption.user.name, length: 20)
-  - if can?(:delete, adoption)
-    = link_to project_adoption_path(adoption.project, adoption), method: :delete, id: "remove-adoption-#{adoption.id}", class: "remove-adoption-button" do
-      .icon-close &nbsp;
+.UserPartial id="adoption-#{adoption.id}"
+  = link_to image_tag(adoption.user.avatar_url), adoption.user
+  .UserPartial-data
+    .UserPartial-userName
+      = adoption.user.name
+      | &nbsp;
+      = link_to " ", project_adoption_path(adoption.project, adoption), "data-method" => 'delete', class: ["icon-remove", "u-alert", "UserPartial-removeButton"], id: "remove-adoption-#{adoption.id}"
+    .UserPartial-decription há #{distance_of_time_in_words_to_now adoption.created_at} atrás

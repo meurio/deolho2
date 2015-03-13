@@ -32,7 +32,7 @@ class ProjectsController < ApplicationController
     @contribution = Contribution.new
     @adoption = Adoption.new
     @signatures = @project.signatures.includes(:user)
-    @contributions = @project.contributions.includes(:user)
+    @contributions = @project.contributions.order(created_at: :desc).includes(:user)
     @adoptions = @project.adoptions.includes(:user)
   end
 
