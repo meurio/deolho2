@@ -1,0 +1,35 @@
+.UserPartial {
+  overflow: hidden;
+  margin-bottom: 1em;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  img {
+    height: 50px;
+    width: 50px;
+    float: left;
+    margin-right: 1em;
+  }
+
+  .UserPartial-data {
+    line-height: 20px;
+    margin-top: 5px;
+    float: left;
+  }
+
+  .UserPartial-userName {
+    font-weight: bold;
+  }
+
+  .UserPartial-removeButton {
+    visibility: hidden;
+  }
+
+  &:hover {
+    .UserPartial-removeButton {
+      visibility: visible;
+    }
+  }
+}
