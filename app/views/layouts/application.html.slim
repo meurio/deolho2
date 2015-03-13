@@ -42,3 +42,5 @@ html
       a.close-reveal-modal &#215
 
     = javascript_include_tag 'application'
+    = javascript_include_tag "//cdn.optimizely.com/js/#{ENV["OPTIMIZELY_ID"]}.js"
+    = render 'layouts/mouseflow'
