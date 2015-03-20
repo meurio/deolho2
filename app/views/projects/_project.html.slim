@@ -1,5 +1,5 @@
 .project.large-3.columns.left
-  .panel.radius
+  .panel.radius data-equalizer-watch=true
     - if project.user.politician?
       .Ribbon.u-mb1
         .Ribbon-line1 Projeto de iniciativa
@@ -15,3 +15,5 @@
       span title=project.category.name = truncate(project.category.name, length: 30)
     .description.icon-location
       span= project.organization.city
+    .description.icon-home
+      span= project.legislative_chamber
