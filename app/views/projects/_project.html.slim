@@ -15,5 +15,6 @@
       span title=project.category.name = truncate(project.category.name, length: 30)
     .description.icon-location
       span= project.organization.city
-    .description.icon-home
-      span= project.legislative_chamber
+    - if project.legislative_chamber.present?
+      .description.icon-home
+        span= project.legislative_chamber
