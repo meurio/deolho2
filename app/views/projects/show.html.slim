@@ -67,7 +67,7 @@
         .text-center
           = image_tag("icon-vitoria-above.png")
           h2 Vitória!
-          span Este Projeto virou Lei!
+          span Graças aos esforços de muita gente esse Projeto de Lei virou realidade e agora nosso sonho coletivo virou lei. Vitória!
       - elsif @project.rejected?
         .text-center
           = image_tag("icon-nao-aprovado-above.png")
@@ -75,8 +75,12 @@
           span Este Projeto não foi aprovado!
       - else
         .StepsList-stepBubble class=step_bubble_class(@project)
-          | O projeto está agora em fase de colaboração, assim que a colaboração for encerrada o projeto ficará
-          |  aguardando a adoção de um parlamentar
+          - if @project.finished?
+            | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
+          - elsif @project.processing?
+            | Esse projeto está agora em etapa de tramitação rumo à sua aprovação. Acompanhe abaixo o status atual do PL e os próximos passos.
+          - elsif @project.adopted?
+            | Esse projeto já foi adotado por um ou mais parlamentares que agora se encarregam de sua tramitação em sua casa legislativa.
         .row
           .StepsList-step.large-3.medium-3.columns
             = image_tag("icon-colab-fim.png")
