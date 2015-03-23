@@ -75,12 +75,12 @@
           span Este Projeto não foi aprovado!
       - else
         .StepsList-stepBubble class=step_bubble_class(@project)
-          - if @project.open?
-            | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
-          - elsif @project.processing?
+          - if @project.processing?
             | Esse projeto está agora em etapa de tramitação rumo à sua aprovação. Acompanhe abaixo o status atual do PL e os próximos passos.
           - elsif @project.adopted?
             | Esse projeto já foi adotado por um ou mais parlamentares que agora se encarregam de sua tramitação em sua casa legislativa.
+          - else
+            | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
         .row
           .StepsList-step.large-3.medium-3.columns
             = image_tag("icon-colab-fim.png")
