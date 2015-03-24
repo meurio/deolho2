@@ -10,7 +10,7 @@ RSpec.feature "Create new project" do
       @organization = Organization.make!
       login admin, "feature"
       visit root_path
-      click_link "new-project-button"
+      click_link "new-project-button-menu"
     end
 
     scenario "when the project form is valid" do
@@ -62,7 +62,7 @@ RSpec.feature "Create new project" do
   scenario "when I'm not an admin", js: true do
     login user, "feature"
     visit root_path
-    click_link "new-project-button"
+    click_link "new-project-button-menu"
 
     expect(page).to have_css("#new-project-reveal")
   end

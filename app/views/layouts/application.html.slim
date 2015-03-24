@@ -20,7 +20,7 @@ html
       li= link_to "Como funciona?", about_path
       li.active
         - if can? :create, Project
-          = link_to new_project_path, id: "new-project-button" do
+          = link_to new_project_path, id: "new-project-button-menu" do
             span.icon-plus &nbsp;
             | Criar projeto de lei
         - else
