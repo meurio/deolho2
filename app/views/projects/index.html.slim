@@ -33,7 +33,7 @@
     .large-12.columns.text-center
       = image_tag "open-projects-divider.png"
       h2 Projetos de Lei
-  .row
+  .row data-equalizer=true
     - if @projects.any?
       = render @projects
     - else
