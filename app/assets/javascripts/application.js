@@ -69,4 +69,13 @@ $(function(){
     );
     return false;
   });
+
+	// Event tracker
+	$('#new-project-button-menu').click(function(){
+		ga('send', 'event', 'Buttons', 'Create new project (menu)');
+	});
+
+	$('#new-project-button').click(function(){
+		ga('send', 'event', 'Buttons', 'Create new project (project page)');
+	});
 });
