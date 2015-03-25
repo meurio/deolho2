@@ -15,7 +15,7 @@ html
     meta property="og:description" content=meta_description
     meta property="og:image" content=meta_image
 
-  body class=[controller.controller_name, controller.action_name]
+  body class=[controller.controller_name, controller.action_name] data={ "ga-code" => ENV["GA_CODE"] }
     - content_for :application_menu do
       li= link_to "Como funciona?", about_path
       li.active
