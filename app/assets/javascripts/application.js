@@ -52,6 +52,23 @@ $(function(){
 		$('.thanks-for-signing-this-project').foundation('reveal', 'open');
 	}
 
+	function countdown(time, counter, redirectTo){
+		time--;
+		counter.html(time);
+		if(time <= 0)
+			window.location.replace(redirectTo);
+		setTimeout(function(){ countdown(time, counter, redirectTo) }, 1000);
+	}
+
+	if(location.hash == "#thanks-for-contributing-to-this-project"){
+		$('.thanks-for-contributing-to-this-project').foundation('reveal', 'open');
+		countdown(
+			15,
+			$("#contribution-redirect-countdown"),
+			$(".thanks-for-contributing-to-this-project").data("redirect-url")
+		);
+	}
+
 	// Google Analytics
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

@@ -10,7 +10,7 @@ class ContributionsController < ApplicationController
       Notifier.thanks_for_contributing(contribution).deliver_later
     end
 
-    redirect_to project.google_drive_url
+    redirect_to project_path(project, contribution_created: true, anchor: "thanks-for-contributing-to-this-project")
   end
 
   def contribution_params

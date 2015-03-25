@@ -16,7 +16,7 @@ RSpec.describe ContributionsController, :type => :controller do
 
       it "should redirect to the Google Drive url" do
         post :create, project_id: project.id
-        expect(response).to redirect_to(project.google_drive_url)
+        expect(response).to redirect_to(project_path(project, contribution_created: true, anchor: "thanks-for-contributing-to-this-project"))
       end
 
       it "should send an email to the current user" do

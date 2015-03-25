@@ -43,7 +43,7 @@
         - if @project.open?
           p.u-fontSize15.u-normalLineHeight Edite, comente e colabore com sugestões que podem virar lei!
           - if current_user.present?
-            = link_to 'Editar o projeto', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius, 'u-mb0', :large], method: :post, target: :blank
+            = link_to 'Editar o projeto', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius, 'u-mb0', :large], method: :post
           - else
             = link_to 'Editar o projeto', "#", id: "contribution-button", class: [:button, :radius, 'u-mb0', :large], data: { "reveal-id" => "contribution-form" }
           p
@@ -218,6 +218,23 @@
     h2 Adoção parlamentar
   p Obrigad@ por adotar esse projeto de lei. Estamos muito felizes que você tenha demonstrado interesse em construir uma ponte entre os cidadãos e sua casa legislativa. Entre em contato com nossa equipe através do email #{ mail_to 'contato@nossascidades.org' } para receber instruções de como proceder.
   a.close-reveal-modal &#215;
+
+.thanks-for-contributing-to-this-project.small.reveal-modal data={ reveal: true, "redirect-url" => @project.google_drive_url }
+  .title
+    = image_tag 'icon-coautor-caixa.png'
+    h2 Editar o projeto
+  p
+    | Obrigad@ por participar da criação desse projeto de lei. Agora você também faz parte da construção
+    |  coletiva desse sonho.
+  p
+    | Você está sendo redirecionado para um documento do Google Drive, onde está acontecendo a edição
+    |  colaborativa deste projeto.
+
+  p
+    | Aguarde
+    | &nbsp;
+    strong#contribution-redirect-countdown
+    |  segundos ou #{link_to "clique aqui", @project.google_drive_url}
 
 .thanks-for-signing-this-project.small.reveal-modal data={ reveal: true }
   - if @project.taf_message.present?
