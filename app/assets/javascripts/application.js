@@ -59,6 +59,7 @@ $(function(){
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-26278513-25', 'auto');
   ga('send', 'pageview');
+	_gaq.push(['_setAllowAnchor', true]);
 
   // Facebook and Twitter share
   $(".share-on-facebook-button, .share-on-twitter-button").on('click', function(){
