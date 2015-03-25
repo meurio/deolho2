@@ -41,17 +41,40 @@
       |  mantém a infraestrutura e dá suporte às mobilizações iniciadas por cidadãos, e o faz de forma
       |  independente por meio dos seguintes aplicativos além do Legislando: o Panela de Pressão, o Imagine, o
       |  Multitude, o Compartilhaço, o De Olho, o De Guarda e muita coisa nova vindo aí. Conheça e faça parte
-      |  dessa rede #{link_to "clicando aqui", "https://accounts.nossascidades.org/"}.
+      |  dessa rede #{link_to "clicando aqui", "https://accounts.nossascidades.org/", target: :blank}.
 
     p= image_tag "title-how-it-works.png"
+
+    h2 Os Projetos de Lei
+
+    p.text-left
+      strong Quais os tipos de PL que o Legislando aceita?!
+      br
+      | Esse aplicativo permite a criação de dois tipos de Projetos de Lei: o PL Colaborativo e o de 
+      |  Iniciativa Parlamentar.
+
+    p.text-left
+      strong O que é um Projeto de Lei Colaborativo?
+      br
+      | O PL Colaborativo é aquele que é iniciado por um cidadão. Ou seja, eu, você, ou qualquer outra pessoa
+      |  que não exerça uma função pública em um cargo representativo eleito por voto.
+
+    p.text-left
+      strong O que é um Projeto de Lei de Iniciativa Parlamentar?
+      br
+      | O PL de Iniciativa Parlamentar é, como o nome diz, um projeto criado por um ou mais membros de um
+      |  Parlamento. Ou seja, indivíduos que tornaram-se membros de uma casa legislativa (vereadores e deputados
+      |  estaduais) através de eleições oficiais e querem colocar o seu Projeto de Lei para consulta, apoio e
+      |  colaboração de todos os cidadãos no Legislando.
+
 
     h2 Como criar um PL?
 
     p.text-left
       strong Quem pode iniciar um PL?
       br
-      | Qualquer pessoa pode iniciar um Projeto de Lei no Legislando. Não importa o que você faz ou o seu
-      |  nível de ‘juridiquês’. E sim a vontade de fazer a diferença e o comprometimento em conseguir a
+      | Qualquer pessoa pode iniciar um Projeto de Lei Colaborativo no Legislando. Não importa o que você faz ou
+      |  o seu nível de ‘juridiquês’. E sim a vontade de fazer a diferença e o comprometimento em conseguir a
       |  colaboração e o apoio de mais pessoas. O convite para a criação de um PL está aberto para toda a
       |  sociedade, inclusive parlamentares.
 
@@ -75,8 +98,9 @@
 
     p.text-left
       strong O que eu preciso trazer no meu PL?
-    ul.text-left
+      br
       | É obrigatório que seu Projeto de Lei:
+    ul.text-left
       li Informe a Casa Legislativa (CMRJ, CMSP, ALERJ ou ALESP)
       li Faça uma ementa explicando do que se trata (o famoso "Dispõe sobre”)
       li Traga no 1º artigo o objetivo da Lei (só pode ser 1 objetivo específico por lei)
@@ -101,7 +125,7 @@
         | sugere ações que contradizem a visão de cidade da Rede Nossas Cidades, a qual defende a
         |  democracia, o controle social, o uso político do espaço público e o desenvolvimento de uma
         |  cultura política participativa.
-        |  #{link_to "Saiba mais", "http://www.nossascidades.org/#principles"}.
+        |  #{link_to "Saiba mais", "http://www.nossascidades.org/#principles", target: :blank}.
       li promove uma causa de caráter privado, e não público.
       li não possui caráter propositivo.
     ul.text-left
@@ -120,7 +144,7 @@
       strong Preciso de uma conta na Rede Nossas Cidades para isso?
       br
       | Sim! Mas é muito rápido e prático criar a sua conta. Além do que, ao
-      |  #{link_to "preencher seu perfil", "https://accounts.nossascidades.org/validate_email"}, nós
+      |  #{link_to "preencher seu perfil", "https://accounts.nossascidades.org/validate_email", target: :blank}, nós
       |  saberemos a quantidade de tempo e os talentos que você estaria disposto a dividir com a rede para a
       |  construção de cidades melhores. Faça você também parte dessa revolução!
 
@@ -146,7 +170,7 @@
       |  racionalidade dos fatos. Cabe a ele a tarefa de tirar o máximo de proveito do processo de edição.
 
     p.text-left
-      strong Quem estabelece o prazo de edição de um PL?
+      strong Quem estabelece o prazo de co-criação ou edição de um PL?
       br
       | O prazo para edição é estipulado pelo próprio criador do PL, que pode prorrogar essa data até 2
       |  vezes durante a fase de edição. Lembre-se, prazos longos fazem as pessoas perderem o
@@ -163,12 +187,11 @@
       |  fato o desejo coletivo da sociedade.
 
     p.text-left
-      strong Por que editar um PL?
+      strong Por que colaborar com um PL?
       br
-      | Leis nada mais são que textos. A diferença é que possuem o poder de regular e impactar nossas vidas.
-      |  Nesse sentido uma vírgula fora do lugar pode mudar muita coisa. Elegemos nossos representantes
-      |  regularmente para que criem leis que defendam nossos interesses. Mas esse não pode ser o único
-      |  caminho para garantir que nossos sonhos e desejos virem lei.
+      | Leis nada mais são que textos que regulam e impactam nossas vidas. Nesse sentido uma vírgula fora do
+      |  lugar pode mudar muita coisa. Elegemos nossos representantes regularmente para que criem leis que defendam
+      |  nossos interesses. Mas esse não pode ser o único caminho para garantir que nossos sonhos e desejos virem lei.
 
     p.text-left
       strong Como faço para editar um PL?
@@ -230,7 +253,7 @@
       strong Preciso de uma conta na Rede Nossas Cidades para isso?
       br
       | Sim! Mas é muito rápido e prático criar a sua conta. Além do que, ao
-      |  #{link_to "preencher seu perfil", "https://accounts.nossascidades.org/validate_email"}, nós
+      |  #{link_to "preencher seu perfil", "https://accounts.nossascidades.org/validate_email", target: :blank}, nós
       |  saberemos a quantidade de tempo e os talentos que você estaria disposto a dividir com a rede para a
       |  construção de cidades melhores. Faça você também parte dessa revolução!
 
@@ -239,26 +262,38 @@
       br
       | É muito fácil e intuitivo e você vai ver que ao entrar na página vai sair editando sem nenhum
       |  problema. Mesmo assim se tiver dúvidas você pode consultar a
-      |  #{link_to "central de ajuda", "https://support.google.com/docs/?hl=pt-BR#topic=2811805"} do Google
+      |  #{link_to "central de ajuda", "https://support.google.com/docs/?hl=pt-BR#topic=2811805", target: :blank} do Google
       |  Drive.
 
-    h2 Como assinar?
-
     p.text-left
-      strong Quem pode assinar um PL?
+      strong Como faço para colaborar com Projetos de Iniciativa Parlamentar?
       br
-      | Todo mundo pode assinar um PL, o que significa que você acredita nesse Projeto de Lei de criação
-      |  colaborativa e será um defensor dessa ideia até a sua aprovação final.
+        | Você pode colaborar com projetos já iniciados por parlamentares que estejam no Legislando, que já
+        |  foram protocolados e estarão em fase inicial de tramitação, sugerindo emendas, que podem ser:
+      ul.text-left
+        li #{content_tag :strong, 'Supressivas'}: suprimem todo um dispositivo: artigo, parágrafo, inciso ou alínea
+        li #{content_tag :strong, 'Substitutivas'}: quando substitui uma parte da proposição ou a modifica por inteiro
+        li #{content_tag :strong, 'Aditivas'}: acrescentam dispositivo inteiro
+        li #{content_tag :strong, 'Modificativas'}: acrescentam ou suprimem ou modificam, parte ou expressões no dispositivo
+        li #{content_tag :strong, 'Aglutinativas'}: resulta da fusão de emendas apresentadas ou das emendas com o texto
+
+    h2 Como apoiar?
 
     p.text-left
-      strong Por que assinar um PL?
+      strong Quem pode apoiar ou assinar um PL?
+      br
+      | Todo mundo pode apoiar um PL, e assim mostrar que acredita nesse Projeto de Lei de criação
+      |  colaborativa e que será um defensor dessa ideia até a sua aprovação final.
+
+    p.text-left
+      strong Por que apoiar ou assinar um PL?
       br
       | Um Projeto de Lei no Legislando precisa de apoio popular pra que ele siga em frente. Quanto mais
       |  pessoas mostrarem interesse em ver determinada proposta virar lei, mais chances essa tem de ser
       |  adotada por um parlamentar e chegar com muito mais força até a sua casa legislativa.
 
     p.text-left
-      strong Como faço para assinar um PL?
+      strong Como faço para apoiar ou assinar um PL?
       br
       | Opa, muito simples! Clique no botão ‘Quero assinar’ da página do PL que você se interessou, insira seu
       |  nome e email e pronto! Agora você também acredita nesse sonho coletivo!
@@ -275,8 +310,9 @@
     p.text-left
       strong O que é a adoção de um PL?
       br
-      | A adoção de um PL é o gesto de um parlamentar que se identifica com um determinado Projeto de Lei e
-      |  se prontifica a abrir os caminhos necessários até a sua aprovação em uma casa legislativa.
+      | A adoção de um PL é o gesto de um parlamentar (vereador ou deputado estadual) que se identifica com um
+      |  determinado Projeto de Lei Colaborativo e se prontifica a abrir os caminhos necessários até a sua aprovação 
+      |  em uma casa legislativa.
 
     p.text-left
       strong Quem pode adotar um PL?
@@ -288,14 +324,15 @@
     p.text-left
       strong Quantos parlamentares podem adotar um mesmo projeto?
       br
-      | Vários parlamentares podem adotar um mesmo projeto simultaneamente. No entanto, ao menos um deles irá
-      |  se responsabilizar por submeter esse PL pra tramitação. Esses parlamentares podem conversar entre si
+      | No Legislando, vários parlamentares podem adotar um mesmo projeto simultaneamente. No entanto, ao menos um
+      |  deles irá se responsabilizar por submeter esse PL para tramitação. Esses parlamentares podem conversar entre si
       |  pra que o projeto seja também apresentado por mais de um parlamentar.
 
     p.text-left
       strong Quais as obrigações de um parlamentar frente a um PL adotado?
-      ul.text-left
+      br
         | Basicamente o parlamentar que adotar um PL deve:
+      ul.text-left
         li Garantir a integridade do PL e dos ideais que a sociedade vê nele
         li Se envolver no processo de tramitação deste PL
         li
@@ -304,19 +341,21 @@
 
     p.text-left
       strong Em que momentos um parlamentar adotar?
-      ul.text-left
+      br
         | Um parlamentar pode adotar um PL em diferentes estágios:
+      ul.text-left
         li Enquanto o PL estiver na etapa de edição (inclusive ele pode editar também)
         li Após o fim da etapa de edição
         li Após outro parlamentar já ter adotado o PL mas ainda não submetido para trâmite
         li Após outro parlamentar já ter adotado o PL e ter submetido para trâmite
 
     p.text-left
-      strong Por que adotar um PL?
+      strong Por que adotar um Projeto de Lei Colaborativo?
+      br
+        | A adoção de um Projeto de Lei Colaborativo do Legislando por um parlamentar é um gesto repleto de
+        |  significados, entre eles a oportunidade de:
       ul.text-left
-        | A adoção de um PL do legislando por um parlamentar é um gesto repleto de significados, entre eles a
-        |  oportunidade de:
-        li garantir ideais relevantes pra toda a sociedade
+        li garantir ideais relevantes para toda a sociedade
         li colaborar na construção de uma democracia participativa
         li
           | ganhar reconhecimento como um representante da sociedade de fato, inclusive perante a mídia
@@ -332,78 +371,80 @@
       | Basta clicar no botão ‘Quero adotar’ na página do PL que te agradou. Uma caixa de dialogo será aberta
       |  solicitando que envie um email pra nossa equipe com o seu nome e partido.
 
+    p.text-left
+      strong Quais tipos de PL um parlamentar pode adotar?
+      br
+      | Um parlamentar pode adotar tanto Projetos de Lei Colaborativos como de Iniciativa Parlamentar. No segundo
+      |  caso, iremos colocar o parlamentar interessado na adoção em contato com o parlamentar autor do projeto
+      |  para que conversem sobre as intenções e responsabilidades de cada uma das partes.
+
     p= image_tag "title-legislative-chamber.png"
 
     h2 Estrutura
 
     p.text-left
-      | Essa seção traz uma compilação de informações que explica a estrutura de uma casa legislativa. Esses
-      |  conteúdos foram criados pela equipe do Meu Rio - rede de mobilização que deu origem a Rede Nossas
-      |  Cidades - para o blog De Olho, um projeto independente de acompanhamento da Câmara Municipal do Rio
-      |  para criar uma comunidade de cidadãos fiscalizadores do parlamento carioca e garantir que esses
-      |  vereadores estejam os representando bem.
+      | Nessa seção você vai encontrar um resumo sobre como funciona uma casa legislativa. Esse conteúdo foi
+      |  criado pela equipe do Meu Rio para o blog De Olho, um projeto independente de acompanhamento da Câmara
+      |  Municipal do Rio para criar uma comunidade de cidadãos fiscalizadores do parlamento carioca e garantir
+      |  uma melhor representação política.
 
     p.text-left
       strong Pra que serve um vereador?
       br
-      | Acima de tudo, os vereadores servem para representar a sociedade na Câmara. Ele é o político que deve
-      |  estar mais próximo dos cidadãos, entendendo os problemas da cidade e buscando soluções. A cidade é
-      |  onde as pessoas moram, trabalham e se divertem e os vereadores devem entender as demandas das
-      |  diferentes classes e comunidades existentes na cidade e representá-los politicamente. Saiba mais.
+      | Os vereadores servem para representar a sociedade na Câmara, fiscalizar o executivo e elaborar leis. O
+      |  vereador é o político que deve estar mais próximo dos cidadãos, entendendo os problemas da cidade e buscando
+      |  soluções. A cidade é onde as pessoas moram, trabalham e se divertem e os vereadores devem entender às
+      |  diferentes demandas e conflitos existentes e representá-los politicamente.
+      |  #{link_to "Saiba mais", "http://deolho.nossascidades.org/vereador", target: :blank}.
 
     p.text-left
       strong Como os vereadores são eleitos?
       br
-      | Os vereadores são eleitos a partir do número total de vagas que seu partido ou coligação consegue
-      |  obter na Câmara Municipal e do quão bem ele foi votado em relação aos outros candidatos dentro de
-      |  seu partido ou coligação. Diferentemente do Executivo (prefeito, governador e presidente), a eleição
-      |  do Legislativo (vereadores, deputados estaduais e federais e senadores) deve preencher mais de um
-      |  cargo, e por isso usa um sistema eleitoral diferente. Saiba mais.
+      | Os vereadores são eleitos a partir do número total de vagas que seu partido ou coligação consegue obter na
+      |  Câmara Municipal e do quão bem ele foi votado em relação aos outros candidatos dentro de seu partido ou
+      |  coligação. Diferentemente do Executivo (prefeito, governador e presidente), a eleição para o Legislativo
+      |  (vereadores, deputados estaduais e federais e senadores) deve preencher mais de um cargo, e por isso usa um
+      |  sistema eleitoral diferente.
+      |  #{link_to "Saiba mais", "http://deolho.nossascidades.org/eleicao", target: :blank}.
 
     p.text-left
       strong Como a Câmara funciona?
       br
-      | A Câmara Municipal carioca, localizada no Palácio Pedro Ernesto na Cinelândia, se estrutura da
-      |  seguinte forma:
+      | As Câmaras Municipais geralmente tem a seguinte estrutura:
     ul.text-left
       li Mesa Diretora: Coordenação política e administrativa da Câmara
-      li Procuradoria Geral da CMRJ: Representação legal e consultoria jurídica
+      li Corpo Legislativo: Plenário e Comissões Temáticas (Educução, Saúde, Constituição e Justiça, Orçamento etc.)
+      li Procuradoria Geral: Representação legal e consultoria jurídica
       li Secretaria Geral da Mesa Diretora: Coordenação operacional das atividades
       li Diretoria Geral de Administração
       li Inspetoria Geral de Finanças
       li Assessorias e Diretorias ligadas à Mesa Diretora
-      li Ouvidoria Geral da CMRJ
-      li Corpo Legislativo: Plenário e Comissões
-    p.text-left
-      | #{link_to "Saiba mais", "http://deolho.nossascidades.org/camara"}
+      li Ouvidoria Geral
 
     p.text-left
       strong Como um projeto vira uma lei municipal?
       br
-      | Proposições que podem ser analisadas e votadas na Câmara Municipal:
+      | Propostas que podem ser analisadas e votadas na Câmara Municipal:
     ul.text-left
-      li Projeto de Emenda à Lei Orgânica do Município
-      li Propostas de emendas à Lei Orgânica, a “Constituição” do Município
-      li Projetos de Lei Complementar
-      li Propostas de mudanças das leis de código de obras, licenciamento e fiscalização
-      li Projetos de Lei Ordinária
-      li Propostas de leis válidas em toda o município
-      li Projeto de Resolução
-      li Propostas de alterações no funcionamento da Câmara
-      li Projeto de Decreto Legislativo
-      li Propostas para revogar decretos do Prefeito que passem por cima das suas limitações
-    p.text-left
-      | #{link_to "Saiba mais", "http://deolho.nossascidades.org/projeto_de_lei"}
+      li Projeto de emendas à Lei Orgânica, a “Constituição” do Município;
+      li Projetos de Lei Complementar;
+      li Plano Diretor e Lei de Zoneamento;
+      li Propostas de mudanças das leis de código de obras, licenciamento e fiscalização;
+      li Projetos de Lei Ordinária;
+      li Propostas de leis válidas em toda o município;
+      li Projeto de Resolução;
+      li Propostas de alterações no funcionamento da Câmara;
+      li Projeto de Decreto Legislativo;
+      li Propostas para revogar decretos do Prefeito que passem por cima das suas limitações.
 
     p.text-left
       strong Como a população pode participar das atividades da Câmara?
       br
-      | Os cariocas sempre podem ir à Câmara conversar com os parlamentares, assistir a sessões plenárias,
+      | Os cidadãos sempre podem ir à Câmara conversar com os parlamentares, assistir a sessões plenárias,
       |  propor projetos de leis, participar de Audiências Públicas e de reuniões de Comissões. E, claro,
       |  votando nos vereadores de 4 em 4 anos. Espelhando os dispositivos da Constituição Federal, a Lei
-      |  Orgânica do Rio de Janeiro garante a participação política direta da população carioca através de
-      |  três dispositivos: plebiscito, referendo e projetos de iniciativa popular.
-      |  #{link_to "Saiba mais", "http://deolho.nossascidades.org/participacao_popular"}.
+      |  Orgânica do Município garante a participação política direta da população através de três dispositivos:
+      |  plebiscito, referendo e projetos de iniciativa popular.
 
     h2 Tramitação
 
@@ -416,23 +457,24 @@
     p.text-left
       strong Dando entrada num projeto
       br
-      | Depois de protocolado na Mesa Diretora, o projeto é publicado no Diário Oficial e é analisado por
-      |  técnicos, que vão dizer se já existe lei sobre o tema, se é constitucional, se a redação contém
-      |  erros técnicos de apresentação e se está na esfera de atuação da Casa Legislativa.
+      | Depois de protocolado, o projeto é analisado por técnicos, que vão dizer se já existe lei sobre o tema,
+      |  se é constitucional, se a redação contém erros técnicos de apresentação e se está na esfera de atuação
+      |  da Casa Legislativa.
 
     p.text-left
       strong A análise das Comissões temáticas
       br
-      | Se estiver tudo ok, o projeto é enviado para as comissões permanentes da Casa que tem a ver com a
-      |  proposta. Cada Comissão emite parecer de acordo com sua área de atuação. A de Educação, por exemplo,
-      |  diz se é favorável ou contrária à ideia apresentada sob o ponto de vista da área educacional. A de
-      |  Higiene e Saúde avalia a proposição pensando na saúde do cidadão, e por aí vai.
+      | Se estiver tudo ok, o projeto é enviado para as comissões permanentes da Casa que tem a ver com a proposta.
+      |  Cada Comissão emite parecer de acordo com sua área de atuação. A de Educação, por exemplo, diz se é
+      |  favorável ou contrária à ideia apresentada sob o ponto de vista da área educacional. A de Saúde avalia a
+      |  proposição pensando na saúde do cidadão, e por aí vai.
 
     p.text-left
       strong Comissão de Justiça e Redação, a poderosa
       br
       | A primeira Comissão a se manifestar é a de Constituição e Justiça (ou nome semelhante, dependendo da
-      |  Casa Legislativa e o Estado em questão), que vai dizer se o projeto é constitucional ou não.
+      |  Casa Legislativa e o Estado em questão, por exemplo, Comissão de Constituição, Justiça e Legislação
+      |  Participativa em São Paulo), que vai dizer se o projeto é constitucional ou não.
     p.text-left
       | 1) se a Comissão der parecer favorável ao projeto, ele é encaminhado para as outras comissões;
     p.text-left
@@ -444,16 +486,16 @@
       | Quando a última Comissão se manifestar, o projeto fica aguardando inclusão na Ordem do Dia para
       |  discussão e votação em Plenário.
     p.text-left
-      | Em muitos dos casos, as comissões acabam não emitindo o parecer no prazo determinado. Nessas
-      |  situações, o autor do projeto pode pedir a inclusão na Ordem do Dia e o parecer é colhido oralmente
-      |  na hora da votação.
+      | Em muitos dos casos, as comissões acabam não emitindo o parecer no prazo determinado. Nessas situações,
+      |  o autor do projeto pode pedir a inclusão na Ordem do Dia e o parecer é coletado oralmente na hora da
+      |  votação.
 
     p.text-left
       strong Quantas vezes um projeto é votado?
       br
-      | Na maioria dos casos, o projeto passa por duas votações. Caso seja rejeitado, vai ao arquivo. Caso
-      |  seja aprovado, vai a promulgação ou sanção, dependendo do tipo de projeto. O de Resolução e o de
-      |  Decreto Legislativo são promulgados pelo presidente da Casa Legislativa.
+      | O projeto passa por duas votações. Caso seja rejeitado, vai ao arquivo. Caso seja aprovado, vai a
+      |  promulgação ou sanção, dependendo do tipo de projeto. O de Resolução e o de Decreto Legislativo são
+      |  promulgados pelo presidente da Casa Legislativa.
 
     p.text-left
       strong Quando um projeto aprovado pelo Legislativo, enfim, vira lei?
@@ -484,10 +526,10 @@
     p.text-left
       strong Tipos de emendas que podem ser apresentadas
       br
-      | A maioria dos projetos passa por duas votações. Nesse meio tempo, qualquer vereador/deputado ou
-      |  comissão temática pode apresentar emendas ao projeto. Para ela ser apresentada, é necessário o apoio
-      |  de ⅓ dos parlamentares. Nesse caso, o projeto sai de pauta e é encaminhado às comissões, que vão
-      |  analisar o texto da emenda.
+      | Os projetos passam por duas votações. Nesse meio tempo, qualquer vereador/deputado ou comissão
+      |  temática pode apresentar emendas ao projeto. Para ela ser apresentada, é necessário o apoio de ⅓
+      |  dos parlamentares. Nesse caso, o projeto sai de pauta e é encaminhado às comissões, que vão analisar
+      |  o texto da emenda.
 
     ul.text-left
       li supressiva - retira um trecho do projeto
@@ -501,8 +543,9 @@
     p.text-left
       strong Quórum de Projetos
       br
-      | O quórum (ou seja, o número de votos favoráveis) varia de acordo com o projeto. O Plenário decide
-      |  quase sempre por maioria simples de votos ou seja, pela maioria presente no momento da votação.
+      | O quórum (ou seja, o número mínimo de vereadores presentes na votação) varia de acordo com o projeto.
+      |  O Plenário decide quase sempre por maioria simples de votos ou seja, pela maioria presente no
+      |  momento da votação.
 
     h2 Importante
 
