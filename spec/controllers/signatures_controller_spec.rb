@@ -18,7 +18,7 @@ RSpec.describe SignaturesController, :type => :controller do
 
       it "should redirect to the project page" do
         post :create, project_id: project.id
-        expect(response).to redirect_to(project_path(project, anchor: "thanks-for-signing-this-project"))
+        expect(response).to redirect_to(project_path(project, signature_created: true, anchor: "thanks-for-signing-this-project"))
       end
 
       it "should send an email to the current user" do

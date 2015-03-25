@@ -10,7 +10,7 @@ class SignaturesController < ApplicationController
       Notifier.thanks_for_signing(signature).deliver_later
     end
 
-    redirect_to project_path(project, anchor: "thanks-for-signing-this-project")
+    redirect_to project_path(project, signature_created: true, anchor: "thanks-for-signing-this-project")
   end
 
   def signature_params
