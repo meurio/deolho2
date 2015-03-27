@@ -8,21 +8,25 @@
       |  de lei ou PL (nome carinhoso que adoramos usar!) vire de fato uma lei, como:
     .row
       .large-3.columns
-        = image_tag "icon-create.png"
-        h4 Criar um PL
+        = link_to '#how_to_create' do
+          = image_tag("icon-create.png")
+          h4 Criar um PL
       .large-3.columns
-        = image_tag "icon-contribute.png"
-        h4 Editar um PL
+        = link_to '#how_to_contribute' do
+          = image_tag "icon-contribute.png"
+          h4 Editar um PL
       .large-3.columns
-        = image_tag "icon-sign.png"
-        h4 Assinar um PL
+        = link_to '#how_to_sign' do
+          = image_tag "icon-sign.png"
+          h4 Assinar um PL
       .large-3.columns
-        = image_tag "icon-adopt.png"
-        h4
-          | Adotar um PL
-          br
-          small
-            |  (somente para parlamentares)
+        = link_to '#how_to_adopt' do
+          = image_tag "icon-adopt.png"
+          h4
+            | Adotar um PL
+            br
+            small
+              |  (somente para parlamentares)
     hr
 
     h2 Por que criamos o Legislando?
@@ -68,7 +72,8 @@
       |  colaboração de todos os cidadãos no Legislando.
 
 
-    h2 Como criar um PL?
+    #how_to_create 
+      h2 Como criar um PL?
 
     p.text-left
       strong Quem pode iniciar um PL?
@@ -177,7 +182,8 @@
       |  comprometimento pelo processo. Busque prazos viáveis mas não perca de vista o resultado concreto dos
       |  seus esforços e de quem está nessa com você.
 
-    h2 Como editar?
+    #how_to_contribute
+      h2 Como editar?
 
     p.text-left
       strong Quem pode editar um PL?
@@ -277,7 +283,8 @@
         li #{content_tag :strong, 'Modificativas'}: acrescentam ou suprimem ou modificam, parte ou expressões no dispositivo
         li #{content_tag :strong, 'Aglutinativas'}: resulta da fusão de emendas apresentadas ou das emendas com o texto
 
-    h2 Como apoiar?
+    #how_to_sign
+      h2 Como apoiar?
 
     p.text-left
       strong Quem pode apoiar ou assinar um PL?
@@ -305,7 +312,8 @@
       |  saberemos a quantidade de tempo e os talentos que você estaria disposto a dividir com a rede para a
       |  construção de cidades melhores. Faça você também parte dessa revolução!
 
-    h2 Como adotar?
+    #how_to_adopt
+      h2 Como adotar?
 
     p.text-left
       strong O que é a adoção de um PL?
