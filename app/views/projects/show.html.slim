@@ -16,7 +16,7 @@
   - else
     = nil
 
-.ProjectCover.u-mb1
+.ProjectCover
   .row
     .large-7.columns
       .text-center
@@ -26,12 +26,15 @@
             .Ribbon-line2  parlamentar
       h1= @project.title
       .ProjectCover-details
-        = @project.category
-        |  &middot; no ar há #{distance_of_time_in_words_to_now @project.created_at}
-        |  &middot; #{@project.organization.city}
+        strong= @project.category
+        |  &middot; no ar há
+        strong  #{distance_of_time_in_words_to_now @project.created_at}
+        strong  &middot; #{@project.organization.city}
         - if @project.legislative_chamber.present?
-          |  &middot; #{@project.legislative_chamber}
-      = simple_format @project.abstract
+          strong  &middot; #{@project.legislative_chamber}
+      - if can? :edit, @project
+        = link_to "Editar PL", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius, :secondary]
+      .ProjectCover-abstract= simple_format @project.abstract
       .UserPartial.u-mb1
         = image_tag @project.user.avatar_url
         .UserPartial-data
@@ -39,7 +42,8 @@
           .UserPartial-userName= @project.user.name
 
     .large-5.columns
-      .panel
+      .panel.u-mt3
+        = image_tag "icon-colab-fim.png"
         - if @project.open?
           p.u-fontSize15.u-normalLineHeight Edite, comente e colabore com sugestões que podem virar lei!
           - if current_user.present?
@@ -57,57 +61,97 @@
         - if @contributions.any?
           p.UsersList= raw users_list(@contributions.map{|c| c.user}, "contributed")
 
+.StepsList
+  .row
+    - if @project.accepted?
+      .large-6.large-offset-3.columns
+        = image_tag("icon-vitoria-above.png")
+        h2 Vitória!
+    - elsif @project.rejected?
+      .large-6.large-offset-3.columns
+        = image_tag("icon-nao-aprovado-above.png")
+        h2 Não aprovado!
+    - else
+      .StepsList-step.large-3.medium-3.columns
+        - if @project.open?
+          = image_tag("icon-colab-fim.png")
+        - else
+          = image_tag("icon-locked-fim.png")
+        p Edição
+        - if @project.status == "open"
+          .StepsList-bubble
+
+      .StepsList-step.large-3.medium-3.columns
+        - if @project.adopted?
+          = image_tag("icon-adocao-on.png")
+        - else
+          = image_tag("icon-locked-fim.png")
+        p Adoção parlamentar
+        - if @project.status == "adopted"
+          .StepsList-bubble
+
+      .StepsList-step.large-3.medium-3.columns
+        - if @project.processing?
+          = image_tag("icon-tramite-fim.png")
+        - else
+          = image_tag("icon-locked-fim.png")
+        p Tramitação legislativa
+        - if @project.status == "processing"
+          .StepsList-bubble
+
+      .StepsList-step.large-3.medium-3.columns
+        - if @project.finished?
+          = image_tag("icon-votacao-fim.png")
+          p Votação
+        - else
+          = image_tag("icon-locked-fim.png")
+          p #{ 'Aguardando ' if @project.processing? } Votação
+        - if @project.status == "finished"
+          .StepsList-bubble
+
+.StepsDescription.u-mb3
+  .row
+    .large-12.columns
+      - if @project.accepted?
+        | Graças aos esforços de muita gente esse Projeto de Lei virou realidade e agora nosso sonho coletivo virou lei. Vitória!
+      - elsif @project.rejected?
+        | Este Projeto não foi aprovado!
+      - elsif @project.processing?
+        | Esse projeto está agora em etapa de tramitação rumo à sua aprovação.
+      - elsif @project.adopted?
+        | Esse projeto já foi adotado por um ou mais parlamentares que agora se encarregam de sua tramitação em sua casa legislativa.
+      - else
+        | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
+
+.row
+  .large-6.columns
+    .ProjectPanel.u-mb3
+      = image_tag("icon-apoiador-caixa.png")
+      p.highlight Ao apoiar esse PL você dá a ele muito mais chances de vitória!
+      - if current_user.present?
+        - if current_user.signed?(@project)
+          button class=["button", "radius", "secondary", "large", "disabled"] disabled=true Você já assinou este projeto
+        - else
+          = link_to "Assinar o projeto", project_signatures_path(@project), id: "sign-project-button", method: :post, class: [:button, :radius, :secondary, :large]
+      - else
+        = link_to 'Assinar o projeto', "#", id: "sign-project-button", class: [:button, :radius, :secondary, :large], data: { "reveal-id" => "signature-form" }
+      - if @signatures.any?
+        p.UsersList= raw users_list(@signatures.map{|s| s.user}, "signed")
+
+  .large-6.columns
+    .ProjectPanel.ProjectPanel--colored.u-mb3
+      = image_tag("icon-apoiador-caixa.png")
+      p.highlight Se você possui uma ideia que poderia virar projeto de lei, não deixe de dividir com a gente
+      - if can? :create, Project
+        = link_to new_project_path, class: [:button, :radius, :large] do
+          | Criar projeto de lei
+      - else
+        = link_to "#", id: "new-project-button", data: { "reveal-id" => "new-project-reveal" }, class: [:button, :radius, :large] do
+          | Criar projeto de lei
+      p= link_to "Conheça todos os projetos de lei", root_path
+
 .row
   .large-7.columns
-    - if can? :edit, @project
-      = link_to "Editar PL", edit_project_path(@project), id: "edit-project-button", class: [:button, :radius, :secondary]
-
-    .StepsList
-      - if @project.accepted?
-        .text-center
-          = image_tag("icon-vitoria-above.png")
-          h2 Vitória!
-          span Graças aos esforços de muita gente esse Projeto de Lei virou realidade e agora nosso sonho coletivo virou lei. Vitória!
-      - elsif @project.rejected?
-        .text-center
-          = image_tag("icon-nao-aprovado-above.png")
-          h2 Não aprovado!
-          span Este Projeto não foi aprovado!
-      - else
-        .StepsList-stepBubble class=step_bubble_class(@project)
-          - if @project.processing?
-            | Esse projeto está agora em etapa de tramitação rumo à sua aprovação. Acompanhe abaixo o status atual do PL e os próximos passos.
-          - elsif @project.adopted?
-            | Esse projeto já foi adotado por um ou mais parlamentares que agora se encarregam de sua tramitação em sua casa legislativa.
-          - else
-            | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
-        .row
-          .StepsList-step.large-3.medium-3.columns
-            = image_tag("icon-colab-fim.png")
-            p Edição
-
-          .StepsList-step.large-3.medium-3.columns
-            - if @project.adopted?
-              = image_tag("icon-adocao-on.png")
-            - else
-              = image_tag("icon-locked-fim.png")
-            p Adoção parlamentar
-
-          .StepsList-step.large-3.medium-3.columns
-            - if @project.processing?
-              = image_tag("icon-tramite-fim.png")
-            - else
-              = image_tag("icon-locked-fim.png")
-            p Tramitação legislativa
-
-          .StepsList-step.large-3.medium-3.columns
-            - if @project.finished?
-              = image_tag("icon-votacao-fim.png")
-              p Votação
-            - else
-              = image_tag("icon-locked-fim.png")
-              p #{ 'Aguardando ' if @project.processing? } Votação
-
     .hide-for-small-only
       h3.HeaderWithIcon
         = image_tag("icon-sobre-pequeno.png")
@@ -116,28 +160,6 @@
         .GoogleDriveEmbed= raw @project.google_drive_embed
 
   .large-5.columns
-    .panel.u-mb4
-      p.u-fontSize15.u-normalLineHeight Ao apoiar esse PL você dá a ele muito mais chances de vitória!
-      - if current_user.present?
-        - if current_user.signed?(@project)
-          p Você já assinou este projeto
-        - else
-          = link_to "Assinar o projeto", project_signatures_path(@project), id: "sign-project-button", method: :post, class: [:button, :radius, :secondary]
-      - else
-        = link_to 'Assinar o projeto', "#", id: "sign-project-button", class: [:button, :radius, :secondary], data: { "reveal-id" => "signature-form" }
-      - if @signatures.any?
-        p.UsersList= raw users_list(@signatures.map{|s| s.user}, "signed")
-
-      hr
-
-      p.u-normalLineHeight Se você possui uma ideia que poderia virar projeto de lei, não deixe de dividir com a gente
-      - if can? :create, Project
-        = link_to new_project_path, class: [:button, :secondary, :radius] do
-          | Criar projeto de lei
-      - else
-        = link_to "#", id: "new-project-button", data: { "reveal-id" => "new-project-reveal" }, class: [:button, :secondary, :radius] do
-          | Criar projeto de lei
-
     h3.HeaderWithIcon
       = image_tag("icon-tramite-on.png")
       | Tramitação Legislativa

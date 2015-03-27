@@ -118,8 +118,8 @@ $black       : #000;
 $facebook-blue: #3b5998;
 $twitter-blue: #55acee;
 $dark-green: #018a82;
-$light-green: #4eb8aa;
-$yellow: #fdb115;
+$light-green: #00BDAE;
+$yellow: #FFBD00;
 $text-gray: $charcoal;
 
 // We use these as default colors throughout
@@ -466,11 +466,11 @@ $button-lrg: rem-calc(12);
 // $alert-button-border-color: $alert-button-bg-hover;
 
 // We use this to set the default radius used throughout the core.
-// $button-radius: $global-radius;
+$button-radius: 10px;
 // $button-round: $global-rounded;
 
 // We use this to set default opacity and cursor for disabled buttons.
-// $button-disabled-opacity: 0.7;
+$button-disabled-opacity: 0.5;
 // $button-disabled-cursor: $cursor-default-value;
 
 // 06. Button Groups

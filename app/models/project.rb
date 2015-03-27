@@ -38,4 +38,16 @@ class Project < ActiveRecord::Base
   def finished?
     accepted? || rejected?
   end
+
+  def status
+    if finished?
+      "finished"
+    elsif processing?
+      "processing"
+    elsif adopted?
+      "adopted"
+    elsif open?
+      "open"
+    end
+  end
 end

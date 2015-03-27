@@ -11,13 +11,37 @@
   }
 
   .ProjectCover-details {
-    opacity: .5;
     text-transform: uppercase;
+    color: $light-green;
     margin-bottom: 1em;
+    font-size: .9em
+  }
+
+  .ProjectCover-abstract {
+    p {
+      font-size: 1.5em;
+      line-height: 1.25em;
+    }
   }
 
   .panel {
     @include box-shadow(2px 2px 2px #333);
     margin: 0;
+    background: $dark-green;
+    text-align: center;
+    color: white;
+
+    h2, p {
+      color: white
+    }
+
+    img {
+      margin-bottom: 1em;
+      margin-top: -63px;
+    }
+  }
+
+  .UserPartial-userName {
+    color: $yellow;
   }
 }

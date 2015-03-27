@@ -1,0 +1,29 @@
+.ProjectPanel {
+  @include box-shadow(2px 2px 2px $iron);
+  @include border-radius(10px);
+  background: white;
+  padding: 2em;
+  text-align: center;
+
+  img {
+    margin-bottom: 1em;
+  }
+
+  .highlight {
+    font-size: 1.5em;
+    line-height: 1em;
+  }
+
+  p:last-child {
+    margin: 0;
+  }
+
+  &.ProjectPanel--colored {
+    background: $light-green;
+    color: white;
+
+    a {
+      color: white;
+    }
+  }
+}

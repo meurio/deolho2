@@ -1,52 +1,47 @@
 .StepsList {
-  border-top: 5px double rgba(black, .05);
-  border-bottom: 5px double rgba(black, .05);
-  padding: 1em 0;
-  margin-bottom: 4em;
+  padding-top: 1.5em;
+  background: $dark-green;
+  color: white;
+  text-align: center;
+
+  h2 {
+    color: white;
+  }
+
+  p {
+    line-height: 1em;
+  }
 
   .StepsList-step {
-    text-align: center;
-
     img {
       width: 70px;
       height: 70px;
+      margin-bottom: .5em;
     }
 
     p {
-      font-size: .9em;
+      font-size: 1.1em;
+      text-transform: uppercase;
+      margin-bottom: 1em;
     }
   }
 
-  .StepsList-stepBubble {
-    background: rgba(black, .05);
-    padding: .5em;
-    margin-bottom: 1em;
-    line-height: normal;
-    position: relative;
+  .StepsList-bubble {
+    height: 20px;
 
-    &:after {
-      content: '';
-      position: absolute;
+    &:before {
+      text-align: center;
+      content: "";
       border-style: solid;
-      border-width: 15px 15px 0;
-      border-color: rgba(black, .05) transparent;
-      display: block;
-      width: 0;
-      z-index: 1;
-      bottom: -15px;
-      left: 57px;
+      border-width: 0px 20px 20px;
+      border-color: $light-green transparent;
+      display: inline-block;
     }
   }
+}
 
-  .StepsList-stepBubble.StepsList-stepBubble--finished {
-    &:after { left: 581px }
-  }
-
-  .StepsList-stepBubble.StepsList-stepBubble--processing {
-    &:after { left: 406px }
-  }
-
-  .StepsList-stepBubble.StepsList-stepBubble--adopted {
-    &:after { left: 232px }
+@media #{$small-only} {
+  .StepsList {
+    display: none;
   }
 }

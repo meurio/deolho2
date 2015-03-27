@@ -76,6 +76,7 @@
 
 .panel {
   @include box-shadow(2px 2px 2px $iron);
+  @include border-radius(10px);
 
   h2 {
     background: $silver;
