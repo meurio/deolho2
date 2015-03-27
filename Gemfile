@@ -19,7 +19,7 @@ gem 'rspec-rails', group: [:development, :test]
 gem 'slim-rails'
 gem 'meurio_ui', github: "meurio/meurio_ui", branch: 'new-header'
 gem 'compass-rails'
-gem 'foundation-rails'
+gem 'foundation-rails', '5.5.1.0'
 gem 'machinist'
 gem 'rails_12factor', group: [:staging, :production]
 gem 'puma'

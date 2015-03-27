@@ -5,6 +5,10 @@
   padding: 2em;
   text-align: center;
 
+  .UserPartial {
+    text-align: left;
+  }
+
   img {
     margin-bottom: 1em;
   }
@@ -14,8 +18,10 @@
     line-height: 1em;
   }
 
-  p:last-child {
-    margin: 0;
+  p, a {
+    &:last-child {
+      margin: 0;
+    }
   }
 
   &.ProjectPanel--colored {

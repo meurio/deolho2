@@ -175,7 +175,7 @@
     h3.HeaderWithIcon
       = image_tag "icon-parlamentar-pequeno.png"
       | Parlamentares que adotaram o Projeto de Lei
-    .panel
+    .ProjectPanel
       - if @adoptions.any?
         = render @adoptions
       - else
@@ -185,8 +185,8 @@
 
       hr
 
-      p.u-fontSize15.u-normalLineHeight Você é um parlamentar e gostaria de representar este projeto na câmara? Você pode!
-      = link_to 'Adotar o projeto', '#adopt', id: "adopt-project-button", class: [:button, :radius, :secondary], "data-reveal-id" => "adopt", "data-reveal" => true
+      p.highlight Você é um parlamentar e gostaria de representar este projeto na câmara? Você pode!
+      = link_to 'Adotar o projeto', '#adopt', id: "adopt-project-button", class: [:button, :radius, :secondary, :large], "data-reveal-id" => "adopt", "data-reveal" => true
 
 #signature-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
