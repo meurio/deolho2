@@ -50,26 +50,27 @@
     p= image_tag "title-how-it-works.png"
 
     h2 Os Projetos de Lei
+    
+    ul.accordion data-accordion=true
+      li.accordion-navigation.text-left
+        a href="#q1" Quais os tipos de PL que o Legislando aceita?!
+        #q1.content
+          | Esse aplicativo permite a criação de dois tipos de Projetos de Lei: o PL Colaborativo e o de
+          |  Iniciativa Parlamentar.
 
-    p.text-left
-      strong Quais os tipos de PL que o Legislando aceita?!
-      br
-      | Esse aplicativo permite a criação de dois tipos de Projetos de Lei: o PL Colaborativo e o de
-      |  Iniciativa Parlamentar.
+      li.accordion-navigation.text-left
+        a href="#q2" O que é um Projeto de Lei Colaborativo?
+        #q2.content
+          | O PL Colaborativo é aquele que é iniciado por um cidadão. Ou seja, eu, você, ou qualquer outra pessoa
+          |  que não exerça uma função pública em um cargo representativo eleito por voto.
 
-    p.text-left
-      strong O que é um Projeto de Lei Colaborativo?
-      br
-      | O PL Colaborativo é aquele que é iniciado por um cidadão. Ou seja, eu, você, ou qualquer outra pessoa
-      |  que não exerça uma função pública em um cargo representativo eleito por voto.
-
-    p.text-left
-      strong O que é um Projeto de Lei de Iniciativa Parlamentar?
-      br
-      | O PL de Iniciativa Parlamentar é, como o nome diz, um projeto criado por um ou mais membros de um
-      |  Parlamento. Ou seja, indivíduos que tornaram-se membros de uma casa legislativa (vereadores e deputados
-      |  estaduais) através de eleições oficiais e querem colocar o seu Projeto de Lei para consulta, apoio e
-      |  colaboração de todos os cidadãos no Legislando.
+      li.accordion-navigation.text-left
+        a href="#q3" O que é um Projeto de Lei de Iniciativa Parlamentar?
+        #q3.content
+          | O PL de Iniciativa Parlamentar é, como o nome diz, um projeto criado por um ou mais membros de um
+          |  Parlamento. Ou seja, indivíduos que tornaram-se membros de uma casa legislativa (vereadores e deputados
+          |  estaduais) através de eleições oficiais e querem colocar o seu Projeto de Lei para consulta, apoio e
+          |  colaboração de todos os cidadãos no Legislando.
 
 
     #how_to_create
