@@ -120,6 +120,9 @@
         | Esse projeto está agora em etapa de tramitação rumo à sua aprovação.
       - elsif @project.adopted?
         | Esse projeto já foi adotado por um ou mais parlamentares que agora se encarregam de sua tramitação em sua casa legislativa.
+      - elsif !@project.open?
+        | A edição deste projeto foi encerrada há
+        |  #{distance_of_time_in_words_to_now @project.closes_for_contribution_at} atrás
       - else
         | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
 
