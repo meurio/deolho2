@@ -1,4 +1,4 @@
-[class^="icon-"]:before {
+[class^="icon-"]:before, [class^="icon-"]:after {
   font-family: 'icomoon';
 }
 
@@ -77,6 +77,14 @@
       width: 50px;
     }
   }
+}
+.accordion-navigation > a:after {
+  font-family: 'icomoon';
+  content: "\e62e";
+  float: right;
+}
+.accordion-navigation.active > a:after {
+  content: "\e62f";
 }
 
 .panel {
