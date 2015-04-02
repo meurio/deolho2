@@ -18,6 +18,8 @@ html
   body class=[controller.controller_name, controller.action_name] data={ "ga-code" => ENV["GA_CODE"] }
     - content_for :application_menu do
       li= link_to "Como funciona?", about_path
+      
+    - content_for :main_menu do
       li.active
         - if can? :create, Project
           = link_to new_project_path, id: "new-project-button-menu" do
