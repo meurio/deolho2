@@ -127,7 +127,7 @@
   .large-6.columns
     .ProjectPanel.u-mb3
       = image_tag("icon-apoiador-caixa.png")
-      p.highlight Ao apoiar esse PL você dá a ele muito mais chances de vitória!
+      p.highlight Ao assinar esse PL você demonstra o seu apoio e dá a ele muito mais chances de vitória!
       - if current_user.present?
         - if current_user.signed?(@project)
           button class=["button", "radius", "secondary", "large", "disabled"] disabled=true Você já assinou este projeto
@@ -141,14 +141,14 @@
   .large-6.columns
     .ProjectPanel.ProjectPanel--colored.u-mb3
       = image_tag("icon-apoiador-caixa.png")
-      p.highlight Se você possui uma ideia que poderia virar projeto de lei, não deixe de dividir com a gente
+      p.highlight Se você possui uma ideia que poderia virar um Projeto de Lei não deixe de dividir com a gente!
       - if can? :create, Project
         = link_to new_project_path, class: [:button, :radius, :large] do
-          | Criar projeto de lei
+          | Criar Projeto de Lei
       - else
         = link_to "#", id: "new-project-button", data: { "reveal-id" => "new-project-reveal" }, class: [:button, :radius, :large] do
-          | Criar projeto de lei
-      p= link_to "Conheça todos os projetos de lei", root_path
+          | Criar Projeto de Lei
+      p= link_to "Conheça todos os Projetos de Lei do Legislando", root_path, class: 'u-underline'
 
 .row
   .large-7.columns
@@ -170,7 +170,7 @@
         = image_tag("icon-cadeado.png", class: 'u-mb1')
         p.u-mb0
           strong Situação atual:
-        p Este projeto ainda não está em tramitação legislativa.
+        p Esse projeto ainda não está em tramitação legislativa.
 
     h3.HeaderWithIcon
       = image_tag "icon-parlamentar-pequeno.png"
@@ -179,14 +179,15 @@
       - if @adoptions.any?
         = render @adoptions
       - else
-        p Nenhum parlamentar adotou este projeto ainda.
+        p Nenhum parlamentar adotou esse PL ainda.
       - if can?(:create, Adoption)
         = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius, :secondary, "u-mb0"], "data-reveal-id" => "adoption-form", "data-reveal" => true
 
       hr
-
-      p.highlight Você é um parlamentar e gostaria de representar este projeto na câmara? Você pode!
+      p.highlight Você é um parlamentar e gostaria de representar o sonho de muitos em sua casa legislativa? Você pode!
       = link_to 'Adotar o projeto', '#adopt', id: "adopt-project-button", class: [:button, :radius, :secondary, :large], "data-reveal-id" => "adopt", "data-reveal" => true
+      p= link_to 'Saiba mais sobre Adotar PL', about_path(anchor: :how_to_adopt), class: 'u-underline', target: :blank
+
 
 #signature-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;
