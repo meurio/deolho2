@@ -24,11 +24,11 @@ html
         - if can? :create, Project
           = link_to new_project_path, id: "new-project-button-menu" do
             span.icon-plus &nbsp;
-            | Criar projeto de lei
+            | Criar Projeto de Lei
         - else
           = link_to "#", id: "new-project-button-menu", data: { "reveal-id" => "new-project-reveal" }
             span.icon-plus &nbsp;
-            | Criar projeto de lei
+            | Criar Projeto de Lei
 
     = meurio_header_for :legislando
     = yield
@@ -36,13 +36,36 @@ html
 
     #new-project-reveal.reveal-modal.small data-reveal=true
       .title
-        h2 Novos projetos de lei
+        h2.u-mb0 CRIE UM PROJETO DE LEI!
       p.no-margin
-        | Oi! Que legal que você se interessou em criar um novo projeto de lei. Entre em contato através do
-        |  email #{mail_to 'legislando@nossascidades.org'} pra gente te mandar as instruções de como proceder,
-        |  ok?! ;)
+        | Oi! Que legal que você se interessou em criar um novo Projeto de Lei. Entre em contato pelo e-mail
+        |  #{mail_to 'legislando@nossascidades.org'} com o tema do PL que você quer criar, o porque você acha
+        |  isso importante, e a cidade ou estado que essa lei será aplicada e a gente te manda instruções de
+        |  como proceder, ok?!
       a.close-reveal-modal &#215
 
     = javascript_include_tag 'application'
     = javascript_include_tag "//cdn.optimizely.com/js/#{ENV["OPTIMIZELY_ID"]}.js"
     = render 'layouts/mouseflow'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
