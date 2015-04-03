@@ -75,27 +75,30 @@
       .StepsList-step.large-3.medium-3.columns
         - if @project.open?
           = image_tag("icon-colab-fim.png")
+          p Edição
         - else
           = image_tag("icon-locked-fim.png")
-        p Edição
+          p.locked Edição
         - if @project.status == "open"
           .StepsList-bubble
 
       .StepsList-step.large-3.medium-3.columns
         - if @project.adopted?
           = image_tag("icon-adocao-on.png")
+          p Adoção parlamentar
         - else
           = image_tag("icon-locked-fim.png")
-        p Adoção parlamentar
+          p.locked Adoção parlamentar
         - if @project.status == "adopted"
           .StepsList-bubble
 
       .StepsList-step.large-3.medium-3.columns
         - if @project.processing?
           = image_tag("icon-tramite-fim.png")
+          p Tramitação legislativa
         - else
           = image_tag("icon-locked-fim.png")
-        p Tramitação legislativa
+          p.locked Tramitação legislativa
         - if @project.status == "processing"
           .StepsList-bubble
 
@@ -105,7 +108,7 @@
           p Votação
         - else
           = image_tag("icon-locked-fim.png")
-          p #{ 'Aguardando ' if @project.processing? } Votação
+          p.locked #{ 'Aguardando ' if @project.processing? } Votação
         - if @project.status == "finished"
           .StepsList-bubble
 
@@ -143,7 +146,7 @@
 
   .large-6.columns
     .ProjectPanel.ProjectPanel--colored.u-mb3
-      = image_tag("icon-apoiador-caixa.png")
+      = image_tag("icon-ideia.png")
       p.highlight Se você possui uma ideia que poderia virar um Projeto de Lei não deixe de dividir com a gente!
       - if can? :create, Project
         = link_to new_project_path, class: [:button, :radius, :large] do
@@ -166,14 +169,13 @@
     h3.HeaderWithIcon
       = image_tag("icon-tramite-on.png")
       | Tramitação Legislativa
-    .panel.text-center.u-mb4
+    .ProjectPanel.u-mb4
       - if @project.processing?
         = simple_format @project.legislative_processing
       - else
-        = image_tag("icon-cadeado.png", class: 'u-mb1')
-        p.u-mb0
-          strong Situação atual:
-        p Esse projeto ainda não está em tramitação legislativa.
+        = image_tag("icon-cadeado-tramitacao.png", class: 'u-mt2')
+        h4 Situação atual:
+        p.u-mb2.u-fontSize12 Esse projeto ainda não está em tramitação legislativa.
 
     h3.HeaderWithIcon
       = image_tag "icon-parlamentar-pequeno.png"
@@ -182,7 +184,8 @@
       - if @adoptions.any?
         = render @adoptions
       - else
-        p Nenhum parlamentar adotou esse PL ainda.
+        = image_tag "icon-sem-parlamentar.png"
+        p.text-colored.u-fontSize12 Nenhum parlamentar adotou esse PL ainda.
       - if can?(:create, Adoption)
         = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius, :secondary, "u-mb0"], "data-reveal-id" => "adoption-form", "data-reveal" => true
 
