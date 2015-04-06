@@ -129,9 +129,9 @@
       - else
         | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
 
-.row
+.row data-equalizer=true
   .large-6.columns
-    .ProjectPanel.u-mb3
+    .ProjectPanel.u-mb3 data-equalizer-watch=true
       = image_tag("icon-apoiador-caixa.png")
       p.highlight Ao assinar esse PL você demonstra o seu apoio e dá a ele muito mais chances de vitória!
       - if current_user.present?
@@ -145,7 +145,7 @@
         p.UsersList= raw users_list(@signatures.map{|s| s.user}, "signed")
 
   .large-6.columns
-    .ProjectPanel.ProjectPanel--colored.u-mb3
+    .ProjectPanel.ProjectPanel--colored.u-mb3 data-equalizer-watch=true
       = image_tag("icon-ideia.png")
       p.highlight Se você possui uma ideia que poderia virar um Projeto de Lei não deixe de dividir com a gente!
       - if can? :create, Project
