@@ -24,6 +24,16 @@
     }
   }
 
+  .text-colored {
+    color: $light-green;
+  }
+
+  h4 {
+    color: $light-green;
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+
   &.ProjectPanel--colored {
     background: $light-green;
     color: white;

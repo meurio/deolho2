@@ -16,13 +16,18 @@
     img {
       width: 70px;
       height: 70px;
-      margin-bottom: .5em;
+      margin-bottom: 1.2em;
     }
 
     p {
       font-size: 1.1em;
       text-transform: uppercase;
       margin-bottom: 1em;
+    }
+
+    p.locked {
+      color: $darker-green;
+      font-weight: 500;
     }
   }
 

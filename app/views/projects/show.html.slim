@@ -75,27 +75,30 @@
       .StepsList-step.large-3.medium-3.columns
         - if @project.open?
           = image_tag("icon-colab-fim.png")
+          p Edição
         - else
           = image_tag("icon-locked-fim.png")
-        p Edição
+          p.locked Edição
         - if @project.status == "open"
           .StepsList-bubble
 
       .StepsList-step.large-3.medium-3.columns
         - if @project.adopted?
           = image_tag("icon-adocao-on.png")
+          p Parlamentar responsável
         - else
           = image_tag("icon-locked-fim.png")
-        p Parlamentar responsável
+          p.locked Parlamentar responsável
         - if @project.status == "adopted"
           .StepsList-bubble
 
       .StepsList-step.large-3.medium-3.columns
         - if @project.processing?
           = image_tag("icon-tramite-fim.png")
+          p Tramitação legislativa
         - else
           = image_tag("icon-locked-fim.png")
-        p Tramitação legislativa
+          p.locked Tramitação legislativa
         - if @project.status == "processing"
           .StepsList-bubble
 
@@ -105,7 +108,7 @@
           p Votação
         - else
           = image_tag("icon-locked-fim.png")
-          p #{ 'Aguardando ' if @project.processing? } Votação
+          p.locked #{ 'Aguardando ' if @project.processing? } Votação
         - if @project.status == "finished"
           .StepsList-bubble
 
@@ -120,14 +123,17 @@
         | Esse projeto está agora em etapa de tramitação rumo à sua aprovação.
       - elsif @project.adopted?
         | Esse projeto já foi adotado por um ou mais parlamentares que agora se encarregam de sua tramitação em sua casa legislativa.
+      - elsif !@project.open?
+        | A edição deste projeto foi encerrada há
+        |  #{distance_of_time_in_words_to_now @project.closes_for_contribution_at} atrás
       - else
         | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
 
-.row
+.row data-equalizer=true
   .large-6.columns
-    .ProjectPanel.u-mb3
+    .ProjectPanel.u-mb3 data-equalizer-watch=true
       = image_tag("icon-apoiador-caixa.png")
-      p.highlight Ao apoiar esse PL você dá a ele muito mais chances de vitória!
+      p.highlight Ao assinar esse PL você demonstra o seu apoio e dá a ele muito mais chances de vitória!
       - if current_user.present?
         - if current_user.signed?(@project)
           button class=["button", "radius", "secondary", "large", "disabled"] disabled=true Você já assinou este projeto
@@ -139,16 +145,16 @@
         p.UsersList= raw users_list(@signatures.map{|s| s.user}, "signed")
 
   .large-6.columns
-    .ProjectPanel.ProjectPanel--colored.u-mb3
-      = image_tag("icon-apoiador-caixa.png")
-      p.highlight Se você possui uma ideia que poderia virar projeto de lei, não deixe de dividir com a gente
+    .ProjectPanel.ProjectPanel--colored.u-mb3 data-equalizer-watch=true
+      = image_tag("icon-ideia.png")
+      p.highlight Se você possui uma ideia que poderia virar um Projeto de Lei não deixe de dividir com a gente!
       - if can? :create, Project
         = link_to new_project_path, class: [:button, :radius, :large] do
-          | Criar projeto de lei
+          | Criar Projeto de Lei
       - else
         = link_to "#", id: "new-project-button", data: { "reveal-id" => "new-project-reveal" }, class: [:button, :radius, :large] do
-          | Criar projeto de lei
-      p= link_to "Conheça todos os projetos de lei", root_path
+          | Criar Projeto de Lei
+      p= link_to "Conheça todos os Projetos de Lei do Legislando", root_path, class: 'u-underline'
 
 .row
   .large-7.columns
@@ -163,14 +169,13 @@
     h3.HeaderWithIcon
       = image_tag("icon-tramite-on.png")
       | Tramitação Legislativa
-    .panel.text-center.u-mb4
+    .ProjectPanel.u-mb4
       - if @project.processing?
         = simple_format @project.legislative_processing
       - else
-        = image_tag("icon-cadeado.png", class: 'u-mb1')
-        p.u-mb0
-          strong Situação atual:
-        p Este projeto ainda não está em tramitação legislativa.
+        = image_tag("icon-cadeado-tramitacao.png", class: 'u-mt2')
+        h4 Situação atual:
+        p.u-mb2.u-fontSize12 Esse projeto ainda não está em tramitação legislativa.
 
     h3.HeaderWithIcon
       = image_tag "icon-parlamentar-pequeno.png"
@@ -179,14 +184,16 @@
       - if @adoptions.any?
         = render @adoptions
       - else
-        p Nenhum parlamentar adotou este projeto ainda.
+        = image_tag "icon-sem-parlamentar.png"
+        p.text-colored.u-fontSize12 Nenhum parlamentar adotou esse PL ainda.
       - if can?(:create, Adoption)
         = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius, :secondary, "u-mb0"], "data-reveal-id" => "adoption-form", "data-reveal" => true
 
       hr
-
-      p.highlight Você é um parlamentar e gostaria de representar este projeto na câmara? Você pode!
+      p.highlight Você é um parlamentar e gostaria de representar o sonho de muitos em sua casa legislativa? Você pode!
       = link_to 'Adotar o projeto', '#adopt', id: "adopt-project-button", class: [:button, :radius, :secondary, :large], "data-reveal-id" => "adopt", "data-reveal" => true
+      p= link_to 'Saiba mais sobre Adotar PL', about_path(anchor: :how_to_adopt), class: 'u-underline', target: :blank
+
 
 #signature-form.reveal-modal.small data={ reveal: true }
   a.close-reveal-modal &#215;

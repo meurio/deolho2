@@ -1,3 +1,7 @@
+[class^="icon-"]:before, [class^="icon-"]:after {
+  font-family: 'icomoon';
+}
+
 .admin-only {
   margin-bottom: rem-calc(20);
 }
@@ -44,10 +48,11 @@
     }
 
     h2 {
-      color: $light-green;
+      color: $light-green !important;
       display: inline-block;
       font-weight: 500;
       letter-spacing: .03em;
+      margin-bottom: 0 !important;
       text-transform: uppercase;
       vertical-align: middle;
     }
@@ -72,6 +77,14 @@
       width: 50px;
     }
   }
+}
+.accordion-navigation > a:after {
+  font-family: 'icomoon';
+  content: "\e62e";
+  float: right;
+}
+.accordion-navigation.active > a:after {
+  content: "\e62f";
 }
 
 .panel {
