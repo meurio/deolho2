@@ -38,8 +38,8 @@
       .UserPartial.u-mb1
         = image_tag @project.user.avatar_url
         .UserPartial-data
-          .UserPartial-decription Autor
-          .UserPartial-userName= @project.user.name
+          .UserPartial-decription Autor do projeto de lei
+          .UserPartial-userName= link_to @project.user.name, user_path(@project.user)
 
     .large-5.columns
       .panel.u-mt3
@@ -86,7 +86,7 @@
           = image_tag("icon-adocao-on.png")
         - else
           = image_tag("icon-locked-fim.png")
-        p Adoção parlamentar
+        p Parlamentar responsável
         - if @project.status == "adopted"
           .StepsList-bubble
 
@@ -174,7 +174,7 @@
 
     h3.HeaderWithIcon
       = image_tag "icon-parlamentar-pequeno.png"
-      | Parlamentares que adotaram o Projeto de Lei
+      | Parlamentares responsáveis pelo Projeto de Lei
     .ProjectPanel
       - if @adoptions.any?
         = render @adoptions
