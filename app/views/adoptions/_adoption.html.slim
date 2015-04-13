@@ -3,6 +3,9 @@
   .UserPartial-data
     .UserPartial-userName
       = adoption.user.name
+      - if @project.user.politician?
+        | &nbsp;
+        i.icon-checkmark-circle.tip-top data-tooltip="true" aria-haspopup="true" title="Parlamentar com perfil verificado"
       | &nbsp;
       = link_to " ", project_adoption_path(adoption.project, adoption), "data-method" => 'delete', class: ["icon-remove", "u-alert", "UserPartial-removeButton"], id: "remove-adoption-#{adoption.id}"
     .UserPartial-decription há #{distance_of_time_in_words_to_now adoption.created_at} atrás
