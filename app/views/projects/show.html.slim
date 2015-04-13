@@ -19,11 +19,8 @@
 .ProjectCover
   .row
     .large-7.columns
-      .text-center
-        - if @project.user.politician?
-          .Ribbon.u-mb1
-            .Ribbon-line1 Projeto de iniciativa
-            .Ribbon-line2  parlamentar
+      - if @project.user.politician?
+        = image_tag("faixa-parlamentar-large.png", class: :Ribbon)
       h1= @project.title
       .ProjectCover-details
         strong= @project.category
@@ -39,7 +36,13 @@
         = image_tag @project.user.avatar_url
         .UserPartial-data
           .UserPartial-decription Autor do projeto de lei
-          .UserPartial-userName= link_to @project.user.name, user_path(@project.user)
+          .UserPartial-userName
+            = link_to @project.user.name, user_path(@project.user)
+            - if @project.user.profession.present?
+              |  | #{@project.user.profession}
+            - if @project.user.politician?
+              | &nbsp;
+              i.icon-checkmark-circle.tip-top data-tooltip="true" aria-haspopup="true" title="Parlamentar com perfil verificado"
 
     .large-5.columns
       .panel.u-mt3
@@ -47,15 +50,17 @@
         - if @project.open?
           p.u-fontSize15.u-normalLineHeight Edite, comente e colabore com sugestões que podem virar lei!
           - if current_user.present?
-            = link_to 'Editar o projeto', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius, 'u-mb0', :large], method: :post
+            = link_to 'Editar o projeto', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius, :large], method: :post
           - else
-            = link_to 'Editar o projeto', "#", id: "contribution-button", class: [:button, :radius, 'u-mb0', :large], data: { "reveal-id" => "contribution-form" }
-          p
-            | Prazo de edição encerra em
+            = link_to 'Editar o projeto', "#", id: "contribution-button", class: [:button, :radius, :large], data: { "reveal-id" => "contribution-form" }
+          p.u-fontSize08
+            | O prazo da edição encerra em
             | &nbsp;
-            strong #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}
+            strong #{distance_of_time_in_words_to_now @project.closes_for_contribution_at}.
+            br
+            | O autor responsável pelo PL pode acolher suas sugestões até essa data.
         - else
-          p.u-fontSize15.u-normalLineHeight
+          p.u-fontSize08.u-normalLineHeight
             | A edição deste projeto foi encerrada há
             |  #{distance_of_time_in_words_to_now @project.closes_for_contribution_at} atrás
         - if @contributions.any?
@@ -120,14 +125,14 @@
       - elsif @project.rejected?
         | Este Projeto não foi aprovado!
       - elsif @project.processing?
-        | Esse projeto está agora em etapa de tramitação rumo à sua aprovação.
+        | Esse projeto de lei está agora em etapa de tramitação rumo à sua aprovação. Enquanto ele estiver aberto para edição você pode fazer comentários, edições e contribuições.
       - elsif @project.adopted?
-        | Esse projeto já foi adotado por um ou mais parlamentares que agora se encarregam de sua tramitação em sua casa legislativa.
+        | Esse projeto já possui um ou mais parlamentares responsáveis por sua tramitação na casa legislativa cabível.
       - elsif !@project.open?
         | A edição deste projeto foi encerrada há
         |  #{distance_of_time_in_words_to_now @project.closes_for_contribution_at} atrás
       - else
-        | Esse projeto está aberto para colaboração. Assim que essa etapa for concluída o PL ficará aguardando a adoção de um parlamentar.
+        | Esse projeto está aberto para colaboração. Suas sugestões poderão ser acolhidas pelo autor do PL até o fim do prazo de edição.
 
 .row data-equalizer=true
   .large-6.columns
@@ -190,7 +195,7 @@
         = link_to 'Adicionar um parlamentar', '#adoption-form', id: "add-adopter-button", class: [:button, :radius, :secondary, "u-mb0"], "data-reveal-id" => "adoption-form", "data-reveal" => true
 
       hr
-      p.highlight Você é um parlamentar e gostaria de representar o sonho de muitos em sua casa legislativa? Você pode!
+      p.highlight Você é um parlamentar e gostaria de representar o sonho de muitos em sua casa legislativa? Você pode adotar esse PL.
       = link_to 'Adotar o projeto', '#adopt', id: "adopt-project-button", class: [:button, :radius, :secondary, :large], "data-reveal-id" => "adopt", "data-reveal" => true
       p= link_to 'Saiba mais sobre Adotar PL', about_path(anchor: :how_to_adopt), class: 'u-underline', target: :blank
 

@@ -1,9 +1,7 @@
 .project.large-3.columns.left
   .panel.radius data-equalizer-watch=true
     - if project.user.politician?
-      .Ribbon.u-mb1
-        .Ribbon-line1 Projeto de iniciativa
-        .Ribbon-line2  parlamentar
+      = image_tag("faixa-parlamentar-small.png", class: :Ribbon)
     = link_to project, class: :image do
       .overlay
       = image_tag(project.image.thumb)

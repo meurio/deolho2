@@ -42,6 +42,12 @@
   }
 
   .UserPartial-userName {
-    color: $yellow;
+    a {
+      color: $yellow;
+    }
+  }
+
+  .Ribbon {
+    margin-bottom: 1em;
   }
 }

@@ -46,15 +46,9 @@
   }
 
   .Ribbon {
-    font-size: 1em;
     position: absolute;
     z-index: 1;
-    margin-left: -1.9em;
-    margin-right: -1.9em;
-    width: 90%;
-
-    &:before {
-      border: 0;
-    }
+    margin-left: -2.5em;
+    top: 5px;
   }
 }
