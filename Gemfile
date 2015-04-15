@@ -39,3 +39,6 @@ gem 'scss-lint', group: [:test, :development]
 source 'https://rails-assets.org'
 gem 'rails-assets-datetimepicker'
 gem 'rails-assets-jquery.cookie'
+
+# Docker dependencies
+gem 'therubyracer', platforms: :ruby
