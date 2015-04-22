@@ -2,8 +2,8 @@ class SignaturesController < ApplicationController
   authorize_resource
 
   def create
-    user = current_user_or_find_or_create(signature_params)
     project = Project.find(params[:project_id])
+    user = current_user_or_find_or_create(signature_params, organization_id: project.organization_id)
     signature = Signature.create project_id: project.id, user_id: user.id
 
     if signature.persisted?

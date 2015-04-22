@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def current_user_or_find_or_create resource_params
+  def current_user_or_find_or_create resource_params, options
     current_user ||
       User.find_by(email: resource_params[:user][:email]) ||
-      User.create(resource_params[:user].merge(password: SecureRandom.hex))
+      User.create(resource_params[:user].merge(password: SecureRandom.hex, organization_id: options[:organization_id]))
   end
 end

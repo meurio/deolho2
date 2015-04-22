@@ -2,8 +2,8 @@ class ContributionsController < ApplicationController
   authorize_resource
 
   def create
-    user = current_user_or_find_or_create(contribution_params)
     project = Project.find(params[:project_id])
+    user = current_user_or_find_or_create(contribution_params, organization_id: project.organization_id)
     contribution = project.contributions.create user: user
 
     if contribution.persisted?
