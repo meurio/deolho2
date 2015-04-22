@@ -4,7 +4,7 @@ class ContributionsController < ApplicationController
   def create
     project = Project.find(params[:project_id])
     user = current_user_or_find_or_create(contribution_params, organization_id: project.organization_id)
-    contribution = project.contributions.create user: user
+    contribution = project.contributions.create user_id: user.id
 
     if contribution.persisted?
       Notifier.thanks_for_contributing(contribution).deliver_later
