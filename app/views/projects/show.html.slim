@@ -14,7 +14,7 @@
   - if @project.facebook_share_image.present?
     = image_url(@project.facebook_share_image)
   - else
-    = nil
+    = image_url(@project.image)
 
 .ProjectCover
   .row
