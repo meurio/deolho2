@@ -202,7 +202,7 @@ RSpec.describe ApplicationHelper, :type => :helper do
 
     context "when there is no content_for :meta_image" do
       it "should be the default meta_image" do
-        expect(helper.meta_image).to include(asset_url("legislando.png"))
+        expect(helper.meta_image).to include(asset_url("facebook_share_image.jpg"))
       end
     end
   end
