@@ -50,7 +50,7 @@ module ApplicationHelper
   end
 
   def meta_image
-    content_for(:meta_image) || image_url("legislando.png")
+    content_for(:meta_image) || image_url("facebook_share_image.jpg")
   end
 
   def user_path user
