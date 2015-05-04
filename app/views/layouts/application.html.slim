@@ -18,7 +18,7 @@ html
   body class=[controller.controller_name, controller.action_name] data={ "ga-code" => ENV["GA_CODE"] }
     - content_for :application_menu do
       li= link_to "Como funciona?", about_path
-      
+
     - content_for :main_menu do
       li.active
         - if can? :create, Project
@@ -26,23 +26,13 @@ html
             span.icon-plus &nbsp;
             | Criar Projeto de Lei
         - else
-          = link_to "#", id: "new-project-button-menu", data: { "reveal-id" => "new-project-reveal" }
+          = link_to "https://docs.google.com/forms/d/1t1oBHC7OPMWciGAs54pkGHLXMn6GVpJO3QA8J72E_z8/viewform", id: "new-project-button-menu", target: :blank
             span.icon-plus &nbsp;
             | Criar Projeto de Lei
 
     = meurio_header_for :legislando
     = yield
     footer
-
-    #new-project-reveal.reveal-modal.small data-reveal=true
-      .title
-        h2 CRIE UM PROJETO DE LEI!
-      p.no-margin
-        | Oi! Que legal que você se interessou em criar um novo Projeto de Lei. Entre em contato pelo e-mail
-        |  #{mail_to 'legislando@nossascidades.org'} com o tema do PL que você quer criar, o porque você acha
-        |  isso importante, e a cidade ou estado que essa lei será aplicada e a gente te manda instruções de
-        |  como proceder, ok?!
-      a.close-reveal-modal &#215
 
     = javascript_include_tag 'application'
     = javascript_include_tag "//cdn.optimizely.com/js/#{ENV["OPTIMIZELY_ID"]}.js"

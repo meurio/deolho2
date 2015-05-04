@@ -62,8 +62,7 @@ RSpec.feature "Create new project" do
   scenario "when I'm not an admin", js: true do
     login user, "feature"
     visit root_path
-    click_link "new-project-button-menu"
 
-    expect(page).to have_css("#new-project-reveal")
+    expect(page).to have_css("a[href='https://docs.google.com/forms/d/1t1oBHC7OPMWciGAs54pkGHLXMn6GVpJO3QA8J72E_z8/viewform']")
   end
 end
