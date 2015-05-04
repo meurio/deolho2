@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   authorize_resource
 
   def index
-    @projects = Project.all
+    @projects = Project.order(created_at: :desc).all
   end
 
   def new
