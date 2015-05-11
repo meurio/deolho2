@@ -15,6 +15,9 @@ class Project < ActiveRecord::Base
   mount_uploader :facebook_share_image, FacebookShareImageUploader
   mount_uploader :image, ThumbUploader
 
+  after_create { self.delay.create_mailchimp_segment }
+  after_update { self.delay.update_mailchimp_segment }
+
   def open?
     closes_for_contribution_at > Time.now
   end
@@ -49,5 +52,26 @@ class Project < ActiveRecord::Base
     elsif open?
       "open"
     end
+  end
+
+  def create_mailchimp_segment
+    segment = Gibbon::API.lists.segment_add(
+      id: ENV["MAILCHIMP_LIST_ID"],
+      opts: { type: "static", name: self.mailchimp_segment_name }
+    )
+
+    self.update_column :mailchimp_segment_uid, segment["id"]
+  end
+
+  def update_mailchimp_segment
+    Gibbon::API.lists.segment_update(
+      id: ENV["MAILCHIMP_LIST_ID"],
+      seg_id: self.mailchimp_segment_uid,
+      opts: { name: self.mailchimp_segment_name }
+    )
+  end
+
+  def mailchimp_segment_name
+    "LEG - #{self.id.to_s.rjust(4, "0")} - #{self.title}".byteslice(0..99)
   end
 end
