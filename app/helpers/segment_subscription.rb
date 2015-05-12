@@ -1,5 +1,5 @@
 class SegmentSubscription
-  def create args
+  def self.create args
     HTTParty.post(
       "#{ENV["ACCOUNTS_HOST"]}/users/#{args[:user_id]}/segment_subscriptions.json",
       body: {
