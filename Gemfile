@@ -9,12 +9,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
-
-group :test do
-	gem 'codeclimate-test-reporter', require: nil
-	gem 'shoulda-matchers', require: false
-end
-
+gem 'codeclimate-test-reporter', require: nil, group: :test
+gem 'shoulda-matchers', require: false, group: :test
 gem 'rspec-rails', group: [:development, :test]
 gem 'slim-rails'
 gem 'meurio_ui', github: "meurio/meurio_ui", branch: 'new-header'
@@ -36,6 +32,7 @@ gem 'mini_magick'
 gem 'scss-lint', group: [:test, :development]
 gem 'gibbon'
 gem 'sidekiq'
+gem 'webmock', group: :test
 
 # Rails assets
 source 'https://rails-assets.org'
