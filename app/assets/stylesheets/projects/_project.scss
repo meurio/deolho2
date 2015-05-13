@@ -1,4 +1,8 @@
 .project {
+  .panel {
+    position: relative;
+  }
+
   .project-image {
     @include border-radius($global-radius $global-radius 0 0);
     display: block;
@@ -48,15 +52,22 @@
     }
   }
 
-  .Ribbon {
+  .project-ribbon {
     position: absolute;
     z-index: 1;
-    margin-left: -2.5em;
-    top: 5px;
+    background: $secondary-color;
+    color: white;
+    top: 0;
+    width: 100%;
+    left: 0;
+    padding: 0 1em;
+    font-size: 0.9em;
+    text-align: center;
   }
 
   .project-statuses {
     .label {
+      font-size: .7em;
       width: 32%;
       margin-right: 2%;
       overflow: hidden;

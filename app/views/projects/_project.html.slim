@@ -1,7 +1,7 @@
 .project.large-3.columns.left
   .panel.radius
     - if project.user.politician?
-      = image_tag("faixa-parlamentar-small.png", class: :Ribbon)
+      .project-ribbon Projeto de iniciativa parlamentar
     = link_to project do
       .project-image= image_tag(project.image.thumb)
       .project-title data-equalizer-watch=true = project.title
