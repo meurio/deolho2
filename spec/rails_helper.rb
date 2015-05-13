@@ -10,7 +10,7 @@ require 'capybara/rspec'
 Capybara.javascript_driver = :selenium
 
 require 'webmock/rspec'
-WebMock.disable_net_connect!(:allow_localhost => true)
+WebMock.disable_net_connect!(allow_localhost: true, allow: %w{codeclimate.com})
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
