@@ -1,18 +1,22 @@
 .project.large-3.columns.left
-  .panel.radius data-equalizer-watch=true
+  .panel.radius
     - if project.user.politician?
       = image_tag("faixa-parlamentar-small.png", class: :Ribbon)
-    = link_to project, class: :image do
-      .overlay
-      = image_tag(project.image.thumb)
-      span= project.title
-    span.label.radius.secondary.no-margin= project_status(project)
-    .description.icon-user
-      span= link_to project.user.name, user_path(project.user)
+    = link_to project do
+      .project-image= image_tag(project.image.thumb)
+      .project-title data-equalizer-watch=true = project.title
+    .project-statuses
+      span.label.no-margin class=(project.open? ? "on" : "off") Em edição
+      span.label.no-margin class=(project.adopted? ? "on" : "off") Adotado
+      span.label.no-margin class=(project.processing? ? "on" : "off") Tramitando
+    .project-user
+      = link_to user_path(project.user) do
+        = image_tag project.user.avatar_url
+        span= project.user.name
     .description.icon-tag
       span title=project.category.name = truncate(project.category.name, length: 30)
     .description.icon-location
       span= project.organization.city
-    - if project.legislative_chamber.present?
-      .description.icon-home
-        span= project.legislative_chamber
+    .description.icon-home class=(project.legislative_chamber.present? ? "visible" : "hidden")
+      span title=project.legislative_chamber
+        = project.legislative_chamber.present? ? truncate(project.legislative_chamber, length: 30) : "Indefinido"

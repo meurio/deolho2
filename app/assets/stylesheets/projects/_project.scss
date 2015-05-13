@@ -1,29 +1,32 @@
 .project {
-  .image {
+  .project-image {
     @include border-radius($global-radius $global-radius 0 0);
     display: block;
     margin-bottom: $panel-padding;
     margin-left: -$panel-padding;
     margin-right: -$panel-padding;
     margin-top: -$panel-padding;
-    overflow: hidden;
-    position: relative;
+  }
 
-    .overlay {
-      @include background-image(linear-gradient(transparent 10%, rgba($black, .5) 90%));
-      height: 100%;
-      position: absolute;
-      width: 100%;
+  .project-title {
+    font-size: 17px;
+    line-height: 22px;
+    font-weight: bold;
+    margin-bottom: .5em;
+  }
+
+  .project-user {
+    img {
+      border-radius: 50%;
+      width: 25px;
+      height: 25px;
+      margin-right: .5em;
+      vertical-align: middle;
     }
 
     span {
-      @include text-shadow($black 1px 1px 2px);
-      bottom: 0;
-      color: $white;
-      font-size: rem-calc(17);
-      left: 0;
-      padding: rem-calc(10);
-      position: absolute;
+      position: relative;
+      top: 2px;
     }
   }
 
@@ -50,5 +53,23 @@
     z-index: 1;
     margin-left: -2.5em;
     top: 5px;
+  }
+
+  .project-statuses {
+    .label {
+      width: 32%;
+      margin-right: 2%;
+      overflow: hidden;
+      &.on {
+        background: $secondary-color;
+      }
+      &.off {
+        background: #4A5C67;
+        color: #8898A2;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }

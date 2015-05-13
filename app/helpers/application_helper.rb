@@ -57,22 +57,6 @@ module ApplicationHelper
     "#{ENV['MEURIO_HOST']}/users/#{user.id}"
   end
 
-  def project_status project
-    if project.accepted?
-      "Agora é lei!"
-    elsif project.rejected?
-      "Rejeitado"
-    elsif project.processing?
-      "Em tramitação"
-    elsif project.adopted?
-      "Adotado"
-    elsif !project.open?
-      "Edição encerrada"
-    else
-      "Em edição"
-    end
-  end
-
   def user_path user
     "#{ENV['MEURIO_HOST']}/users/#{user.id}"
   end
