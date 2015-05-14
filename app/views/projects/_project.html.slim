@@ -24,4 +24,4 @@
     .adopters
       h5 Parlamentares responsáveis
       - project.adoptions.each do |adoption|
-        = image_tag adoption.user.avatar_url, title: adoption.user.name, class: 'avatar-image'
+        .adopter= image_tag adoption.user.avatar_url, title: adoption.user.name, class: 'avatar-image'
