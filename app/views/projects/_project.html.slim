@@ -23,5 +23,7 @@
     hr
     .adopters
       h5 Parlamentares responsáveis
-      - project.adoptions.each do |adoption|
-        .adopter= image_tag adoption.user.avatar_url, title: adoption.user.name, class: 'avatar-image'
+      - if project.adopters.any?
+        = raw avatars_list project.adopters
+      - else
+        .empty Nenhum parlamentar adotou o projeto

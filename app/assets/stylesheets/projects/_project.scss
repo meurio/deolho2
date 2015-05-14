@@ -70,6 +70,17 @@
       display: inline-block;
       margin-bottom: 1em;
     }
+
+    .plus {
+      display: inline-block;
+      font-weight: bold;
+      padding-top: .1em;
+      vertical-align: middle;
+    }
+
+    .empty {
+      font-size: .8em
+    }
   }
 
   .project-ribbon {

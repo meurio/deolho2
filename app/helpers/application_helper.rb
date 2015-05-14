@@ -69,6 +69,14 @@ module ApplicationHelper
     end
   end
 
+  def avatars_list users, limit = 6
+    if users.size <= limit
+      users.map{ |u| "<div class='adopter'>#{image_tag(u.avatar_url, title: u.name, class: 'avatar-image')}</div>" }.join('')
+    else
+      "#{users[0..limit-1].map{ |u| "<div class='adopter'>#{image_tag(u.avatar_url, title: u.name, class: 'avatar-image')}</div>" }.join('')}<div class='plus'>+#{users.size - limit}</div>"
+    end
+  end
+
   def step_bubble_class project
     if @project.finished?
       "StepsList-stepBubble--finished"
