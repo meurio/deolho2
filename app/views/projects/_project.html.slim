@@ -11,7 +11,7 @@
       span.label.no-margin class=(project.processing? ? "on" : "off") Tramitando
     .project-user
       = link_to user_path(project.user) do
-        = image_tag project.user.avatar_url
+        = image_tag project.user.avatar_url, class: 'avatar-image'
         span= project.user.name
     .description.icon-tag
       span title=project.category.name = truncate(project.category.name, length: 30)
@@ -20,3 +20,10 @@
     .description.icon-home class=(project.legislative_chamber.present? ? "visible" : "hidden")
       span title=project.legislative_chamber
         = project.legislative_chamber.present? ? truncate(project.legislative_chamber, length: 30) : "Indefinido"
+    hr
+    .adopters
+      h5 Parlamentares responsáveis
+      - if project.adopters.any?
+        = raw avatars_list project.adopters
+      - else
+        .empty Nenhum parlamentar adotou o projeto
