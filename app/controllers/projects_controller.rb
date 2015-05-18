@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   authorize_resource
 
   def index
-    @projects = Project.order(created_at: :desc).all
+    @projects = Project.order(created_at: :desc).
+      includes(:adopters, :user, :organization, :category)
   end
 
   def new
