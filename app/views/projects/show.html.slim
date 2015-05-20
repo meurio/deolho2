@@ -43,6 +43,9 @@
             - if @project.user.politician?
               | &nbsp;
               i.icon-checkmark-circle.tip-top data-tooltip="true" aria-haspopup="true" title="Parlamentar com perfil verificado"
+            - if can?(:change_owner, @project)
+              | &nbsp;|&nbsp;
+              = link_to "Trocar autor", "#", data: { "reveal-id" => "change-owner-form" }
 
     .large-5.columns
       .panel.u-mt3
@@ -286,6 +289,19 @@
       = link_to "Compartilhe no Twitter", "#", class: ['share-on-twitter-button', :button, :radius, "no-margin"], data: { href: "https://twitter.com/share?url=#{project_url(@project)}&text=#{@project.twitter_share_message.present? ? @project.twitter_share_message : @project.title}" }
 
   a.close-reveal-modal &#215;
+
+#change-owner-form.reveal-modal.small data={ reveal: true }
+  a.close-reveal-modal &#215;
+  .title
+    h2 Trocar autor do projeto
+  - if flash[:change_owner_error].present?
+    .u-red.u-mb1.u-normalLineHeight= raw flash[:change_owner_error]
+  = form_tag change_owner_project_path(@project), data: { abide: true }, method: :put do
+    div
+      = label_tag "user_email", "Email do novo autor"
+      = email_field_tag "user_email", nil, required: true
+      small.error O email precisa ser válido
+    = submit_tag "Trocar autor", class: ["button", "radius", "u-mb0", "right"]
 
 - if can? :create, Adoption
   #adoption-form.reveal-modal.small data={ reveal: true }

@@ -52,6 +52,10 @@ $(function(){
 		$('.thanks-for-signing-this-project').foundation('reveal', 'open');
 	}
 
+	if(location.hash == "#change-owner-form"){
+		$('#change-owner-form').foundation('reveal', 'open');
+	}
+
 	function countdown(time, counter, redirectTo){
 		time--;
 		counter.html(time);

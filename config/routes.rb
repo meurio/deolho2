@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     member do
       put 'close_for_contribution'
       put 'reopen_for_contribution'
+      put 'change_owner'
     end
 
     resources :signatures, only: [:create]

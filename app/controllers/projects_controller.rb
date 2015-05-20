@@ -37,6 +37,23 @@ class ProjectsController < ApplicationController
     @adoptions = @project.adoptions.includes(:user)
   end
 
+  def change_owner
+    project = Project.find(params[:id])
+    user = User.find_by email: params[:user_email]
+
+    if user.present?
+      project.update_attribute :user_id, user.id
+      redirect_to project_path(project)
+    else
+      redirect_to(
+        project_path(project, anchor: "change-owner-form"),
+        flash: {
+          change_owner_error: "Nenhum usuário foi encontrado com o email <strong>#{params[:user_email]}</strong>"
+        }
+      )
+    end
+  end
+
   def project_params
     params.require(:project).permit(:title, :image, :abstract, :category_id, :organization_id,
       :google_drive_embed, :google_drive_url, :closes_for_contribution_at, :facebook_share_image,

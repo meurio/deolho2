@@ -2,8 +2,8 @@ require 'machinist/active_record'
 
 User.blueprint do
   email { "test#{sn}@trashmail.com" }
-  first_name { "Kyle" }
-  last_name { "Craine" }
+  first_name { "K#{sn}le" }
+  last_name { "Crain#{sn}" }
 end
 
 Project.blueprint do
