@@ -33,6 +33,7 @@ gem 'scss-lint', group: [:test, :development]
 gem 'gibbon'
 gem 'sidekiq'
 gem 'webmock', group: :test
+gem 'google-api-client'
 
 # Rails assets
 source 'https://rails-assets.org'
