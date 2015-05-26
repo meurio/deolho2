@@ -18,3 +18,4 @@ config/database.yml
 public/uploads
 
 db/schema.rb
+config/initializers/01_env_vars.rb
