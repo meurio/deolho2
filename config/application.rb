@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'rack-cas/session_store/active_record'
+require 'google/api_client'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.

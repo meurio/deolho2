@@ -1,17 +1,13 @@
-# TODO: mover esse require para a inicialização do Rails
-require 'google/api_client'
-
 class GoogleAuthorizationsController < ApplicationController
-  # TODO: remover esse skip e permitir apenas admins acessarem essa controller
-  skip_authorization_check
+  authorize_resource
 
   # TODO: escrever uns testes para essa action
-  def authorize
+  def claim
     redirect_to auth.authorization_uri.to_s, status: 303
   end
 
   # TODO: escrever uns testes para essa action
-  def callback
+  def grant
     auth.code = params[:code] if params[:code]
     auth.fetch_access_token!
 
@@ -33,7 +29,7 @@ class GoogleAuthorizationsController < ApplicationController
   def auth
     @auth ||= (
       auth = api_client.authorization.dup
-      auth.redirect_uri = google_authorizations_callback_url
+      auth.redirect_uri = grant_google_authorizations_url
       auth
     )
   end

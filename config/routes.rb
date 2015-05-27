@@ -15,8 +15,12 @@ Rails.application.routes.draw do
 
   get 'about' => 'pages#about'
 
-  get 'google/authorize', to: "google_authorizations#authorize", as: "google_authorizations_authorize"
-  get 'google/callback', to: "google_authorizations#callback", as: "google_authorizations_callback"
+  resources :google_authorizations, only: [] do
+    collection do
+      get 'claim'
+      get 'grant'
+    end
+  end
 
   # You can have the root of your site routed with "root"
   root 'projects#index'
