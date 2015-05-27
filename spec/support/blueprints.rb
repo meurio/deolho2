@@ -64,3 +64,11 @@ end
 Organization.blueprint do
   city { "City #{sn}" }
 end
+
+GoogleAuthorization.blueprint do
+  user
+  access_token { "access_token_#{sn}" }
+  refresh_token { "refresh_token_#{sn}" }
+  issued_at { Time.now }
+  expires_at { Time.now + 3600 }
+end
