@@ -7,6 +7,10 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    unless @google_authorization = GoogleAuthorization.find_by(user: current_user)
+      return redirect_to new_google_authorization_path
+    end
+    
     @project = Project.new
   end
 
