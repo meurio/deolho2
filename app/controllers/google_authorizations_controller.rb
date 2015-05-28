@@ -22,7 +22,7 @@ class GoogleAuthorizationsController < ApplicationController
     ga.refresh_token = auth.refresh_token
     ga.issued_at = auth.issued_at
     ga.expires_at = ga.issued_at + auth.expires_in
-    ga.save
+    ga.save!
 
     redirect_to new_project_path
   end
