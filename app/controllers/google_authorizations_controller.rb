@@ -1,6 +1,9 @@
 class GoogleAuthorizationsController < ApplicationController
   authorize_resource
 
+  def new    
+  end
+
   def claim
     redirect_to auth.authorization_uri.to_s, status: 303
   end
