@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_our_cities_user
+  has_one :google_authorization
 
   has_one :google_authorization
 

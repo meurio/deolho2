@@ -6,6 +6,7 @@ RSpec.describe ProjectsController, :type => :controller do
   let(:admin) { User.make! admin: true }
   let(:category) { Category.make! }
   let(:organization) { Organization.make! }
+  before { GoogleAuthorization.make! user: admin }
 
   describe "GET new" do
     context "when I'm not an admin" do

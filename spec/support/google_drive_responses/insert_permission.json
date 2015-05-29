@@ -1,0 +1,11 @@
+{
+ "kind": "drive#permission",
+ "etag": "\"AmpO9uzbs3m4f4SIcYKV4LhQRzY/gfNSEg8Jc4r_2AJ_VH8rQDBpC5s\"",
+ "id": "anyone",
+ "selfLink": "https://www.googleapis.com/drive/v2/files/1lc1Ifhkh6RLu2la0nTCfwwGjryNX1Mp1hpNHTD3_tdo/permissions/anyone",
+ "role": "reader",
+ "additionalRoles": [
+  "commenter"
+ ],
+ "type": "anyone"
+}

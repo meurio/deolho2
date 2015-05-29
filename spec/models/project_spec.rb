@@ -122,5 +122,55 @@ RSpec.describe Project, :type => :model do
       end
     end
   end
-end
 
+  describe "#copy_google_drive_file" do
+    let(:user) { User.make! }
+    let(:access_token) { "123" }
+    let(:title) { "My Project" }
+    let(:file) { double(:file) }
+    let(:alternate_link) { "alternate_link" }
+    let(:embed_link) { "embedLink" }
+    let(:file_id) { "file_id" }
+    subject { Project.make user: user, title: title }
+
+    before do
+      GoogleAuthorization.make! user: user, access_token: access_token
+      allow(GoogleDrive).to receive(:insert_permission)
+      allow(file).to receive(:data).and_return({
+        "alternateLink" => alternate_link,
+        "embedLink" => embed_link,
+        "id" => file_id
+      })
+
+      allow(GoogleDrive).to receive(:copy_file).and_return(file)
+    end
+
+    it "should copy a Google Drive file" do
+      expect(GoogleDrive).to receive(:copy_file).with(
+        file_id: ENV["GOOGLE_DRIVE_FILE_ID"],
+        title: title,
+        access_token: access_token
+      ).and_return(file)
+
+      subject.copy_google_drive_file
+    end
+
+    it "should set Google Drive fields" do
+      subject.copy_google_drive_file
+      expect(subject.google_drive_url).to be_eql(alternate_link)
+      expect(subject.google_drive_embed).to match(embed_link)
+    end
+
+    it "should insert a Google Drive permission" do
+      expect(GoogleDrive).to receive(:insert_permission).with(
+        file_id: file_id,
+        role: "reader",
+        type: "anyone",
+        additional_roles: ["commenter"],
+        access_token: access_token
+      )
+
+      subject.copy_google_drive_file
+    end
+  end
+end
