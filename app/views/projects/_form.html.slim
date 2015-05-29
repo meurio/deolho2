@@ -1,6 +1,6 @@
 = form_for @project, data: { abide: true } do |form|
   .row
-    .large-12
+    .large-12.columns
       - @project.errors.full_messages.each do |error|
         .u-red.u-mb1= error
   .row
