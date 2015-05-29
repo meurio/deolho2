@@ -1,5 +1,9 @@
 = form_for @project, data: { abide: true } do |form|
   .row
+    .large-12
+      - @project.errors.full_messages.each do |error|
+        .u-red.u-mb1= error
+  .row
     .title-field.large-8.columns
       = form.label :title, class: :required do
         = "#{t("activerecord.attributes.project.title")} "
