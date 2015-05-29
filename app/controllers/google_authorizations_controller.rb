@@ -2,10 +2,13 @@ class GoogleAuthorizationsController < ApplicationController
   authorize_resource
 
   def claim
-    redirect_to auth.authorization_uri.to_s, status: 303
+    auth = GoogleDrive.generate_authorization
+    auth.redirect_uri = grant_google_authorizations_url
+    redirect_to auth.authorization_uri(approval_prompt: :force).to_s, status: 303
   end
 
   def grant
+    auth = GoogleDrive.generate_authorization
     auth.code = params[:code] if params[:code]
 
     begin
@@ -22,25 +25,5 @@ class GoogleAuthorizationsController < ApplicationController
     ga.save
 
     redirect_to new_project_path
-  end
-
-  protected
-
-  def auth
-    @auth ||= (
-      auth = api_client.authorization.dup
-      auth.redirect_uri = grant_google_authorizations_url
-      auth
-    )
-  end
-
-  def api_client
-    @client ||= (
-      client = Google::APIClient.new
-      client.authorization.client_id = ENV["GOOGLE_CLIENT_ID"]
-      client.authorization.client_secret = ENV["GOOGLE_CLIENT_SECRET"]
-      client.authorization.scope = 'https://www.googleapis.com/auth/drive'
-      client
-    )
   end
 end
