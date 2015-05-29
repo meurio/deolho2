@@ -17,6 +17,9 @@ class GoogleAuthorizationsController < ApplicationController
       return redirect_to root_path
     end
 
+    puts '$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'
+    puts auth.inspect
+
     ga = GoogleAuthorization.find_or_initialize_by(user: current_user)
     ga.access_token = auth.access_token
     ga.refresh_token = auth.refresh_token
