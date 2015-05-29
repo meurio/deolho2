@@ -15,7 +15,7 @@ Rails.application.routes.draw do
 
   get 'about' => 'pages#about'
 
-  resources :google_authorizations, only: [] do
+  resources :google_authorizations, only: :new do
     collection do
       get 'claim'
       get 'grant'

@@ -11,8 +11,7 @@ class Ability
       can :reopen_for_contribution, Project
       can :manage, Adoption
       can :manage, Project
-      can :claim, GoogleAuthorization
-      can :grant, GoogleAuthorization
+      can :manage, GoogleAuthorization
     end
   end
 end

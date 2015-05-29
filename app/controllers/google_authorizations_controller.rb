@@ -1,6 +1,9 @@
 class GoogleAuthorizationsController < ApplicationController
   authorize_resource
 
+  def new    
+  end
+
   def claim
     auth = GoogleDrive.generate_authorization
     auth.redirect_uri = grant_google_authorizations_url
@@ -22,7 +25,7 @@ class GoogleAuthorizationsController < ApplicationController
     ga.refresh_token = auth.refresh_token
     ga.issued_at = auth.issued_at
     ga.expires_at = ga.issued_at + auth.expires_in
-    ga.save
+    ga.save!
 
     redirect_to new_project_path
   end

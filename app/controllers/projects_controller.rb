@@ -7,6 +7,8 @@ class ProjectsController < ApplicationController
   end
 
   def new
+    return redirect_to new_google_authorization_path if (current_user.google_authorization.nil? || current_user.google_authorization.expired?)
+
     @project = Project.new
   end
 
