@@ -17,6 +17,7 @@ class Project < ActiveRecord::Base
 
   after_create { self.delay.create_mailchimp_segment }
   after_update { self.delay.update_mailchimp_segment }
+  before_create :copy_google_drive_file
 
   def open?
     closes_for_contribution_at > Time.now
@@ -73,5 +74,26 @@ class Project < ActiveRecord::Base
 
   def mailchimp_segment_name
     "LEG - #{self.id.to_s.rjust(4, "0")} - #{self.title}".byteslice(0..99)
+  end
+
+  def copy_google_drive_file
+    # TODO: this api call should be performed in background
+    file = GoogleDrive.copy_file(
+      file_id: ENV["GOOGLE_DRIVE_FILE_ID"],
+      title: self.title,
+      access_token: self.user.google_authorization.access_token
+    )
+
+    self.google_drive_url = file.data["alternateLink"]
+    self.google_drive_embed = "<iframe src=\"#{file.data["embedLink"]}\"></iframe>"
+
+    # TODO: this api call should be performed in background
+    GoogleDrive.insert_permission(
+      file_id: file.data["id"],
+      role: "reader",
+      type: "anyone",
+      additional_roles: ["commenter"],
+      access_token: self.user.google_authorization.access_token
+    )
   end
 end

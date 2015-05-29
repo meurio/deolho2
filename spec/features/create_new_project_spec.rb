@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.feature "Create new project" do
   let (:admin) { User.make! admin: true }
   let (:user) { User.make! }
+  before { GoogleAuthorization.make! user: admin }
 
   context "when I'm an admin" do
     before do
