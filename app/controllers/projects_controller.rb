@@ -15,8 +15,12 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new project_params
     @project.user = current_user
-    @project.save
-    redirect_to @project
+
+    if @project.save
+      redirect_to @project
+    else
+      render :new
+    end
   end
 
   def edit
