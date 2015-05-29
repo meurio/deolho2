@@ -4,6 +4,9 @@
       .row
         .large-12.columns
           h2 Conecte a sua conta do Google
-          p Página explicativa do porque o Legislando precisa se conectar com a conta do Google do usuário.
+          p O Legislando está integrado com o sistema do Google. Por isso, é necessário que você tenha uma conta de e-mail no Google. Pode ser o seu @gmail convencional mesmo (se não tiver um ainda, a criação é gratuita).
+          p.text-center
+            = image_tag 'google_drive.png'
+          p Enfim, vamos solicitar sua permissão para criar documentos. Mas fique tranquilo: não teremos nenhum acesso a seus dados pessoais ou a sua caixa postal. A permissão é apenas para que o documento com a sugestão do seu Projeto de Lei fique em seu nome, ok?!
           .text-center
             = link_to 'Conectar', claim_google_authorizations_path, class: [:button, :radius, :large, "no-margin"]
