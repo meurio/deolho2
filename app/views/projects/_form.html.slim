@@ -41,20 +41,6 @@
       = form.text_area :abstract, rows: 4, required: true, maxlength: 320
       small.error O resumo é obrigatório
 
-  .row
-    .google-drive-url-field.large-6.columns
-      = form.label :google_drive_url, class: :required do
-        = t("activerecord.attributes.project.google_drive_url")
-      = form.text_field :google_drive_url, required: true
-      small.error O link para o Google Drive é obrigatório
-
-    .google-drive-embed-field.large-6.columns
-      = form.label :google_drive_embed, class: :required do
-        = "#{t("activerecord.attributes.project.google_drive_embed")} "
-        span.has-tip data-tooltip=true title="Para gerar o embed do documento do Google Drive vá em Arquivo > Publicar na web <img src='#{image_path("google_drive_embed_step1.png")}'><br /><br />Em seguida, selecione a aba Incorporar e copie o código do seu embed<img src='#{image_path "google_drive_embed_step2.png"}'>" ?
-      = form.text_field :google_drive_embed, required: true
-      small.error O embed do Google Drive é obrigatório
-
   dl.accordion data-accordion=true
     dd.accordion-navigation
       a href="#legislative-fields" class="icon-bubbles" Atualizar a tramitação

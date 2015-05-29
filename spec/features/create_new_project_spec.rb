@@ -21,8 +21,6 @@ RSpec.feature "Create new project" do
       select @organization.city, from: "project[organization_id]"
       fill_in "project[closes_for_contribution_at]", with: Time.now.next_week.strftime("%d/%m/%Y %H:%M")
       fill_in "project[abstract]", with: "My project abstract"
-      fill_in "project[google_drive_embed]", with: '<iframe src="https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/pub?embedded=true"></iframe>'
-      fill_in "project[google_drive_url]", with: "https://docs.google.com/document/d/1UcQp8j3N_nk75vyTWbbuFOlp5yswjeVg218CZo_-rho/edit"
       fill_in "project[facebook_share_title]", with: "My project on Facebook"
       fill_in "project[facebook_share_description]", with: "My project description on Facebook"
       attach_file "project[facebook_share_image]", "#{Rails.root}/spec/fixtures/files/project.jpg"
@@ -55,8 +53,6 @@ RSpec.feature "Create new project" do
       expect(page).to have_css(".organization-id-field.error")
       expect(page).to have_css(".closes-for-contribution-at-field")
       expect(page).to have_css(".abstract-field")
-      expect(page).to have_css(".google-drive-url-field")
-      expect(page).to have_css(".google-drive-embed-field")
     end
   end
 

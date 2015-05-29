@@ -17,7 +17,7 @@ class Project < ActiveRecord::Base
 
   after_create { self.delay.create_mailchimp_segment }
   after_update { self.delay.update_mailchimp_segment }
-  before_create :copy_google_drive_file
+  before_validation :copy_google_drive_file, on: :create
 
   def open?
     closes_for_contribution_at > Time.now
