@@ -1,13 +1,13 @@
 class GoogleAuthorizationsController < ApplicationController
   authorize_resource
 
-  def new    
+  def new
   end
 
   def claim
     auth = GoogleDrive.generate_authorization
     auth.redirect_uri = grant_google_authorizations_url
-    redirect_to auth.authorization_uri(approval_prompt: :force).to_s, status: 303
+    redirect_to auth.authorization_uri.to_s, status: 303
   end
 
   def grant
