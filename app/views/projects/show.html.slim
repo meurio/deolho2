@@ -328,3 +328,10 @@
         .row
           .text-right.large-12.columns
             = user_form.submit "Adicionar", id: "adoption-submit-button", class: [:button, :radius, "no-margin"]
+
+#go-to-gdrive.reveal-modal.small data={ reveal: true }
+  a.close-reveal-modal &#215;
+  p A página do seu projeto de lei foi criada com sucesso!
+  p Agora você precisa escrevê-lo lá no Google Drive e aguardar a colaboração da comunidade.
+  .u-center
+    = link_to "Ir para o Google Drive", @project.google_drive_url, class: [:button, :large, :radius, "no-margin"], target: :blank

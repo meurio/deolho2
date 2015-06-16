@@ -52,7 +52,7 @@ RSpec.describe ProjectsController, :type => :controller do
       it "should redirect to the new project page" do
         post :create, project_params
         project = Project.order(:id).last
-        expect(response).to redirect_to(project_path(project))
+        expect(response).to redirect_to(project_path(project, anchor: "go-to-gdrive"))
       end
     end
   end

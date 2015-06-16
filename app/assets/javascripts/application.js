@@ -56,6 +56,10 @@ $(function(){
 		$('#change-owner-form').foundation('reveal', 'open');
 	}
 
+	if(location.hash == "#go-to-gdrive"){
+		$('#go-to-gdrive').foundation('reveal', 'open');
+	}
+
 	function countdown(time, counter, redirectTo){
 		time--;
 		counter.html(time);
