@@ -9,13 +9,13 @@ class Ability
     if user.present?
       can :create, Project
       can :manage, Project, user_id: user.id
+      can :manage, GoogleAuthorization
 
       if user.admin?
         can :close_for_contribution, Project
         can :reopen_for_contribution, Project
         can :manage, Adoption
         can :manage, Project
-        can :manage, GoogleAuthorization
       end
     end
   end
