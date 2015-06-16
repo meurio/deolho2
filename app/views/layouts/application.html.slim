@@ -21,10 +21,9 @@ html
 
     - content_for :main_menu do
       li.active
-        - if can? :create, Project
-          = link_to new_project_path, id: "new-project-button-menu" do
-            span.icon-plus &nbsp;
-            | Criar Projeto de Lei
+        = link_to can?(:create, Project) ? new_project_path : sign_in_path, id: "new-project-button-menu" do
+          span.icon-plus &nbsp;
+          | Criar Projeto de Lei
 
     = meurio_header_for :legislando
     = yield

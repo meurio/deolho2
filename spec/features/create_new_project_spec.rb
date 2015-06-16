@@ -58,6 +58,6 @@ RSpec.feature "Create new project" do
 
   scenario "when I'm not logged in", js: true do
     visit root_path
-    expect(page).to_not have_css("a#new-project-button-menu")
+    expect(page).to have_css("a#new-project-button-menu")
   end
 end
