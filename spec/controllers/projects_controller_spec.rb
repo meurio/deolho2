@@ -7,11 +7,10 @@ RSpec.describe ProjectsController, :type => :controller do
   let(:category) { Category.make! }
   let(:organization) { Organization.make! }
   before { GoogleAuthorization.make! user: admin }
+  before { GoogleAuthorization.make! user: user }
 
   describe "GET new" do
-    context "when I'm not an admin" do
-      before { login user, "controller" }
-
+    context "when I'm not logged in" do
       it "should raise an exception" do
         expect {
           get :new
@@ -19,8 +18,8 @@ RSpec.describe ProjectsController, :type => :controller do
       end
     end
 
-    context "when I'm an admin" do
-      before { login admin, "controller" }
+    context "when I'm logged in" do
+      before { login user, "controller" }
 
       it "should assign @project" do
         get :new
@@ -30,9 +29,7 @@ RSpec.describe ProjectsController, :type => :controller do
   end
 
   describe "POST create" do
-    context "when I'm not an admin" do
-      before { login(user, "controller") }
-
+    context "when I'm not logged in" do
       it "should raise an exception" do
         expect {
           post :create
@@ -40,8 +37,8 @@ RSpec.describe ProjectsController, :type => :controller do
       end
     end
 
-    context "when I'm an admin" do
-      before { login(admin, "controller") }
+    context "when I'm logged" do
+      before { login(user, "controller") }
 
       it "should create a new project" do
         expect {
@@ -58,12 +55,19 @@ RSpec.describe ProjectsController, :type => :controller do
   end
 
   describe "GET edit" do
-    context "when I'm not an admin" do
+    context "when I'm not logged in" do
       it "should raise an exception" do
-        login user, "controller"
         expect {
           get :edit, id: @project.id
         }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
+    context "when I'm the project owner" do
+      it "should assign @project" do
+        login @project.user, "controller"
+        get :edit, id: @project.id
+        expect(assigns(:project)).to be_eql(@project)
       end
     end
 
@@ -77,12 +81,26 @@ RSpec.describe ProjectsController, :type => :controller do
   end
 
   describe "PUT update" do
-    context "when I'm not an admin" do
+    context "when I'm not logged in" do
       it "should raise an exception" do
-        login user, "controller"
         expect {
           put :update, id: @project.id
         }.to raise_error(CanCan::AccessDenied)
+      end
+    end
+
+    context "when I'm the project owner" do
+      before { login @project.user, "controller" }
+
+      it "should update the project" do
+        new_title = "New title"
+        put :update, id: @project.id, project: { title: new_title }
+        expect(@project.reload.title).to be_eql(new_title)
+      end
+
+      it "should redirect to the project page" do
+        put :update, id: @project.id, project: project_params[:project]
+        expect(response).to redirect_to(project_path(@project))
       end
     end
 

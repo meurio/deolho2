@@ -25,10 +25,6 @@ html
           = link_to new_project_path, id: "new-project-button-menu" do
             span.icon-plus &nbsp;
             | Criar Projeto de Lei
-        - else
-          = link_to "https://docs.google.com/forms/d/1t1oBHC7OPMWciGAs54pkGHLXMn6GVpJO3QA8J72E_z8/viewform", id: "new-project-button-menu", target: :blank
-            span.icon-plus &nbsp;
-            | Criar Projeto de Lei
 
     = meurio_header_for :legislando
     = yield
