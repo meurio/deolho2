@@ -86,4 +86,8 @@ module ApplicationHelper
       "StepsList-stepBubble--adopted"
     end
   end
+
+  def login_path return_path
+    "http://accounts.#{ENV["MEURIO_DOMAIN"]}/?service=#{return_path}"
+  end
 end
