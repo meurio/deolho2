@@ -21,7 +21,7 @@ html
 
     - content_for :main_menu do
       li.active
-        = link_to can?(:create, Project) ? new_project_path : login_path(new_project_path), id: "new-project-button-menu" do
+        = link_to can?(:create, Project) ? new_project_path : login_path(new_project_url), id: "new-project-button-menu" do
           span.icon-plus &nbsp;
           | Criar Projeto de Lei
 
