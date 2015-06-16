@@ -52,7 +52,9 @@
         = image_tag "icon-colab-fim.png"
         - if @project.open?
           p.u-fontSize15.u-normalLineHeight Edite, comente e colabore com sugestões que podem virar lei!
-          - if current_user.present?
+          - if can? :edit, @project
+            = link_to 'Ir para o Google Drive', @project.google_drive_url, target: :blank, class: [:button, :radius, :large]
+          - elsif current_user.present?
             = link_to 'Editar o projeto', project_contributions_path(@project), id: "contribution-button", class: [:button, :radius, :large], method: :post
           - else
             = link_to 'Editar o projeto', "#", id: "contribution-button", class: [:button, :radius, :large], data: { "reveal-id" => "contribution-form" }
