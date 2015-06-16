@@ -61,9 +61,9 @@ $(function(){
 	}
 
 	function countdown(time, counter, redirectTo){
-		time--;
+		if(time > 0) { time--; }
 		counter.html(time);
-		if(time <= 0)
+		if(time == 0)
 			window.location.replace(redirectTo);
 		setTimeout(function(){ countdown(time, counter, redirectTo) }, 1000);
 	}
